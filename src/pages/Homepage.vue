@@ -1,19 +1,167 @@
 <template>
-  <div>
-    我是首页
+  <div class="home">
+    <div class="search">
+      <img src="../assets/home/home.png" alt />
+      <div class="app-header-middle">
+        <i></i>
+        搜索商品名称
+      </div>
+      <div class="app-header-right"></div>
+    </div>
+    <ul class="fenlei">
+      <li v-html="this.fenlei[0]"></li>
+      <li v-html="this.fenlei[1]"></li>
+      <li v-html="this.fenlei[2]"></li>
+    </ul>
+
+    <swiper :options="swiperOption" ref="mySwiper">
+      <!-- slides -->
+      <swiper-slide class="swapper">
+        <img src="../assets/home/swiper/s1.jpg" alt />
+      </swiper-slide>
+      <swiper-slide class="swapper">
+        <img src="../assets/home/swiper/s2.jpg" alt />
+      </swiper-slide>
+      <swiper-slide class="swapper">
+        <img src="../assets/home/swiper/s3.jpg" alt />
+      </swiper-slide>
+      <!-- Optional controls -->
+      <div class="swiper-pagination" slot="pagination"></div>
+      <!-- <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>-->
+    </swiper>
+    <!-- <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../assets/home/swiper/s1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../assets/home/swiper/s2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../assets/home/swiper/s3.jpg" alt="">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>-->
+    <div class="main-cell">
+      <a href>
+        <img src alt />
+      </a>
+      <a href>
+        <img src alt />
+      </a>
+      <a href>
+        <img src alt />
+      </a>
+      <a href>
+        <img src alt />
+      </a>
+      <a href>
+        <img src alt />
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
-  components: {},
   data() {
     return {
+      fenlei: ["推荐", "手机", "智能"],
+      lunbo: [
+        "../assets/home/swiper/s1.jpg",
+        "../assets/home/swiper/s2.jpg",
+        "../assets/home/swiper/s3.jpg"
+      ],
+      swiperOption: {
+        //以下配置不懂的，可以去swiper官网看api，链接http://www.swiper.com.cn/api/
+        notNextTick: true, // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
+        autoplay: false,
+        loop: false,
+        direction: "horizontal",
+        grabCursor: true,
+        setWrapperSize: true,
+        autoHeight: true,
+        pagination: {
+          el: ".swiper-pagination"
+        },
+        centeredSlides: true,
+        paginationClickable: true,
+        keyboard: true,
+        mousewheelControl: true,
+        observeParents: true, // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger
+        debugger: true
+      }
     };
   },
+  components: {
+    swiper,
+    swiperSlide
+  }
 };
 </script>
 
 <style lang='less'>
-
+.home {
+  width: 100%;
+  height: 100%;
+  .search {
+    width: 100%;
+    height: 0.7rem;
+    img {
+      margin: 0.2rem 0 0 0.2rem;
+      width: 0.4262rem;
+    }
+    .app-header-middle {
+      display: inline-block;
+      font-size: 0.25rem;
+      color: rgba(0, 0, 0, 0.3);
+      margin-left: 0.2rem;
+      margin-top: 0.1rem;
+      border: 1px solid #e5e5e5;
+      width: 4.62rem;
+      height: 0.45rem;
+      position: relative;
+      top: -0.05rem;
+      line-height: 0.45rem;
+    }
+    .app-header-right {
+      width: 0.5rem;
+      height: 0.5rem;
+      background: red;
+      display: inline-block;
+      position: relative;
+      top: 0.1rem;
+      left: 0.2rem;
+    }
+  }
+  .fenlei {
+    text-align: center;
+    display: flex;
+    li {
+      width: 0.92rem;
+      height: 0.52rem;
+    }
+  }
+  .swiper-container {
+    width: 100%;
+  }
+  swiper {
+    touch-action: none;
+  }
+  .swapper {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    background: #ffffff;
+  }
+  .main-cell{
+    display: flex;
+  }
+}
 </style>
