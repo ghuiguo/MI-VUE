@@ -23,6 +23,7 @@
   </div>
 </template>
 
+
 <script>
 ~(function() {
   let evt = "onorientationchange" in window ? "orientationchange" : "resize";
@@ -39,6 +40,7 @@
   window.addEventListener(evt, computed);
 })();
 
+
 export default {
   components: {},
   data() {
@@ -52,6 +54,7 @@ export default {
 <style lang='less'>
 .footer {
     position: fixed;
+    z-index: 22;
     left: 0;
     bottom: -1px;
     background: #fff;

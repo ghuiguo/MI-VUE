@@ -8,6 +8,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 import './assets/reset.min.css';
 import './assets/font/iconfont.css';
+import './assets/font/cartFont/iconfont.css';
+import './assets/css/Shopcart.css';
 
 Vue.use(VueAwesomeSwiper);
 Vue.config.productionTip = false;
