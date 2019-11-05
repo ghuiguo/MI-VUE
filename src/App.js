@@ -5,6 +5,7 @@ import router from './routers/index';
 // 导入样式
 import './assets/reset.min.css';
 import './assets/font/iconfont.css';
+import './assets/font/cartFont/iconfont.css';
 import './assets/css/Shopcart.css';
 
 Vue.config.productionTip = false;
