@@ -1,10 +1,22 @@
 <template>
   <div>
     <div class="footer">
-      <router-link to="/homepage">首页</router-link>
-      <router-link to="/type">分类</router-link>
-      <router-link to="/shopcart">购物车</router-link>
-      <router-link to="/myself">我的</router-link>
+      <router-link to="/homepage">
+        <span class="iconfont icon-guanliyuan"></span>
+        <span>首页</span>
+      </router-link>
+      <router-link to="/type">
+        <span class="iconfont icon-guanliyuan"></span>
+        <span>分类</span>
+      </router-link>
+      <router-link to="/shopcart">
+        <span class="iconfont icon-guanliyuan"></span>
+        <span>购物车</span>
+      </router-link>
+      <router-link to="/myself">
+        <span class="iconfont icon-guanliyuan"></span>
+        <span>我的</span>
+      </router-link>
     </div>
 
     <router-view></router-view>
@@ -54,6 +66,8 @@ export default {
       flex:1;
       text-align: center;
       color: #999;
+      display: flex;
+      flex-direction: column;
     }
     a.router-link-active{
       color: #ff6700;

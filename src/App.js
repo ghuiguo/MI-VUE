@@ -3,8 +3,8 @@ import App from './App.vue';
 import router from './routers/index';
 
 // 导入样式
-import './assets/font/iconfont.css';
 import './assets/reset.min.css';
+import './assets/font/iconfont.css';
 
 Vue.config.productionTip = false;
 
