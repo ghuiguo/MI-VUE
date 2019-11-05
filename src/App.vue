@@ -23,6 +23,7 @@
   </div>
 </template>
 
+
 <script>
 ~(function() {
   let evt = "onorientationchange" in window ? "orientationchange" : "resize";
@@ -38,6 +39,7 @@
   computed();
   window.addEventListener(evt, computed);
 })();
+
 
 export default {
   components: {},
