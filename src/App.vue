@@ -52,6 +52,7 @@ export default {
 <style lang='less'>
 .footer {
     position: fixed;
+    z-index: 22;
     left: 0;
     bottom: -1px;
     background: #fff;
