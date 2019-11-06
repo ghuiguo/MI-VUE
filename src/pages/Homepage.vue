@@ -8,7 +8,6 @@
       </div>
       <div class="app-header-right"><span class='iconfont icon-jingli my'></span></div>
     </div>
-<<<<<<< HEAD
     <ly-tab
       v-model="selectedId"
       :items="items"
@@ -17,13 +16,11 @@
       class="fix"
     />
     <!-- @change="handleChange" -->
-=======
     <ul class="fenlei">
       <li v-html="this.fenlei[0]"></li>
       <li v-html="this.fenlei[1]"></li>
     </ul>
 
->>>>>>> luowencun
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <swiper-slide class="swapper">
