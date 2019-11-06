@@ -93,6 +93,13 @@
     position: relative;
     background: rgb(250, 246, 246);
 }
+.cart-main-list-appendix{
+    background: #ebebeb;
+    padding: .2rem;
+    text-align: center;
+}
+
+
 /* .cart-main-list-item{
     height: 2rem;
     background: rgb(247, 247, 241);
@@ -200,6 +207,7 @@
 /* 喜好推荐 */
 .cart-main-another{
     padding-bottom: 3rem;
+    background: #fff;
 }
 .lovely-promote img{
     width: 100%;
@@ -220,7 +228,7 @@
 .goods-img-box img{
     display: block;
     width: 100%;
-    min-height: 3.56rem;
+    height: 100%;
 }
 .goods-info{
     color: #3c3c3c;

@@ -6,7 +6,7 @@
       <span class="cart-header-edit">编辑</span>
     </div>
 
-    <div class="cart-main">
+    <!-- <div class="cart-main">
       <div class="cart-main-list">
         <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
           <li class="cart-main-list-item-section" v-if="item.state==1">
@@ -40,53 +40,27 @@
           <img src="../assets/images/gessulike.jpg" alt />
         </div>
         <div class="cart-main-another-list">
-          <div class="cart-main-another-list-item">
+          <div class="cart-main-another-list-item" :key="index" v-for="(item,index) in likeList">
             <a href>
               <div class="goods-img-box">
-                <img src="../assets/images/phone1.jpg" alt />
+                <img :src="item.images" alt />
               </div>
               <div class="goods-info">
-                <div class="goods-info-detail">小米9 Pro 5G 12GB+256GB</div>
-                <span>￥4099</span>
-              </div>
-            </a>
-          </div>
-          <div class="cart-main-another-list-item">
-            <a href>
-              <div class="goods-img-box">
-                <img src="../assets/images/phone3.jpg" alt />
-              </div>
-              <div class="goods-info">
-                <div class="goods-info-detail">小米9 Pro 5G 12GB+256GB</div>
-                <span>￥4099</span>
-              </div>
-            </a>
-          </div>
-          <div class="cart-main-another-list-item">
-            <a href>
-              <div class="goods-img-box">
-                <img src="../assets/images/mobile2.jpg" alt />
-              </div>
-              <div class="goods-info">
-                <div class="goods-info-detail">小米9 Pro 5G 12GB+256GB</div>
-                <span>￥4099</span>
-              </div>
-            </a>
-          </div>
-          <div class="cart-main-another-list-item">
-            <a href>
-              <div class="goods-img-box">
-                <img src="../assets/images/item1.jpg" alt />
-              </div>
-              <div class="goods-info">
-                <div class="goods-info-detail">小米9 Pro 5G 12GB+256GB</div>
-                <span>￥4099</span>
+                <div class="goods-info-detail" v-html="item.title"></div>
+                <span>￥{{item.money}}</span>
               </div>
             </a>
           </div>
         </div>
       </div>
+    </div> -->
+    <div class="cart-main">
+      <div class="cart-main-list-appendix">
+        <span>购物车还是空的</span>
+        <a href="/">去主页逛逛</a>
+      </div>
     </div>
+
     <div class="cart-foot">
       <div class="cart-foot-all">
         <span
@@ -121,7 +95,7 @@ export default {
           money: 2699,
           num: 1,
           isSelect: false,
-          state:1
+          state: 1
         },
         {
           images: "assets/images/phone4.jpg",
@@ -129,7 +103,7 @@ export default {
           money: 2999,
           num: 1,
           isSelect: false,
-          state:1
+          state: 1
         },
         {
           images: "../assets/images/phone3.jpg",
@@ -137,7 +111,39 @@ export default {
           money: 1199,
           num: 1,
           isSelect: false,
-          state:1
+          state: 1
+        }
+      ],
+      likeList: [
+        {
+          images: "../assets/images/item1.jpg",
+          title: "AirPOP防雾霾口罩",
+          money: 349
+        },
+        {
+          images: "../assets/images/item2.jpg",
+          title: "小米手环4复联限量版",
+          money: 299
+        },
+        {
+          images: "../assets/images/phone4.jpg",
+          title: "Redmi Note 7 Pro",
+          money: 1199
+        },
+        {
+          images: "../assets/images/tv.jpg",
+          title: "小米电视4S 75英寸",
+          money: 6999
+        },
+        {
+          images: "../assets/images/item2.jpg",
+          title: "小米手环4复联限量版",
+          money: 299
+        },
+        {
+          images: "../assets/images/phone4.jpg",
+          title: "Redmi Note 7 Pro",
+          money: 1199
         }
       ],
       allSelect: false,
@@ -165,9 +171,9 @@ export default {
           // console.log(sum);
           sum += this.shoppingList[i].money * this.shoppingList[i].num;
         }
-        
+
         this.sum = sum;
-        console.log(this.sum)
+        console.log(this.sum);
       }
       if (this.allSelect == false) {
         for (let i = 0; i < this.shoppingList.length; i++) {
@@ -186,7 +192,6 @@ export default {
         let sum = this.sum - item.money;
         this.sum = sum;
       }
-
     },
     supNum(item) {
       item.num++;
@@ -199,8 +204,8 @@ export default {
         this.sum = sum;
       }
     },
-    deletegoods(item){
-      let state = item.state = 0;
+    deletegoods(item) {
+      let state = (item.state = 0);
       this.state = state;
       this.num = 0;
     }
