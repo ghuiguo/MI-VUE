@@ -16,10 +16,6 @@
       class="fix"
     />
     <!-- @change="handleChange" -->
-    <ul class="fenlei">
-      <li v-html="this.fenlei[0]"></li>
-      <li v-html="this.fenlei[1]"></li>
-    </ul>
 
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
