@@ -53,11 +53,6 @@
     border-radius: 50%;
     border: 1px solid #bbb;
 }
-.cart-foot-all-button.active{
-    background: url('../images//xuanzhong.png') no-repeat center;
-    background-size: 100% 100%;
-}
-
 .cart-foot-count{
     float: left;
     width: 40%;
