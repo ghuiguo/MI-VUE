@@ -9,8 +9,9 @@ import LyTab  from "ly-tab";
 import 'swiper/dist/css/swiper.css'
 import './assets/reset.min.css';
 import './assets/font/iconfont.css';
-import './assets/font/cartFont/iconfont.css';
+import '../public/assets/font/cartFont/iconfont.css'
 import './assets/css/Shopcart.css';
+import '../public/assets/css/Shopcart-payList.css';
 
 Vue.use(VueAwesomeSwiper);
 Vue.use(LyTab);

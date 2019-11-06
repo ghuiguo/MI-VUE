@@ -20,11 +20,25 @@
       "unicode_decimal": 58931
     },
     {
+      "icon_id": "2427582",
+      "name": "左",
+      "font_class": "you",
+      "unicode": "e502",
+      "unicode_decimal": 58626
+    },
+    {
       "icon_id": "4215783",
       "name": "选中",
       "font_class": "xuanzhong",
-      "unicode": "e502",
-      "unicode_decimal": 58626
+      "unicode": "e503",
+      "unicode_decimal": 58627
+    },
+    {
+      "icon_id": "5110401",
+      "name": "右",
+      "font_class": "you1",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
     },
     {
       "icon_id": "6504051",
@@ -39,6 +53,13 @@
       "font_class": "shanchu-copy-copy",
       "unicode": "e515",
       "unicode_decimal": 58645
+    },
+    {
+      "icon_id": "10942926",
+      "name": "购物车",
+      "font_class": "gouwuche11",
+      "unicode": "e504",
+      "unicode_decimal": 58628
     }
   ]
 }

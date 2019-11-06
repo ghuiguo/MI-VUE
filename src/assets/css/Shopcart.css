@@ -98,6 +98,22 @@
     padding: .2rem;
     text-align: center;
 }
+.empty-cart{
+    display: inline-block;
+    line-height: .8rem;
+    padding: 0 .16rem 0 0;
+    color: rgba(0,0,0,.27);
+}
+.gotomain{
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,.15);
+    box-sizing: border-box;
+    height: .5rem;
+    line-height: .5rem;
+    padding: 0 .24rem;
+    color: rgba(0,0,0,.87);
+    font-style: normal;
+}
 
 
 /* .cart-main-list-item{

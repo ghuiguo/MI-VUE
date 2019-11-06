@@ -6,10 +6,10 @@
       <span class="cart-header-edit">编辑</span>
     </div>
 
-    <!-- <div class="cart-main">
+    <div class="cart-main">
       <div class="cart-main-list">
         <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
-          <li class="cart-main-list-item-section" v-if="item.state==1">
+          <li class="cart-main-list-item-section" v-if="item.state===1">
             <span
               class="cart-main-list-item-check"
               :class="{active:item.isSelect}"
@@ -35,6 +35,11 @@
         </div>
       </div>
 
+      <!-- <div class="cart-main-list-appendix" >
+        <span class="empty-cart">购物车还是空的</span>
+        <a href="/" class="gotomain">去逛逛</a>
+      </div> -->
+
       <div class="cart-main-another">
         <div class="lovely-promote">
           <img src="../assets/images/gessulike.jpg" alt />
@@ -52,12 +57,6 @@
             </a>
           </div>
         </div>
-      </div>
-    </div> -->
-    <div class="cart-main">
-      <div class="cart-main-list-appendix">
-        <span>购物车还是空的</span>
-        <a href="/">去主页逛逛</a>
       </div>
     </div>
 
@@ -77,7 +76,7 @@
           <span>{{this.sum}}</span>
         </span>
       </div>
-      <div class="cart-foot-account">结算</div>
+      <div class="cart-foot-account" @click="Settlement()">结算</div>
     </div>
   </div>
 </template>
@@ -184,8 +183,8 @@ export default {
     },
     oppNum(item) {
       item.num--;
-      if (item.num <= 0) {
-        item.num = 0;
+      if (item.num <= 1) {
+        item.num = 1;
         return;
       }
       if (item.isSelect == true) {
@@ -208,6 +207,9 @@ export default {
       let state = (item.state = 0);
       this.state = state;
       this.num = 0;
+    },
+    Settlement(){
+      this.$router.push('paylist')
     }
   }
 };
