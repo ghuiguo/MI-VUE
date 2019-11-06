@@ -48,20 +48,37 @@
         <div class="swiper-pagination"></div>
     </div>-->
     <div class="main-cell">
-      <a href>
-        <!-- <img src=".././assets/cell/1." alt /> -->
+      <a href='http://www.baidu.com'>
+        <img src=".././assets/images/home/cell/cell1.png" alt /> 
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell2.webp" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell3.gif" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell4.webp" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell5.webp" alt />
+      </a>
+    </div>
+    <div class="main-cell">
+      <a href>
+        <img src=".././assets/images/home/cell/cell6.png" alt /> 
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell7.jpg" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell8.png" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell9.png" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell10.png" alt />
       </a>
     </div>
   </div>
@@ -186,6 +203,12 @@ export default {
   }
   .main-cell{
     display: flex;
+    a{
+      img{
+        width: 1.28rem;
+        height:1.3511rem;
+      }
+    }
   }
 }
 </style>
