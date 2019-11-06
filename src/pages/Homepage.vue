@@ -3,16 +3,19 @@
     <div class="search">
       <img src="../assets/home/home.png" alt />
       <div class="app-header-middle">
-        <i></i>
+        <span class='iconfont icon-jingli my'></span>
         搜索商品名称
       </div>
-      <div class="app-header-right"></div>
+      <div class="app-header-right"><span class='iconfont icon-jingli my'></span></div>
     </div>
-    <ul class="fenlei">
-      <li v-html="this.fenlei[0]"></li>
-      <li v-html="this.fenlei[1]"></li>
-      <li v-html="this.fenlei[2]"></li>
-    </ul>
+    <ly-tab
+      v-model="selectedId"
+      :items="items"
+      :options="options"
+      
+      class="fix"
+    />
+    <!-- @change="handleChange" -->
 
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
@@ -45,31 +48,64 @@
         <div class="swiper-pagination"></div>
     </div>-->
     <div class="main-cell">
-      <a href>
-        <img src alt />
+      <a href='http://www.baidu.com'>
+        <img src=".././assets/images/home/cell/cell1.png" alt /> 
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell2.webp" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell3.gif" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell4.webp" alt />
       </a>
       <a href>
-        <img src alt />
+        <img src=".././assets/images/home/cell/cell5.webp" alt />
+      </a>
+    </div>
+    <div class="main-cell">
+      <a href>
+        <img src=".././assets/images/home/cell/cell6.png" alt /> 
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell7.jpg" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell8.png" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell9.png" alt />
+      </a>
+      <a href>
+        <img src=".././assets/images/home/cell/cell10.png" alt />
       </a>
     </div>
   </div>
 </template>
 
 <script>
+import LyTab  from "ly-tab";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+
 export default {
   data() {
     return {
-      fenlei: ["推荐", "手机", "智能"],
+      selectedId:0,
+      items:[
+          {label: '热门'},
+          {label: '服饰'},
+          {label: '鞋包'},
+          {label: '母婴'},
+          {label: '百货'},
+          {label: '食品'},
+          {label: '内衣'},
+          {label: '男装'},
+          {label: '电器'}
+        ],
+        options: {
+          activeColor: '#e9232c', // 设置选中的颜色
+        },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
         "../assets/home/swiper/s2.jpg",
@@ -110,6 +146,7 @@ export default {
   .search {
     width: 100%;
     height: 0.7rem;
+    position: relative;
     img {
       margin: 0.2rem 0 0 0.2rem;
       width: 0.4262rem;
@@ -130,11 +167,15 @@ export default {
     .app-header-right {
       width: 0.5rem;
       height: 0.5rem;
-      background: red;
       display: inline-block;
-      position: relative;
-      top: 0.1rem;
-      left: 0.2rem;
+      position: absolute;
+      right: 0.15rem;
+      top: -0.1rem;
+      margin-top: 0.2rem;
+      span{
+        font-size: 0.45rem;
+        
+      }
     }
   }
   .fenlei {
@@ -162,6 +203,12 @@ export default {
   }
   .main-cell{
     display: flex;
+    a{
+      img{
+        width: 1.28rem;
+        height:1.3511rem;
+      }
+    }
   }
 }
 </style>

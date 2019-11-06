@@ -8,8 +8,8 @@
 
     <div class="cart-main">
       <div class="cart-main-list">
-        <ul class="cart-main-list-item" :key="item" v-for="item in shoppingList">
-          <li class="cart-main-list-item-section">
+        <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
+          <li class="cart-main-list-item-section" v-if="item.state==1">
             <span
               class="cart-main-list-item-check"
               :class="{active:item.isSelect}"
@@ -18,14 +18,14 @@
             <img class="cart-main-list-item-image" :src="item.images" alt />
             <span class="cart-main-list-item-handle">
               <span class="cart-main-list-item-handle-name" v-html="item.title"></span>
-              <span class="cart-main-list-item-handle-price" v-text="item.money"></span>
+              <span class="cart-main-list-item-handle-price">￥{{item.money}}</span>
               <span class="cart-main-list-item-handle-number">
                 <span class="cart-main-list-item-handle-number-operate">
-                  <span class="iconfont icon-jian"></span>
+                  <span class="iconfont icon-jian" @click="oppNum(item)"></span>
                   <span class="amount" v-text="item.num"></span>
-                  <span class="supnum iconfont icon-jia"></span>
+                  <span class="supnum iconfont icon-jia" @click="supNum(item)"></span>
                 </span>
-                <span class="delete iconfont icon-shanchu-copy-copy"></span>
+                <span class="delete iconfont icon-shanchu-copy-copy" @click="deletegoods(item)"></span>
               </span>
             </span>
           </li>
@@ -89,17 +89,21 @@
     </div>
     <div class="cart-foot">
       <div class="cart-foot-all">
-        <span class="cart-foot-all-button" :class="{active:allSelect}" @click="selectall()"></span>
+        <span
+          class="cart-foot-all-button"
+          :class="{active:allSelect}"
+          @click="selectall(shoppingList)"
+        ></span>
         <span>全选</span>
       </div>
       <div class="cart-foot-count">
         <span>合计：</span>
-        <span class="cart-foot-count-number">￥0.00</span>
+        <span class="cart-foot-count-number">
+          ￥
+          <span>{{this.sum}}</span>
+        </span>
       </div>
-      <div class="cart-foot-account">
-        结算 &nbsp;共(
-        <span v-html="num"></span> )件
-      </div>
+      <div class="cart-foot-account">结算</div>
     </div>
   </div>
 </template>
@@ -114,23 +118,26 @@ export default {
         {
           images: "assets/images/mobile2.jpg",
           title: "小米9 Pro 5G 8GB+256GB",
-          money: "2699",
+          money: 2699,
           num: 1,
-          isSelect: true
+          isSelect: false,
+          state:1
         },
         {
           images: "assets/images/phone4.jpg",
           title: "Redmi K20 Pro 尊享版 12GB+512GB",
-          money: "2999",
+          money: 2999,
           num: 1,
-          isSelect: false
+          isSelect: false,
+          state:1
         },
         {
           images: "../assets/images/phone3.jpg",
           title: "小米CC9e 4GB+128GB",
-          money: "1199",
+          money: 1199,
           num: 1,
-          isSelect: true
+          isSelect: false,
+          state:1
         }
       ],
       allSelect: false,
@@ -141,28 +148,61 @@ export default {
     selectgoods(item) {
       item.isSelect = !item.isSelect;
       this.allSelect = false;
+      let sum = (item.sum = item.num * item.money);
       if (item.isSelect == true) {
         this.sum = this.sum + item.money * item.num;
-      } else {
-        this.sum = this.sum - item.momey * item.num;
+      }
+      if (item.isSelect == false) {
+        this.sum = this.sum - item.money * item.num;
       }
     },
-    selectall() {
+    selectall(shoppingList) {
       this.allSelect = !this.allSelect;
       if (this.allSelect == true) {
-        this.sum = 0;
+        let sum = 0;
         for (let i = 0; i < this.shoppingList.length; i++) {
           this.shoppingList[i].isSelect = true;
-          this.num = parseInt(
-            this.num + this.shoppingList[i].money * this.shoppingList[i].num
-          );
+          // console.log(sum);
+          sum += this.shoppingList[i].money * this.shoppingList[i].num;
         }
-      } else {
+        
+        this.sum = sum;
+        console.log(this.sum)
+      }
+      if (this.allSelect == false) {
         for (let i = 0; i < this.shoppingList.length; i++) {
-          this.num = 0;
+          this.sum = 0;
           this.shoppingList[i].isSelect = false;
         }
       }
+    },
+    oppNum(item) {
+      item.num--;
+      if (item.num <= 0) {
+        item.num = 0;
+        return;
+      }
+      if (item.isSelect == true) {
+        let sum = this.sum - item.money;
+        this.sum = sum;
+      }
+
+    },
+    supNum(item) {
+      item.num++;
+      if (item.num >= 10) {
+        item.num = 10;
+        return;
+      }
+      if (item.isSelect == true) {
+        let sum = this.sum + item.money;
+        this.sum = sum;
+      }
+    },
+    deletegoods(item){
+      let state = item.state = 0;
+      this.state = state;
+      this.num = 0;
     }
   }
 };
