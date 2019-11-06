@@ -124,7 +124,7 @@
           </div>
           <div class="floor-looper-item-content-show">
             <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
+              <img src=".././assets/images/home/good/good2.jpg" alt />
             </div>
             <div class="floor-looper-item-content-show-info">
               <div class="show-name">Redmi Note 8</div>
@@ -135,7 +135,7 @@
           </div>
           <div class="floor-looper-item-content-show">
             <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
+              <img src=".././assets/images/home/good/good3.jpg" alt />
             </div>
             <div class="floor-looper-item-content-show-info">
               <div class="show-name">Redmi Note 8</div>
@@ -146,7 +146,29 @@
           </div>
           <div class="floor-looper-item-content-show">
             <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
+              <img src=".././assets/images/home/good/good4.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good5.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good6.webp" alt />
             </div>
             <div class="floor-looper-item-content-show-info">
               <div class="show-name">Redmi Note 8</div>
@@ -256,11 +278,11 @@ export default {
   height: 100%;
   .search {
     width: 100%;
-    height: 0.7rem;
+    height: 0.8rem;
     position: relative;
     img {
       margin: 0.2rem 0 0 0.2rem;
-      width: 0.4262rem;
+      width: 0.5rem;
     }
     .app-header-middle {
       display: inline-block;
@@ -270,9 +292,9 @@ export default {
       margin-top: 0.1rem;
       border: 1px solid #e5e5e5;
       width: 4.62rem;
-      height: 0.45rem;
+      height: 0.665rem;
       position: relative;
-      top: -0.05rem;
+      top: -0.13rem;
       line-height: 0.45rem;
     }
     .app-header-right {
