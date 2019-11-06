@@ -159,6 +159,38 @@
         <div class="floor-looper-item-floor">更多小米手机产品 ></div>
       </div>
     </div>
+    <div class="floor-show">
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/1.webp" alt />
+      </div>
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/2.webp" alt />
+      </div>
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/3.webp" alt />
+      </div>
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/4.webp" alt />
+      </div>
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/5.webp" alt />
+      </div>
+      <div class="floor-show-item">
+        <img src=".././assets/images/home/floorshow/6.webp" alt />
+      </div>
+    </div>
+    <div class="floor-huodong">
+      <img
+        src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/23a79f829f44d3a5383ffeca7fd868ff.jpg?thumb=1&w=720&h=280"
+        alt
+      />
+    </div>
+    <div class="floor-liaojie">
+      <img
+        src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bbb5bac8089d890338b5bf8ff742cbbc.png?thumb=1&w=720&h=106"
+        alt
+      />
+    </div>
     <div class="floor-floor-floor"></div>
   </div>
 </template>
@@ -387,8 +419,32 @@ export default {
       }
     }
   }
+  .floor-show {
+    display: flex;
+    flex-wrap: wrap;
+    .floor-show-item {
+      width: 3.729rem;
+      margin-right: 0.035rem;
+      img {
+        width: 100%;
+      }
+    }
+    .floor-show-item:nth-child(2n) {
+      margin-right: 0rem;
+    }
+  }
   .floor-floor-floor {
-    height: 2rem;
+    height: .95rem;
+  }
+  .floor-huodong {
+    img {
+      width: 100%;
+    }
+  }
+  .floor-liaojie {
+    img {
+      width: 100%;
+    }
   }
 }
 </style>
