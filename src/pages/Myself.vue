@@ -8,91 +8,45 @@
         <div class="name">登录/注册</div>
       </div>
     </header>
-
+    
     <div class="b1 ui-flex align-center justify-space-between">
       <div class="cite">我的订单</div>
       <div class="span ui-flex align-center">
         <a class>全部订单</a>
       </div>
     </div>
-
+    <!-- 三个tab -->
     <ul class="b2 ui-flex align-center justify-space-between">
-      <li class="dfk">
+      <li :key="item.id" v-for="item in tabList" :class="item.className">
         <a>
           <div class="icon"></div>
-          <span>待付款</span>
-        </a>
-      </li>
-      <li class="dah">
-        <a>
-          <div class="icon"></div>
-          <span>待付款</span>
-        </a>
-      </li>
-      <li class="thx">
-        <a>
-          <div class="icon"></div>
-          <span>待付款</span>
+          <span v-html="item.name"></span>
         </a>
       </li>
     </ul>
-
-    <div class="ui-line"></div>
-
-    <ul class="items">
-      <li class="i-member">
-        <a>
-          <span>会员中心</span>
-        </a>
-      </li>
-      <li class="i-wallet">
-        <a>
-          <span>我的优惠</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="ui-line"></div>
-
-    <ul class="items">
-      <li class="i-service">
-        <a>
-          <span>服务中心</span>
-        </a>
-      </li>
-      <li class="i-mihome">
-        <a>
-          <span>小米之家</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="ui-line"></div>
-
-    <ul class="items">
-      <li class="i-fcode">
-        <a>
-          <span>我的F码</span>
-        </a>
-      </li>
-      <li class="i-gift">
-        <a>
-          <span>礼物码兑换</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="ui-line"></div>
-
-    <ul class="items">
-      <li class="i-setting">
-        <a>
-          <span>我的F码</span>
-        </a>
-      </li>
-    </ul>
-
-
+    <!-- 我的页面列表 -->
+    <div v-for="item in homeList" :key="item.id">
+      <div class="ui-line"></div>
+      <ul class="items">
+        <li v-for="itemChild in item.children" :key="itemChild.id" :class="itemChild.childClassName">
+          <a>
+            <span v-html="itemChild.childName"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- 同意登录弹出框 -->
+    <div v-show="this.dialogShow" class="dialog">
+      <div class="dialogContent">
+        <p><span>《小米商城用户协议》</span><span>《小米商城隐私政策》</span></p>
+        <p><span>《小米帐号用户协议》</span><span>《小米帐号隐私政策》</span></p>
+        <p>请您仔细阅读以上协议，其中有对您权利义务的特别约定等重要条款，同意后方可使用本软件</p>
+        <div class="bottomAction">
+          <button class="disagree">不同意</button>
+          <button class="agree">同意</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -100,7 +54,93 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      tabList: [
+        { 
+          id:1,
+          name: "待付款",
+          className: "dfk",
+          router: ""
+        },
+        {
+          id:2,
+          name: "待收货",
+          className: "dah",
+          router: ""
+        },
+        {
+          id:3,
+          name: "退换修",
+          className: "thx",
+          router: ""
+        }
+      ],
+      homeList: [
+        {
+          id:20,
+          children: [
+            {
+              id:10,
+              childName:'会员中心',
+              childClassName:'i-member',
+              router:''
+            },
+            {
+              id:11,
+              childName:'我的优惠',
+              childClassName:'i-wallet',
+              router:''
+            }
+          ]
+        },
+        {
+          id:21,
+          children: [
+            {
+              id:12,
+              childName:'服务中心',
+              childClassName:'i-service',
+              router:''
+            },
+            {
+              id:13,
+              childName:'小米之家',
+              childClassName:'i-mihome',
+              router:''
+            }
+          ]
+        },
+        {
+          id:22,
+          children: [
+            {
+              id:14,
+              childName:'我的F码',
+              childClassName:'i-fcode',
+              router:''
+            },
+            {
+              id:15,
+              childName:'礼物码兑换',
+              childClassName:'i-gift',
+              router:''
+            }
+          ]
+        },
+        {
+          id:23,
+          children: [
+            {
+              id:16,
+              childName:'设置',
+              childClassName:'i-setting',
+              router:''
+            }
+          ]
+        }
+      ],
+      dialogShow:true
+    };
   }
 };
 </script>
@@ -172,6 +212,15 @@ export default {
       color: rgba(0, 0, 0, 0.87);
     }
   }
+  .dfk .icon {
+    background-image: url(../assets/images/mine/myselefIcon1.png);
+  }
+  .dah .icon {
+    background-image: url(../assets/images/mine/myselefIcon2.png);
+  }
+  .thx .icon {
+    background-image: url(../assets/images/mine/myselefIcon3.png);
+  }
 }
 .myselfContent {
   box-sizing: border-box;
@@ -204,39 +253,51 @@ export default {
       }
     }
   }
+  .dialog {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .items li {
-    position: relative;
-    color: rgba(0,0,0,.54);
-    background: url(../assets/images/mine/myselefIcon1.png) no-repeat .32rem;
-    background-size: .48rem auto;
-    border-bottom: 1px solid rgba(0,0,0,.15);
-    line-height: 0;
-    list-style: none;
+  position: relative;
+  color: rgba(0, 0, 0, 0.54);
+  background: url(../assets/images/mine/myselefIcon1.png) no-repeat 0.32rem;
+  background-size: 0.48rem auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  line-height: 0;
+  list-style: none;
 }
-.items li>a {
-    display: block;
-    padding-right: .56rem;
-    padding-left: 1.12rem;
-    height: 1.04rem;
-    line-height: 1.04rem;
-    font-size: .28rem;
-    font-style: normal;
-    color: rgba(0,0,0,.87);
+.items li > a {
+  display: block;
+  padding-right: 0.56rem;
+  padding-left: 1.12rem;
+  height: 1.04rem;
+  line-height: 1.04rem;
+  font-size: 0.28rem;
+  font-style: normal;
+  color: rgba(0, 0, 0, 0.87);
 }
 .items li:after {
-    content: "";
-    position: absolute;
-    right: 5.12px;
-    right: .32rem;
-    top: 50%;
-    width: 3.2px;
-    width: .2rem;
-    height: 3.2px;
-    height: .2rem;
-    border-left: 1px solid currentColor;
-    border-top: 1px solid currentColor;
-    transform: translate3d(0,-50%,0) rotate(135deg);
+  content: "";
+  position: absolute;
+  right: 5.12px;
+  right: 0.32rem;
+  top: 50%;
+  width: 3.2px;
+  width: 0.2rem;
+  height: 3.2px;
+  height: 0.2rem;
+  border-left: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  transform: translate3d(0, -50%, 0) rotate(135deg);
 }
 li.i-member {
   background-image: url(../assets/images/mine/myselefListP3.png);
@@ -256,7 +317,7 @@ li.i-fcode {
 li.i-gift {
   background-image: url(../assets/images/mine/myselefListP2.png);
 }
-// li.i-setting {
-//   background-image: url(../assets/images/mine/myselefListP3.png);
-// }
+li.i-setting {
+  background-image: url(../assets/images/mine/myselefListP1.png);
+}
 </style>
