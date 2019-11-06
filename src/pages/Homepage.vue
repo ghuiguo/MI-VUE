@@ -3,18 +3,14 @@
     <div class="search">
       <img src="../assets/home/home.png" alt />
       <div class="app-header-middle">
-        <span class='iconfont icon-jingli my'></span>
+        <span class="iconfont icon-jingli my"></span>
         搜索商品名称
       </div>
-      <div class="app-header-right"><span class='iconfont icon-jingli my'></span></div>
+      <div class="app-header-right">
+        <span class="iconfont icon-jingli my"></span>
+      </div>
     </div>
-    <ly-tab
-      v-model="selectedId"
-      :items="items"
-      :options="options"
-      
-      class="fix"
-    />
+    <ly-tab v-model="selectedId" :items="items" :options="options" class="fix" />
     <!-- @change="handleChange" -->
 
     <swiper :options="swiperOption" ref="mySwiper">
@@ -48,8 +44,8 @@
         <div class="swiper-pagination"></div>
     </div>-->
     <div class="main-cell">
-      <a href='http://www.baidu.com'>
-        <img src=".././assets/images/home/cell/cell1.png" alt /> 
+      <a href="http://www.baidu.com">
+        <img src=".././assets/images/home/cell/cell1.png" alt />
       </a>
       <a href>
         <img src=".././assets/images/home/cell/cell2.webp" alt />
@@ -66,7 +62,7 @@
     </div>
     <div class="main-cell">
       <a href>
-        <img src=".././assets/images/home/cell/cell6.png" alt /> 
+        <img src=".././assets/images/home/cell/cell6.png" alt />
       </a>
       <a href>
         <img src=".././assets/images/home/cell/cell7.jpg" alt />
@@ -81,31 +77,114 @@
         <img src=".././assets/images/home/cell/cell10.png" alt />
       </a>
     </div>
+
+    <div class="main-cell-shop">
+      <div class="main-cell-shop-left">
+        <a href="http://www.baidu.com">
+          <img src=".././assets/images/home/cell2/cell2-1.jpg" alt />
+        </a>
+      </div>
+      <div class="main-cell-shop-right">
+        <div class="main-cell-shop-right-top">
+          <a href="http://www.baidu.com">
+            <img src=".././assets/images/home/cell2/cell2-2.jpg" alt />
+          </a>
+        </div>
+        <div class="main-cell-shop-right-floor">
+          <a href="http://www.baidu.com">
+            <img src=".././assets/images/home/cell2/cell2-3.jpg" alt />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor-looper">
+      <div class="floor-looper-item">
+        <div class="floor-looper-item-firstphoto">
+          <a href="http://www.baidu.com">
+            <img src=".././assets/images/home/floor/firstphoto1.jpg" alt />
+          </a>
+        </div>
+        <div class="floor-looper-item-secondphoto">
+          <a href="http://www.baidu.com">
+            <img src=".././assets/images/home/floor/secondphoto1.jpg" alt />
+          </a>
+        </div>
+        <div class="floor-looper-item-content">
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good1.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good1.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good1.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="floor-looper-item-content-show">
+            <div class="floor-looper-item-content-show-photo">
+              <img src=".././assets/images/home/good/good1.jpg" alt />
+            </div>
+            <div class="floor-looper-item-content-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+        </div>
+        <div class="floor-looper-item-floor">更多小米手机产品 ></div>
+      </div>
+    </div>
+    <div class="floor-floor-floor"></div>
   </div>
 </template>
 
 <script>
-import LyTab  from "ly-tab";
+import LyTab from "ly-tab";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
     return {
-      selectedId:0,
-      items:[
-          {label: '热门'},
-          {label: '服饰'},
-          {label: '鞋包'},
-          {label: '母婴'},
-          {label: '百货'},
-          {label: '食品'},
-          {label: '内衣'},
-          {label: '男装'},
-          {label: '电器'}
-        ],
-        options: {
-          activeColor: '#e9232c', // 设置选中的颜色
-        },
+      selectedId: 0,
+      items: [
+        { label: "热门" },
+        { label: "服饰" },
+        { label: "鞋包" },
+        { label: "母婴" },
+        { label: "百货" },
+        { label: "食品" },
+        { label: "内衣" },
+        { label: "男装" },
+        { label: "电器" }
+      ],
+      options: {
+        activeColor: "#e9232c" // 设置选中的颜色
+      },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
         "../assets/home/swiper/s2.jpg",
@@ -172,9 +251,8 @@ export default {
       right: 0.15rem;
       top: -0.1rem;
       margin-top: 0.2rem;
-      span{
+      span {
         font-size: 0.45rem;
-        
       }
     }
   }
@@ -201,14 +279,116 @@ export default {
   .swiper-pagination-bullet-active {
     background: #ffffff;
   }
-  .main-cell{
+  .main-cell {
     display: flex;
-    a{
-      img{
-        width: 1.28rem;
-        height:1.3511rem;
+    a {
+      img {
+        // width: 1.28rem;
+        width: 1.5rem;
+        height: 1.5832rem;
       }
     }
+  }
+  .main-cell-shop {
+    display: flex;
+    margin-top: 0.2rem;
+    .main-cell-shop-left,
+    .main-cell-shop-right {
+      width: 3.725rem;
+      height: 5.2916rem;
+      img {
+        width: 100%;
+      }
+    }
+    .main-cell-shop-right {
+      margin-left: 0.05rem;
+    }
+    .main-cell-shop-right {
+      display: flex;
+      flex-direction: column;
+      .main-cell-shop-right-top,
+      .main-cell-shop-right-floor {
+        width: 100%;
+        height: 50%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .floor-looper {
+    width: 100%;
+    .floor-looper-item {
+      .floor-looper-item-firstphoto {
+        margin-top: 0.2rem;
+        img {
+          width: 100%;
+        }
+      }
+      .floor-looper-item-secondphoto {
+        margin-top: 0.2rem;
+        img {
+          width: 100%;
+        }
+      }
+      .floor-looper-item-content {
+        display: flex;
+        flex-wrap: wrap;
+        .floor-looper-item-content-show {
+          width: 3.5626rem;
+          height: 5.066rem;
+          margin-left: 0.125rem;
+          margin-top: 0.1rem;
+          img {
+            width: 100%;
+          }
+          .floor-looper-item-content-show-info {
+            .show-name {
+              text-align: center;
+              font-size: 0.28rem;
+              color: rgba(0, 0, 0, 0.87);
+            }
+            .show-gongneng {
+              text-align: center;
+              margin-top: 0.06rem;
+              font-size: 0.22rem;
+              line-height: 0.3rem;
+              color: rgba(0, 0, 0, 0.54);
+            }
+            .show-price {
+              text-align: center;
+              font-size: 0.28rem;
+              color: #ea625b;
+              height: 1.5em;
+              line-height: 1.5em;
+            }
+            .show-goumai {
+              margin-left: 0.78rem;
+              text-align: center;
+              width: 2rem;
+              background: #ea625b;
+              border-radius: 0.05rem;
+              color: #fff;
+              font-size: 0.24rem;
+              padding: 0.16rem 0;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .floor-looper-item-floor {
+        width: 100%;
+        height: 1.04rem;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6);
+        line-height: 1rem;
+        font-size: 0.28rem;
+        border-top: 0.02rem solid rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+  .floor-floor-floor {
+    height: 2rem;
   }
 }
 </style>
