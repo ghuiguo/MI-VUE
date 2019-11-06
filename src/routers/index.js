@@ -4,6 +4,7 @@ import Homepage from '../pages/Homepage.vue';
 import Type from '../pages/Type.vue';
 import Shopcart from '../pages/Shopcart.vue';
 import Myself from '../pages/Myself.vue';
+import Login from '../pages/Login.vue';
 
 
 
@@ -29,6 +30,10 @@ const router = new VueRouter({
 		path: '/myself',
 		name: 'myself',
 		component: Myself,
+	},{
+		path: '/login',
+		name: 'login',
+		component: Login,
 	},{
 		path: '*',
 		redirect: '/homepage'
