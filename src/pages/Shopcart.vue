@@ -7,7 +7,7 @@
     </div>
 
     <div class="cart-main">
-      <div class="cart-main-list">
+      <div v-if="hasdata==1" class="cart-main-list">
         <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
           <li class="cart-main-list-item-section" v-if="item.state===1">
             <span
@@ -35,10 +35,10 @@
         </div>
       </div>
 
-      <!-- <div class="cart-main-list-appendix" >
+      <div v-if="hasdata==2" class="cart-main-list-appendix" >
         <span class="empty-cart">购物车还是空的</span>
         <a href="/" class="gotomain">去逛逛</a>
-      </div> -->
+      </div>
 
       <div class="cart-main-another">
         <div class="lovely-promote">
@@ -87,6 +87,7 @@ export default {
   components: {},
   data() {
     return {
+      hasdata:0,
       shoppingList: [
         {
           images: "assets/images/mobile2.jpg",
@@ -149,7 +150,18 @@ export default {
       sum: 0
     };
   },
+  beforeMount(){
+    this.getData();
+  },
   methods: {
+    getData(){
+      if(1>0){
+        this.hasdata=1;
+      }
+      else(
+        this.hasdata=2
+      );
+    },
     selectgoods(item) {
       item.isSelect = !item.isSelect;
       this.allSelect = false;
@@ -207,6 +219,8 @@ export default {
       let state = (item.state = 0);
       this.state = state;
       this.num = 0;
+        let sum = this.sum - item.money;
+        this.sum = sum;
     },
     Settlement(){
       this.$router.push('paylist')
