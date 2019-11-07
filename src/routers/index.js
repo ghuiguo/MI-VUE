@@ -6,6 +6,8 @@ import Shopcart from '../pages/Shopcart.vue';
 import Myself from '../pages/Myself.vue';
 import Paylist from '../pages/ShopCart-payList.vue';
 import Login from '../pages/Login.vue';
+import Recom from '../pages/Home/Recom.vue';
+import Phone from '../pages/Home/Phone.vue';
 
 
 
@@ -19,6 +21,20 @@ const router = new VueRouter({
 		path: '/homepage',
 		name: 'homepage',
 		component: Homepage,
+		children: [{
+			path: '',
+			redirect: {
+				path: '/homepage/recom',
+			}
+		},{
+			path: 'recom',
+			name: 'Recom',
+			component: Recom
+		}, {
+			path: 'phone',
+			name: 'Phone',
+			component: Phone
+		}]
 	}, {
 		path: '/type',
 		name: 'type',
