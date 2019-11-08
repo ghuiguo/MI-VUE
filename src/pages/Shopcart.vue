@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div v-if="hasdata==2" class="cart-main-list-appendix" >
+      <div v-if="hasdata==2" class="cart-main-list-appendix">
         <span class="empty-cart">购物车还是空的</span>
         <a href="/" class="gotomain">去逛逛</a>
       </div>
@@ -87,7 +87,7 @@ export default {
   components: {},
   data() {
     return {
-      hasdata:0,
+      hasdata: 0,
       shoppingList: [
         {
           images: "assets/images/mobile2.jpg",
@@ -150,17 +150,14 @@ export default {
       sum: 0
     };
   },
-  beforeMount(){
+  beforeMount() {
     this.getData();
   },
   methods: {
-    getData(){
-      if(1>0){
-        this.hasdata=1;
-      }
-      else(
-        this.hasdata=2
-      );
+    getData() {
+      if (1 > 0) {
+        this.hasdata = 1;
+      } else this.hasdata = 2;
     },
     selectgoods(item) {
       item.isSelect = !item.isSelect;
@@ -200,8 +197,7 @@ export default {
         return;
       }
       if (item.isSelect == true) {
-        let sum = this.sum - item.money;
-        this.sum = sum;
+        this.sum = this.sum - item.money;
       }
     },
     supNum(item) {
@@ -216,14 +212,14 @@ export default {
       }
     },
     deletegoods(item) {
-      let state = (item.state = 0);
-      this.state = state;
-      this.num = 0;
-        let sum = this.sum - item.money;
-        this.sum = sum;
+      this.state = item.state = 0;
+      this.num = item.num;
+      this.sum = this.sum - this.num * item.money;
     },
-    Settlement(){
-      this.$router.push('paylist')
+    Settlement() {
+      if(this.sum!==0){
+        this.$router.push("paylist");
+      } 
     }
   }
 };

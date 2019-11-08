@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="footer">
+    <div class="footer" v-show="showFooter">
       <router-link to="/homepage">
         <span class="iconfont icon-guanliyuan"></span>
         <span>首页</span>
@@ -45,8 +45,19 @@ export default {
   components: {},
   data() {
     return {
+      showFooter:true
     };
   },
+  
+  beforeUpdate(){
+    let string = window.location.href;
+    if(string.includes('login')||string.includes('paylist')){
+      this.showFooter = false;
+    }
+    else{
+      this.showFooter = true;
+    }
+  }
 };
 
 </script>

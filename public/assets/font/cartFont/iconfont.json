@@ -41,6 +41,20 @@
       "unicode_decimal": 58940
     },
     {
+      "icon_id": "5234182",
+      "name": "支付宝",
+      "font_class": "umidd17",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "5480857",
+      "name": "问号",
+      "font_class": "question",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
       "icon_id": "6504051",
       "name": "加",
       "font_class": "jia",
@@ -53,6 +67,13 @@
       "font_class": "shanchu-copy-copy",
       "unicode": "e515",
       "unicode_decimal": 58645
+    },
+    {
+      "icon_id": "9867422",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e618",
+      "unicode_decimal": 58904
     },
     {
       "icon_id": "10942926",

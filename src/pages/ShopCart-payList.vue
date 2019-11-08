@@ -70,7 +70,7 @@
         <span class="payList-money-detail-money">￥2000</span>
       </div>
       <div class="gotopaid">
-        <a href>去付款</a>
+        <a @click="runtopay()">去付款</a>
       </div>
     </div>
   </div>
@@ -84,6 +84,9 @@ export default {
   methods: {
     backtocart() {
       window.history.go(-1);
+    },
+    runtopay(){
+      this.$router.push('surepay')
     }
   }
 };
