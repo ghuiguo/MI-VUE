@@ -29,7 +29,9 @@
                   <span class="amount" v-text="item.num"></span>
                   <span class="supnum iconfont icon-jia" @click="supNum(item)"></span>
                 </span>
-                <span class="delete iconfont icon-shanchu-copy-copy" @click="deletegoods(item)"></span>
+                <span class="delete iconfont icon-shanchu-copy-copy" @click="deletegoods(item)"
+                style="font-size: .38rem;
+                color: darkgrey;"></span>
               </span>
             </span>
           </li>

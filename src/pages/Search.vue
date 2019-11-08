@@ -54,7 +54,7 @@
           <a href>手表</a>
           <a href>VR</a>
           <a href>穿戴</a>
-          <a href >空气净化器</a>
+          <a href>空气净化器</a>
           <a href>空调</a>
           <a href>耳机</a>
         </div>
