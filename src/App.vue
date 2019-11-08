@@ -18,7 +18,9 @@
         <span>我的</span>
       </router-link>
     </div>
-
+    <a v-show="xiangshang&&Xiangshang" class="xs" href="#top">
+      <img src="https://m.mi.com/static/img/top.451d650ecd.png" alt="">
+    </a>
     <router-view></router-view>
   </div>
 </template>
@@ -44,7 +46,9 @@ export default {
   components: {},
   data() {
     return {
-      showFooter: true
+      showFooter: true,
+      xiangshang:false,
+      Xiangshang:false,
     };
   },
   methods: {
@@ -55,10 +59,23 @@ export default {
         }else{
           this.showFooter = false;
         }
+        if(string.includes('homepage')){
+          this.xiangshang = true;
+        }else{
+          this.xiangshang = false;
+        }
+    },
+    handleScroll(){
+      if(document.documentElement.scrollTop>300){
+        this.Xiangshang=true;
+      }else{
+        this.Xiangshang=false;
+      }
     }
   },
   mounted(){
     this.routefilter();
+    window.addEventListener('scroll', this.handleScroll, true);
   },
   beforeUpdate(){
     this.routefilter();
@@ -112,6 +129,15 @@ export default {
   }
   a.router-link-active {
     color: #ff6700;
+  }
+}
+.xs{
+  position: fixed;
+  z-index: 22;
+  left:6.3rem;
+  bottom: 1.5rem;
+  img{
+    width: 0.7rem;
   }
 }
 </style>
