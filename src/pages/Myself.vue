@@ -5,10 +5,10 @@
         <div class="img">
           <img src="../assets/images/mine/myselfAvatar.png" />
         </div>
-        <div class="name">登录/注册</div>
+        <div class="name" @click="showDialog()">登录/注册</div>
       </div>
     </header>
-    
+
     <div class="b1 ui-flex align-center justify-space-between">
       <div class="cite">我的订单</div>
       <div class="span ui-flex align-center">
@@ -28,7 +28,11 @@
     <div v-for="item in homeList" :key="item.id">
       <div class="ui-line"></div>
       <ul class="items">
-        <li v-for="itemChild in item.children" :key="itemChild.id" :class="itemChild.childClassName">
+        <li
+          v-for="itemChild in item.children"
+          :key="itemChild.id"
+          :class="itemChild.childClassName"
+        >
           <a>
             <span v-html="itemChild.childName"></span>
           </a>
@@ -38,12 +42,20 @@
     <!-- 同意登录弹出框 -->
     <div v-show="this.dialogShow" class="dialog">
       <div class="dialogContent">
-        <p><span>《小米商城用户协议》</span><span>《小米商城隐私政策》</span></p>
-        <p><span>《小米帐号用户协议》</span><span>《小米帐号隐私政策》</span></p>
-        <p>请您仔细阅读以上协议，其中有对您权利义务的特别约定等重要条款，同意后方可使用本软件</p>
+        <div class="contentBox">
+          <p>
+            <span>《小米商城用户协议》</span>
+            <span>《小米商城隐私政策》</span>
+          </p>
+          <p>
+            <span>《小米帐号用户协议》</span>
+            <span>《小米帐号隐私政策》</span>
+          </p>
+          <p>请您仔细阅读以上协议，其中有对您权利义务的特别约定等重要条款，同意后方可使用本软件</p>
+        </div>
         <div class="bottomAction">
-          <button class="disagree">不同意</button>
-          <button class="agree">同意</button>
+          <button class="disagree" @click="hideDialog()">不同意</button>
+          <button class="agree" @click="hideDialog('agree')">同意</button>
         </div>
       </div>
     </div>
@@ -56,20 +68,20 @@ export default {
   data() {
     return {
       tabList: [
-        { 
-          id:1,
+        {
+          id: 1,
           name: "待付款",
           className: "dfk",
           router: ""
         },
         {
-          id:2,
+          id: 2,
           name: "待收货",
           className: "dah",
           router: ""
         },
         {
-          id:3,
+          id: 3,
           name: "退换修",
           className: "thx",
           router: ""
@@ -77,70 +89,82 @@ export default {
       ],
       homeList: [
         {
-          id:20,
+          id: 20,
           children: [
             {
-              id:10,
-              childName:'会员中心',
-              childClassName:'i-member',
-              router:''
+              id: 10,
+              childName: "会员中心",
+              childClassName: "i-member",
+              router: ""
             },
             {
-              id:11,
-              childName:'我的优惠',
-              childClassName:'i-wallet',
-              router:''
+              id: 11,
+              childName: "我的优惠",
+              childClassName: "i-wallet",
+              router: ""
             }
           ]
         },
         {
-          id:21,
+          id: 21,
           children: [
             {
-              id:12,
-              childName:'服务中心',
-              childClassName:'i-service',
-              router:''
+              id: 12,
+              childName: "服务中心",
+              childClassName: "i-service",
+              router: ""
             },
             {
-              id:13,
-              childName:'小米之家',
-              childClassName:'i-mihome',
-              router:''
+              id: 13,
+              childName: "小米之家",
+              childClassName: "i-mihome",
+              router: ""
             }
           ]
         },
         {
-          id:22,
+          id: 22,
           children: [
             {
-              id:14,
-              childName:'我的F码',
-              childClassName:'i-fcode',
-              router:''
+              id: 14,
+              childName: "我的F码",
+              childClassName: "i-fcode",
+              router: ""
             },
             {
-              id:15,
-              childName:'礼物码兑换',
-              childClassName:'i-gift',
-              router:''
+              id: 15,
+              childName: "礼物码兑换",
+              childClassName: "i-gift",
+              router: ""
             }
           ]
         },
         {
-          id:23,
+          id: 23,
           children: [
             {
-              id:16,
-              childName:'设置',
-              childClassName:'i-setting',
-              router:''
+              id: 16,
+              childName: "设置",
+              childClassName: "i-setting",
+              router: ""
             }
           ]
         }
       ],
-      dialogShow:true
+      dialogShow: false
     };
+  },
+  methods:{
+    showDialog(){
+      this.dialogShow = true;
+    },
+    hideDialog(type){
+      console.log(type);
+      this.dialogShow = false;
+      if(type){
+        this.$router.push('login');
+      }
+    }
   }
 };
 </script>
@@ -167,10 +191,12 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   color: rgba(0, 0, 0, 0.54);
   position: relative;
+  box-sizing: border-box;
   padding-right: 0.56rem;
   .cite {
     font-size: 0.28rem;
     padding: 0 0 0 0.32rem;
+    box-sizing: border-box;
     color: rgba(0, 0, 0, 0.87);
   }
   a {
@@ -194,12 +220,14 @@ export default {
   -webkit-transform: translate3d(0, -50%, 0) rotate(135deg);
 }
 .b2 {
+  box-sizing: border-box;
   padding: 0 0.8rem;
   background-color: #fff;
   li {
     display: flex;
     align-content: space-between;
     position: relative;
+    box-sizing: border-box;
     padding: 0.4rem 0;
     .icon {
       width: 0.48rem;
@@ -229,6 +257,7 @@ export default {
     background: url(../assets/images/mine/myselfHeaderBackPic.png) center 0
       #f37d0f;
     background-size: auto 100%;
+    box-sizing: border-box;
     padding: 0.32rem 0;
     .ui-flex {
       .img {
@@ -257,13 +286,71 @@ export default {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 999;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    .dialogContent {
+      width: 6.76rem;
+      background: #fff;
+      border-radius: 0.1rem;
+      overflow: hidden;
+      line-height: 0.37rem;
+      .contentBox {
+        padding: 0.4rem 0.7rem;
+        box-sizing: border-box;
+        line-height: 0.4rem;
+        color: #676767;
+        p {
+          font-size: 0.24rem;
+          span {
+            color: #ff6700;
+            margin-right: 0.1rem;
+          }
+        }
+      }
+    }
+    .bottomAction {
+      display: flex;
+      button {
+        flex: 1;
+        height: 1rem;
+        line-height: 1rem;
+        font-size: 0.32rem;
+        color: #676767;
+        background: none;
+        border: none;
+        position: relative;
+      }
+      .disagree:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-right: 1px solid #d9d9d9;
+        top: 0;
+        right: 0;
+        height: 200%;
+        transform-origin: right 0;
+        transform: scale(.5) translateZ(0);
+      }
+      button:before {
+        content: "";
+        display: block;
+        position: absolute;
+        border-top: 1px solid #d9d9d9;
+        top: 0;
+        left:0;
+        width: 200%;
+        transform-origin: left 0;
+        transform: scale(.5) translateZ(0);
+      }
+      .agree {
+        color: #ff6700;
+      }
+    }
   }
 }
 .items li {
@@ -278,6 +365,7 @@ export default {
 .items li > a {
   display: block;
   padding-right: 0.56rem;
+  box-sizing: border-box;
   padding-left: 1.12rem;
   height: 1.04rem;
   line-height: 1.04rem;

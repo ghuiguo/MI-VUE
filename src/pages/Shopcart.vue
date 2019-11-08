@@ -6,10 +6,10 @@
       <span class="cart-header-edit">编辑</span>
     </div>
 
-    <!-- <div class="cart-main">
-      <div class="cart-main-list">
+    <div class="cart-main">
+      <div v-if="hasdata==1" class="cart-main-list">
         <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
-          <li class="cart-main-list-item-section" v-if="item.state==1">
+          <li class="cart-main-list-item-section" v-if="item.state===1">
             <span
               class="cart-main-list-item-check"
               :class="{active:item.isSelect}"
@@ -35,6 +35,11 @@
         </div>
       </div>
 
+      <div v-if="hasdata==2" class="cart-main-list-appendix">
+        <span class="empty-cart">购物车还是空的</span>
+        <a href="/" class="gotomain">去逛逛</a>
+      </div>
+
       <div class="cart-main-another">
         <div class="lovely-promote">
           <img src="../assets/images/gessulike.jpg" alt />
@@ -52,12 +57,6 @@
             </a>
           </div>
         </div>
-      </div>
-    </div> -->
-    <div class="cart-main">
-      <div class="cart-main-list-appendix">
-        <span>购物车还是空的</span>
-        <a href="/">去主页逛逛</a>
       </div>
     </div>
 
@@ -77,7 +76,7 @@
           <span>{{this.sum}}</span>
         </span>
       </div>
-      <div class="cart-foot-account">结算</div>
+      <div class="cart-foot-account" @click="Settlement()">结算</div>
     </div>
   </div>
 </template>
@@ -88,6 +87,7 @@ export default {
   components: {},
   data() {
     return {
+      hasdata: 0,
       shoppingList: [
         {
           images: "assets/images/mobile2.jpg",
@@ -150,7 +150,15 @@ export default {
       sum: 0
     };
   },
+  beforeMount() {
+    this.getData();
+  },
   methods: {
+    getData() {
+      if (1 > 0) {
+        this.hasdata = 1;
+      } else this.hasdata = 2;
+    },
     selectgoods(item) {
       item.isSelect = !item.isSelect;
       this.allSelect = false;
@@ -184,13 +192,12 @@ export default {
     },
     oppNum(item) {
       item.num--;
-      if (item.num <= 0) {
-        item.num = 0;
+      if (item.num <= 1) {
+        item.num = 1;
         return;
       }
       if (item.isSelect == true) {
-        let sum = this.sum - item.money;
-        this.sum = sum;
+        this.sum = this.sum - item.money;
       }
     },
     supNum(item) {
@@ -205,9 +212,14 @@ export default {
       }
     },
     deletegoods(item) {
-      let state = (item.state = 0);
-      this.state = state;
-      this.num = 0;
+      this.state = item.state = 0;
+      this.num = item.num;
+      this.sum = this.sum - this.num * item.money;
+    },
+    Settlement() {
+      if(this.sum!==0){
+        this.$router.push("paylist");
+      } 
     }
   }
 };
