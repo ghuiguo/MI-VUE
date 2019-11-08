@@ -34,6 +34,13 @@
       "unicode_decimal": 58627
     },
     {
+      "icon_id": "4478408",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
       "icon_id": "5110401",
       "name": "右",
       "font_class": "you1",
@@ -62,18 +69,18 @@
       "unicode_decimal": 58658
     },
     {
+      "icon_id": "6791796",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "7774955",
       "name": "删 除",
       "font_class": "shanchu-copy-copy",
       "unicode": "e515",
       "unicode_decimal": 58645
-    },
-    {
-      "icon_id": "9867422",
-      "name": "成功",
-      "font_class": "chenggong",
-      "unicode": "e618",
-      "unicode_decimal": 58904
     },
     {
       "icon_id": "10942926",

@@ -51,7 +51,7 @@ export default {
   
   beforeUpdate(){
     let string = window.location.href;
-    if(string.includes('login')||string.includes('paylist')||string.includes('surepay')){
+    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')){
       this.showFooter = false;
     }
     else{
