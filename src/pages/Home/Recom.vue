@@ -1,18 +1,5 @@
 <template>
   <div class="home">
-    <div class="search">
-      <img src="../../assets/home/home.png" alt />
-      <div class="app-header-middle">
-        <span class="iconfont icon-jingli my"></span>
-        搜索商品名称
-      </div>
-      <div class="app-header-right">
-        <span class="iconfont icon-jingli my"></span>
-      </div>
-    </div>
-    <ly-tab v-model="selectedId" :items="items" :options="options" class="fix" />
-    <!-- @change="handleChange" -->
-
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <swiper-slide class="swapper">
@@ -405,7 +392,7 @@ export default {
         { label: "电器" }
       ],
       options: {
-        activeColor: "#e9232c" // 设置选中的颜色
+        activeColor: "rgb(237, 91, 0)" // 设置选中的颜色
       },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
@@ -486,6 +473,8 @@ export default {
   }
   .swiper-container {
     width: 100%;
+    padding-top:1.5rem; 
+    
   }
   swiper {
     touch-action: none;
