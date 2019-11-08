@@ -28,7 +28,7 @@
     <div v-for="item in homeList" :key="item.id">
       <div class="ui-line"></div>
       <ul class="items">
-        <li
+        <li @click="toRouters(itemChild.router)"
           v-for="itemChild in item.children"
           :key="itemChild.id"
           :class="itemChild.childClassName"
@@ -146,7 +146,7 @@ export default {
               id: 16,
               childName: "设置",
               childClassName: "i-setting",
-              router: ""
+              router: "/setting"
             }
           ]
         }
@@ -164,6 +164,11 @@ export default {
       if(type){
         this.$router.push('login');
       }
+    },
+    //列表页跳转路由
+    toRouters(router){
+      console.log(router,'++++++-++++++');
+      this.$router.push(router);
     }
   }
 };
