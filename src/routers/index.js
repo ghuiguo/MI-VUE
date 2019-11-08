@@ -40,6 +40,7 @@ const router = new VueRouter({
 		path: '/type',
 		name: 'type',
 		component: Type,
+
 	}, {
 		path: '/shopcart',
 		name: 'shopcart',
