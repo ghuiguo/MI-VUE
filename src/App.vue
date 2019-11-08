@@ -51,22 +51,40 @@ export default {
 
 mounted(){
   let string = window.location.href;
-    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
-      this.showFooter = false;
-    }
-    else{
+    if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')){
       this.showFooter = true;
+    }else{
+      this.showFooter = false;
     }
 },
 beforeUpdate(){
-    let string = window.location.href;
-    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
+  let string = window.location.href;
+    if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')){
+      this.showFooter = true;
+    }else{
       this.showFooter = false;
     }
-    else{
-      this.showFooter = true;
-    }
-  }
+},
+
+
+// mounted(){
+//   let string = window.location.href;
+//     if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
+//       this.showFooter = false;
+//     }
+//     else{
+//       this.showFooter = true;
+//     }
+// },
+// beforeUpdate(){
+//     let string = window.location.href;
+//     if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
+//       this.showFooter = false;
+//     }
+//     else{
+//       this.showFooter = true;
+//     }
+//   }
 };
 
 </script>

@@ -15,6 +15,7 @@ import '../public/assets/css/Shopcart-payList.css';
 import '../public/assets/css/Surepay.css';
 import '../public/assets/css/Successpay.css';
 import '../public/assets/css/Search.css';
+import '../public/assets/css/Details.css';
 
 Vue.use(VueAwesomeSwiper);
 Vue.use(LyTab);

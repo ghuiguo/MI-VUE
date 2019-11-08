@@ -14,6 +14,7 @@ import Shopcart from '../pages/Shopcart.vue';
 import Successpay from '../pages/Cart/Successpay.vue';
 import Surepay from '../pages/Cart/Surepay.vue';
 import SurepayFa from '../pages/Cart/SurepayFa.vue';
+import Details from '../pages/Details.vue';
 
 
 
@@ -84,6 +85,10 @@ const router = new VueRouter({
 		path: '/search',
 		name: 'search',
 		component: Search,
+	},{
+		path: '/details',
+		name: 'details',
+		component: Details,
 	},{
 		path: '*',
 		redirect: '/homepage'

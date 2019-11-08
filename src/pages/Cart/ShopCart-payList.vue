@@ -93,7 +93,4 @@ export default {
 </script>
 
 <style>
-/* .footer {
-    display: none!important;
-} */
 </style>
