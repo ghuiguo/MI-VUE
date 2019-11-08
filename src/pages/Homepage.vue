@@ -137,6 +137,7 @@ export default {
         margin-top: 0.2rem;
         span {
           font-size: 0.45rem;
+        }
         img {
           width: 100%;
         }
