@@ -7,6 +7,7 @@ import Login from '../pages/Login.vue';
 import Recom from '../pages/Home/Recom.vue';
 import Phone from '../pages/Home/Phone.vue';
 import Setting from '../pages/Setting.vue';
+import Search from '../pages/Search.vue';
 
 import Paylist from '../pages/Cart/ShopCart-payList.vue';
 import Shopcart from '../pages/Shopcart.vue';
@@ -49,9 +50,7 @@ const router = new VueRouter({
 		path: '/shopcart',
 		name: 'shopcart',
 		component: Shopcart,
-
-	},
-	{
+	},{
 		path: '/paylist',
 		name: 'paylist',
 		component: Paylist,
@@ -80,6 +79,10 @@ const router = new VueRouter({
 		path: '/setting',
 		name: 'setting',
 		component: Setting,
+	},{
+		path: '/search',
+		name: 'search',
+		component: Search,
 	},{
 		path: '*',
 		redirect: '/homepage'

@@ -1,7 +1,7 @@
 <template>
   <div class="Shopcart">
     <div class="cart-header">
-      <span class="iconfont icon-sousuo"></span>
+      <span class="iconfont icon-sousuo" @click="toSearch()"></span>
       <h2 class="cart-header-title" style="    line-height: 1rem;
     text-align: center;
     margin: 0 auto;
@@ -226,6 +226,9 @@ export default {
       if(this.sum!==0){
         this.$router.push("paylist");
       } 
+    },
+    toSearch(){
+      this.$router.push('/search');
     }
   }
 };

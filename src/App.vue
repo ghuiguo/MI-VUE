@@ -48,10 +48,19 @@ export default {
       showFooter:true
     };
   },
-  
-  beforeUpdate(){
+
+mounted(){
+  let string = window.location.href;
+    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
+      this.showFooter = false;
+    }
+    else{
+      this.showFooter = true;
+    }
+},
+beforeUpdate(){
     let string = window.location.href;
-    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')){
+    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
       this.showFooter = false;
     }
     else{
