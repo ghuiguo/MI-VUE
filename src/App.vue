@@ -51,7 +51,7 @@ export default {
 
 mounted(){
   let string = window.location.href;
-    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')){
+    if(string.includes('login')||string.includes('paylist')||string.includes('surepayfa')||string.includes('search')||string.includes('setting')){
       this.showFooter = false;
     }
     else{
