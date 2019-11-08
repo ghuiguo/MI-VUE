@@ -5,7 +5,7 @@ import router from './routers/index';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import LyTab  from "ly-tab";
 
-// 导入样式
+//    导入样式
 import 'swiper/dist/css/swiper.css'
 import './assets/reset.min.css';
 import './assets/font/iconfont.css';
