@@ -217,7 +217,9 @@ export default {
       this.sum = this.sum - this.num * item.money;
     },
     Settlement() {
-      this.$router.push("paylist");
+      if(this.sum!==0){
+        this.$router.push("paylist");
+      } 
     }
   }
 };

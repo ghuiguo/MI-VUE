@@ -12,6 +12,7 @@ import './assets/font/iconfont.css';
 import '../public/assets/font/cartFont/iconfont.css'
 import '../public/assets/css/Shopcart.css';
 import '../public/assets/css/Shopcart-payList.css';
+import '../public/assets/css/Surepay.css';
 
 Vue.use(VueAwesomeSwiper);
 Vue.use(LyTab);
