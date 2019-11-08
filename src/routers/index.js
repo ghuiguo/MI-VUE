@@ -5,6 +5,7 @@ import Type from '../pages/Type.vue';
 import Shopcart from '../pages/Shopcart.vue';
 import Myself from '../pages/Myself.vue';
 import Paylist from '../pages/ShopCart-payList.vue';
+import Surepay from '../pages/Surepay.vue'
 import Login from '../pages/Login.vue';
 import Recom from '../pages/Home/Recom.vue';
 import Phone from '../pages/Home/Phone.vue';
@@ -44,15 +45,19 @@ const router = new VueRouter({
 		name: 'shopcart',
 		component: Shopcart,
 
-	},{
-		path: '/myself',
-		name: 'myself',
-		component: Myself,
 	},
 	{
 		path: '/paylist',
 		name: 'paylist',
 		component: Paylist,
+	},{
+		path: '/surepay',
+		name: 'surepay',
+		component: Surepay,
+	},{
+		path: '/myself',
+		name: 'myself',
+		component: Myself,
 	},{
 		path: '/login',
 		name: 'login',
