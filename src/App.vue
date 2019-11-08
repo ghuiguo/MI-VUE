@@ -18,7 +18,7 @@
         <span>我的</span>
       </router-link>
     </div>
-    <a v-show="xiangshang&&Xiangshang" class="xs" href="#top">
+    <a v-show="xiangshang&&Xiangshang" class="xs" href=":;" @click="xsfun">
       <img src="https://m.mi.com/static/img/top.451d650ecd.png" alt="">
     </a>
     <router-view></router-view>
@@ -71,6 +71,10 @@ export default {
       }else{
         this.Xiangshang=false;
       }
+    },
+    xsfun(ev){
+      document.documentElement.scrollTop=0;
+      ev.preventDefault();
     }
   },
   mounted(){
