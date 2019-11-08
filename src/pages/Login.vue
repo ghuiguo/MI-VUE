@@ -1,46 +1,105 @@
 <template>
   <div class="loginContent">
-    <div class="lgnheader">
-      <img src="../assets/images/loginLogo.jpg" />
-      <h4 class="header_tit_txt">小米账号登录</h4>
+    <div style="padding-bottom: 2.5rem;">
+      <div class="lgnheader">
+        <img src="../assets/images/loginLogo.jpg" />
+        <h4 class="header_tit_txt">小米帐号登录</h4>
+      </div>
+      <label class="labelBox label_user">
+        <div v-show="loginType" class="cityList">
+          +86
+          <i></i>
+        </div>
+        <input
+          v-model="userName"
+          class="item_account"
+          autocomplete="off"
+          type="tel"
+          name="user"
+          :placeholder="userNamePlaceHolder"
+          @input="validetaUserName()"
+        />
+        <div v-show="isClearLink" class="clear_link_panel">
+          <span class="clear_link" @click="clearLink()"></span>
+        </div>
+      </label>
+
+      <label class="labelBox label_cmsCode">
+        <input
+          v-model="password"
+          class="item_account"
+          autocomplete="off"
+          :type="passwordType"
+          name="user"
+          :placeholder="passwordPlaceHolder"
+        />
+        <div v-if="loginType" class="code_panel" :class="{active:!show}">
+          <a
+            class="send_ticket"
+            @click="getCode()"
+            href="javascript:;"
+            id="getSMSCode"
+          >{{this.snsCodeBtn}}</a>
+        </div>
+
+        <div v-else class="eye_panel pwd-visiable" @click="changePasswordInputType()">
+          <span class="eye pwd-eye">
+            <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path class="eye_outer" d="M0 8 C6 0,14 0,20 8, 14 16,6 16, 0 8 z" />
+              <circle class="eye_inner" cx="10" cy="8" r="3" />
+            </svg>
+          </span>
+        </div>
+      </label>
+
+      <div class="actionButton loginRegisBtn">立即登录/注册</div>
+      <div
+        @click="changeLoginType()"
+        class="actionButton loginTypeChange"
+        v-html="loginTypeChangeTxt"
+      ></div>
+
+      <div class="n_links_area">
+        <a href class="outer-link"></a>
+      </div>
+
+      <div class="other_login_type sns-login-container">
+        <fieldset class="oth_type_tit">
+          <div class="oth_type_txt">其他方式登录</div>
+        </fieldset>
+
+        <div class="oth_type_links">
+          <a class="icon_type btn_weibo sns-login-link">
+            <i class="btn_sns_icontype icon_default_weibo"></i>
+          </a>
+          <a class="icon_type btn_alipay sns-login-link">
+            <i class="btn_sns_icontype icon_default_alipay"></i>
+          </a>
+          <a class="icon_type btn_weixin sns-login-link">
+            <i class="btn_sns_icontype icon_default_weixin"></i>
+          </a>
+        </div>
+      </div>
     </div>
-    <label class="labelBox label_user">
-      <div class="cityList">
-        +86
-        <i></i>
-      </div>
-      <input class="item_account" autocomplete="off" type="tel" name="user" placeholder="手机号码" />
-      <div class="clear_link_panel">
-        <span class="clear_link"></span>
-      </div>
-    </label>
 
-    <label class="labelBox label_cmsCode">
-      <input class="item_account" autocomplete="off" type="number" name="user" placeholder="短信验证码" />
-      <div class="code_panel">
-        <a class="send_ticket" href="javascript:;" id="getSMSCode">获取验证码</a>
-      </div>
-    </label>
-
-    <div class="actionButton loginRegisBtn">立即登录/注册</div>
-    <div class="actionButton loginTypeChange">用户名密码登录</div>
-
-    <div class="other_login_type sns-login-container">
-      <fieldset class="oth_type_tit">
-        <div class="oth_type_txt">其他方式登录</div>
-      </fieldset>
-
-      <div class="oth_type_links">
-        <a class="icon_type btn_weibo sns-login-link">
-          <i class="btn_sns_icontype icon_default_weibo"></i>
-        </a>
-        <a class="icon_type btn_alipay sns-login-link">
-          <i class="btn_sns_icontype icon_default_alipay"></i>
-        </a>
-        <a class="icon_type btn_weixin sns-login-link">
-          <i class="btn_sns_icontype icon_default_weixin"></i>
-        </a>
-      </div>
+    <div class="nf-link-area clearfix n-footer">
+      <ul class="lang-select-list">
+        <li>
+          <a href="#" class="lang-select-li current">简体</a>|
+        </li>
+        <li>
+          <a href="#" class="lang-select-li">繁体</a>|
+        </li>
+        <li>
+          <a href="#" class="lang-select-li">English</a>|
+        </li>
+        <li>
+          <a href="#" target="_blank">常见问题</a>|
+        </li>
+        <li>
+          <a href="#" target="_blank">隐私政策</a>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -49,9 +108,89 @@
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      isClearLink: false, //用户名按钮是否显示
+      userName: "", //用户名
+      snsCode: "", // 验证码
+      password: "", //密码
+
+      loginType: true, //登录方式 true:验证码登录，false:账号密码登录
+      loginTypeChangeTxt: "用户名密码登录",
+      userNamePlaceHolder:'手机号码',
+      passwordPlaceHolder:'短信验证码',
+      passwordType:'number',
+
+      
+
+      snsCodeBtn: "获取验证码", //获取验证码按钮文案
+      //验证码事件
+      show: true,
+      count: "",
+      timer: null
+    };
   },
-  methods: {}
+  methods: {
+    //点击按钮清除用户名输入框
+    clearLink() {
+      this.isClearLink = false;
+      this.userName = "";
+    },
+    //修改登录方式
+    changeLoginType() {
+      this.loginType = !this.loginType;
+      console.log(this.loginType);
+      this.password = '';
+      if (this.loginType) {
+        this.loginTypeChangeTxt = "用户名密码登录";
+        this.userNamePlaceHolder = '手机号码';
+        this.passwordPlaceHolder = '短信验证码';
+        this.passwordType = 'number';
+      } else {
+        this.loginTypeChangeTxt = "手机短信登录/注册";
+        this.userNamePlaceHolder = '邮箱/手机号码/小米ID';
+        this.passwordPlaceHolder = '密码';
+        this.passwordType = 'password';
+      }
+    },
+    //修改密码输入框type类型
+    changePasswordInputType(){
+      let type = this.passwordType;
+      if(type==='number'){
+        this.passwordType = 'password';
+      }
+      else{
+        this.passwordType = 'number';
+      }
+    },
+    //用户名改变时触发验证等事件
+    validetaUserName() {
+      let userName = this.userName;
+      if (userName && userName.length > 0) {
+        this.isClearLink = true;
+      } else {
+        this.isClearLink = false;
+      }
+    },
+    //验证码倒计时
+    getCode() {
+      const TIME_COUNT = 60;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.show = false;
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+            this.snsCodeBtn = `重新发送(${this.count})`;
+          } else {
+            this.snsCodeBtn = `重新获取`;
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, 1000);
+      }
+    }
+  }
 };
 </script>
 
@@ -89,6 +228,7 @@ export default {
       display: block;
       font-size: 0.36rem;
       border: none;
+      flex: 1;
     }
   }
   .labelBox i {
@@ -158,10 +298,9 @@ export default {
     padding: 0.2rem;
     a {
       color: #2ea5e5;
-      font-size: 0.3rem;
-      width: 1.8rem;
+      font-size: 0.28rem;
       display: block;
-      text-align: center;
+      text-align: right;
     }
   }
   .actionButton {
@@ -202,6 +341,67 @@ export default {
     margin: 0 auto;
     position: relative;
     top: -0.4rem;
+  }
+  .btn_sns_icontype {
+    background: url(.././assets/images/icons_type.png) no-repeat;
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 5px auto 0;
+  }
+  .icon_type {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    display: inline-block;
+    text-indent: -9999px;
+    border-radius: 50%;
+  }
+  .icon_type .icon_default_weibo {
+    background-position: -38px 0;
+  }
+  .icon_type .icon_default_alipay {
+    background-position: -57px 0;
+  }
+  .icon_type .icon_default_weixin {
+    background-position: -84px 0;
+  }
+  .btn_weibo {
+    background-color: #ed9090;
+  }
+  .btn_alipay {
+    background-color: #6bb6ea;
+  }
+  .btn_weixin {
+    background-color: #00be00;
+  }
+  .nf-link-area {
+    color: #9b9b9b;
+  }
+  .nf-link-area li {
+    display: inline-block;
+  }
+  .nf-link-area li a {
+    padding: 0 0.2rem;
+    font-size: 0.28rem;
+    color: #9b9b9b;
+  }
+  .nf-link-area li a.current {
+    color: #4a4a4a;
+  }
+  .n-footer {
+    line-height: 1.5;
+    text-align: center;
+    font-size: 0.14rem;
+    margin-top: -0.9rem;
+    height: 0.9rem;
+  }
+  .code_panel.active a.send_ticket {
+    color: #999 !important;
+  }
+  .eye_panel.pwd-visiable {
+    width: 0.4rem;
+    height: 0.3rem;
   }
 }
 </style>

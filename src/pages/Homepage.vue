@@ -606,6 +606,7 @@ export default {
               color: #fff;
               font-size: 0.24rem;
               padding: 0.16rem 0;
+              box-sizing: border-box;
               font-weight: 700;
             }
           }

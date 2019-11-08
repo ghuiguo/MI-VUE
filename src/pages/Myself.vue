@@ -191,10 +191,12 @@ export default {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   color: rgba(0, 0, 0, 0.54);
   position: relative;
+  box-sizing: border-box;
   padding-right: 0.56rem;
   .cite {
     font-size: 0.28rem;
     padding: 0 0 0 0.32rem;
+    box-sizing: border-box;
     color: rgba(0, 0, 0, 0.87);
   }
   a {
@@ -218,12 +220,14 @@ export default {
   -webkit-transform: translate3d(0, -50%, 0) rotate(135deg);
 }
 .b2 {
+  box-sizing: border-box;
   padding: 0 0.8rem;
   background-color: #fff;
   li {
     display: flex;
     align-content: space-between;
     position: relative;
+    box-sizing: border-box;
     padding: 0.4rem 0;
     .icon {
       width: 0.48rem;
@@ -253,6 +257,7 @@ export default {
     background: url(../assets/images/mine/myselfHeaderBackPic.png) center 0
       #f37d0f;
     background-size: auto 100%;
+    box-sizing: border-box;
     padding: 0.32rem 0;
     .ui-flex {
       .img {
@@ -360,6 +365,7 @@ export default {
 .items li > a {
   display: block;
   padding-right: 0.56rem;
+  box-sizing: border-box;
   padding-left: 1.12rem;
   height: 1.04rem;
   line-height: 1.04rem;
