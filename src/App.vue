@@ -66,6 +66,8 @@ beforeUpdate(){
     }
 },
 
+//  ==下面是王哥写的优秀党务案例，记得多学学 ==
+
 
 // mounted(){
 //   let string = window.location.href;
@@ -86,7 +88,7 @@ beforeUpdate(){
 //     }
 //   }
 };
-
+// ==========================
 </script>
 
 <style lang='less'>
