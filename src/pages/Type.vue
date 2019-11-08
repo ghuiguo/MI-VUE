@@ -1,22 +1,22 @@
 <template>
     <div class="type">
         <header class="header">
-            <i class="i1"></i>
+            <i class="i1" @click="backtoOne()"></i>
             <p class="text">分类</p>
-            <i class="i2"></i>
+            <router-link class="i2" :to="{path:'search'}"></router-link>
         </header>
         <!-- 侧边导航 -->
         <nav class="navDH">
             <ul class="navWrapper">
-                <li v-for="item in items" >
-                    <span v-html="item.label"></span>
+                <li :key="index"  v-for="(item,index) in items" :class="{active:chooseIndex==index}" @click="handleChange(index)">
+                    <span v-html="item.label" ></span>
                 </li>
             </ul>
         </nav>
 
         <div class="typeYM">
             <div class="YMWrapper">
-                <img src="../assets/classify/香薰.png" alt="">
+                <img src="../assets/classify/香薰.png" alt="" @click="pages()">
                 <div class="phone">
                     <span class="phoneText">-- 手机 -- </span>
                 </div>
@@ -111,11 +111,9 @@
         components: {},
         data() {
             return {
-                selectedId: 0,
+                chooseIndex:0,
                 items: [
-                    {label: "新品",
-
-                    },
+                    {label: "新品"},
                     {label: "众筹"},
                     {label: "小米耳机"},
                     {label: "Redmi手机"},
@@ -141,9 +139,7 @@
                     {label: "零售店"}
 
                 ],
-                options: {
-                    activeColor: "#fb7d34" // 设置选中的颜色
-                },
+
 
                 phoneList: [
                     {
@@ -169,8 +165,21 @@
                     }]
 
 
-            };
+            }
+
         },
+        methods:{
+
+            /* 路由返回到上次进入的前一页 */
+            backtoOne(){
+                window.history.go(-1);
+            },
+            /* 页面导航选中样式 */
+            handleChange(index){
+                window.console.log(index);
+                this.chooseIndex=index;
+            }
+        }
     };
 </script>
 
@@ -237,9 +246,6 @@
                 color: #3c3c3c;
 
             }
-            .navWrapper li:nth-child(1) {
-                color: #fb7d34;
-            }
 
         }
         .typeYM {
@@ -285,6 +291,7 @@
                     float: right;
 
                     img {
+                        display: block;
                         margin: 0 auto;
                         width: 1rem;
                         height: 1rem;
@@ -292,10 +299,12 @@
                         overflow: hidden;
                     }
 
-                    p {
+                    p{
+                        display: block;
                         margin-top: .28rem;
                         white-space: nowrap;
                         font-size: .23rem;
+                        text-align:center;
                         color: rgba(0, 0, 0, .54);
                     }
 
@@ -303,7 +312,13 @@
 
             }
         }
+        .navWrapper li.active{
+            color: #fb7d34;
+        }
+
     }
+
+
 
 
 </style>

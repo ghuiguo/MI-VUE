@@ -40,12 +40,11 @@
   window.addEventListener(evt, computed);
 })();
 
-
 export default {
   components: {},
   data() {
     return {
-      showFooter:true
+      showFooter: true
     };
   },
   methods: {
@@ -88,32 +87,31 @@ export default {
 //     }
 //   }
 };
-// ==========================
 </script>
 
 <style lang='less'>
 .footer {
-    position: fixed;
-    z-index: 22;
-    left: 0;
-    bottom: -1px;
-    background: #fff;
-    width: 100%;
-    height: 1.04rem;
+  position: fixed;
+  z-index: 22;
+  left: 0;
+  bottom: -1px;
+  background: #fff;
+  width: 100%;
+  height: 1.04rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+  a {
+    flex: 1;
+    text-align: center;
+    color: #999;
     display: flex;
-    align-items:center;
-    justify-content: space-between;
-    border-top: 1px solid #ddd;
-    box-sizing: border-box;
-    a {
-      flex:1;
-      text-align: center;
-      color: #999;
-      display: flex;
-      flex-direction: column;
-    }
-    a.router-link-active{
-      color: #ff6700;
-    }
+    flex-direction: column;
+  }
+  a.router-link-active {
+    color: #ff6700;
+  }
 }
 </style>
