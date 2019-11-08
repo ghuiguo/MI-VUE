@@ -135,59 +135,8 @@ export default {
         right: 0.15rem;
         top: -0.1rem;
         margin-top: 0.2rem;
-<<<<<<< HEAD
         span {
           font-size: 0.45rem;
-=======
-        img {
-          width: 100%;
-        }
-      }
-      .floor-looper-item-content {
-        display: flex;
-        flex-wrap: wrap;
-        .floor-looper-item-content-show {
-          width: 3.5626rem;
-          height: 5.066rem;
-          margin-left: 0.125rem;
-          margin-top: 0.1rem;
-          img {
-            width: 100%;
-          }
-          .floor-looper-item-content-show-info {
-            .show-name {
-              text-align: center;
-              font-size: 0.28rem;
-              color: rgba(0, 0, 0, 0.87);
-            }
-            .show-gongneng {
-              text-align: center;
-              margin-top: 0.06rem;
-              font-size: 0.22rem;
-              line-height: 0.3rem;
-              color: rgba(0, 0, 0, 0.54);
-            }
-            .show-price {
-              text-align: center;
-              font-size: 0.28rem;
-              color: #ea625b;
-              height: 1.5em;
-              line-height: 1.5em;
-            }
-            .show-goumai {
-              margin-left: 0.78rem;
-              text-align: center;
-              width: 2rem;
-              background: #ea625b;
-              border-radius: 0.05rem;
-              color: #fff;
-              font-size: 0.24rem;
-              padding: 0.16rem 0;
-              box-sizing: border-box;
-              font-weight: 700;
-            }
-          }
->>>>>>> 687eb5a2ec74a3c52c55bfaacd0e77df46a69197
         }
       }
     }
