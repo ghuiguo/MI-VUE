@@ -6,6 +6,7 @@ import Myself from '../pages/Myself.vue';
 import Login from '../pages/Login.vue';
 import Recom from '../pages/Home/Recom.vue';
 import Phone from '../pages/Home/Phone.vue';
+import Setting from '../pages/Setting.vue';
 
 import Paylist from '../pages/Cart/ShopCart-payList.vue';
 import Shopcart from '../pages/Shopcart.vue';
@@ -75,7 +76,11 @@ const router = new VueRouter({
 		path: '/login',
 		name: 'login',
 		component: Login,
-	}, {
+	},{
+		path: '/setting',
+		name: 'setting',
+		component: Setting,
+	},{
 		path: '*',
 		redirect: '/homepage'
 	}]

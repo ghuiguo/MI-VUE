@@ -1,18 +1,5 @@
 <template>
   <div class="home">
-    <div class="search">
-      <img src="../../assets/home/home.png" alt />
-      <div class="app-header-middle">
-        <span class="iconfont icon-jingli my"></span>
-        搜索商品名称
-      </div>
-      <div class="app-header-right">
-        <span class="iconfont icon-jingli my"></span>
-      </div>
-    </div>
-    <ly-tab v-model="selectedId" :items="items" :options="options" class="fix" />
-    <!-- @change="handleChange" -->
-
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
       <swiper-slide class="swapper">
@@ -386,27 +373,11 @@
 </template>
 
 <script>
-import LyTab from "ly-tab";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
     return {
-      selectedId: 0,
-      items: [
-        { label: "热门" },
-        { label: "服饰" },
-        { label: "鞋包" },
-        { label: "母婴" },
-        { label: "百货" },
-        { label: "食品" },
-        { label: "内衣" },
-        { label: "男装" },
-        { label: "电器" }
-      ],
-      options: {
-        activeColor: "#e9232c" // 设置选中的颜色
-      },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
         "../assets/home/swiper/s2.jpg",
@@ -486,6 +457,8 @@ export default {
   }
   .swiper-container {
     width: 100%;
+    padding-top:1.5rem; 
+    
   }
   swiper {
     touch-action: none;

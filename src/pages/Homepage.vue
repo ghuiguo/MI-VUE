@@ -1,403 +1,31 @@
 <template>
   <div class="home">
     <div class="headerbar">
-    <div class="search">
-      <img src="../assets/home/home.png" alt />
-      <div class="app-header-middle">
-        <span class="iconfont icon-jingli my"></span>
-        搜索商品名称
+      <div class="search">
+        <img src="../assets/home/home.png" alt />
+        <div class="app-header-middle">
+          <span class="iconfont icon-jingli my"></span>
+          搜索商品名称
+        </div>
+        <div class="app-header-right">
+          <span class="iconfont icon-jingli my"></span>
+        </div>
       </div>
-      <div class="app-header-right">
-        <span class="iconfont icon-jingli my"></span>
-      </div>
-    </div>
-    <ly-tab
-      v-model="selectedId"
-      :items="items"
-      :options="options"
-      class="fix"
-      @change="handleChange"
-    />
+      <ly-tab
+        v-model="selectedId"
+        :items="items"
+        :options="options"
+        class="fix"
+        @change="handleChange"
+      />
     </div>
     <!-- @change="handleChange" -->
-
-    <swiper :options="swiperOption" ref="mySwiper">
-      <!-- slides -->
-      <swiper-slide class="swapper">
-        <img src="../assets/home/swiper/s1.jpg" alt />
-      </swiper-slide>
-      <swiper-slide class="swapper">
-        <img src="../assets/home/swiper/s2.jpg" alt />
-      </swiper-slide>
-      <swiper-slide class="swapper">
-        <img src="../assets/home/swiper/s3.jpg" alt />
-      </swiper-slide>
-      <!-- Optional controls -->
-      <div class="swiper-pagination" slot="pagination"></div>
-      <!-- <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>-->
-    </swiper>
-    <!-- <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="../assets/home/swiper/s1.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="../assets/home/swiper/s2.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="../assets/home/swiper/s3.jpg" alt="">
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>-->
-    <div class="main-cell">
-      <a href="http://www.baidu.com">
-        <img src=".././assets/images/home/cell/cell1.png" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell2.webp" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell3.gif" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell4.webp" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell5.webp" alt />
-      </a>
-    </div>
-    <div class="main-cell">
-      <a href>
-        <img src=".././assets/images/home/cell/cell6.png" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell7.jpg" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell8.png" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell9.png" alt />
-      </a>
-      <a href>
-        <img src=".././assets/images/home/cell/cell10.png" alt />
-      </a>
-    </div>
-
-    <div class="main-cell-shop">
-      <div class="main-cell-shop-left">
-        <a href="http://www.baidu.com">
-          <img src=".././assets/images/home/cell2/cell2-1.jpg" alt />
-        </a>
-      </div>
-      <div class="main-cell-shop-right">
-        <div class="main-cell-shop-right-top">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/cell2/cell2-2.jpg" alt />
-          </a>
-        </div>
-        <div class="main-cell-shop-right-floor">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/cell2/cell2-3.jpg" alt />
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="floor-looper">
-      <div class="floor-looper-item">
-        <div class="floor-looper-item-firstphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/firstphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-secondphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/secondphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-content">
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good2.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good3.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good5.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good6.webp" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </div>
-        <div class="floor-looper-item-floor">更多小米手机产品 ></div>
-      </div>
-    </div>
-
-    <div class="floor-looper">
-      <div class="floor-looper-item">
-        <div class="floor-looper-item-firstphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/firstphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-secondphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/secondphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-content">
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good2.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good3.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good5.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good6.webp" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </div>
-        <div class="floor-looper-item-floor">更多小米手机产品 ></div>
-      </div>
-    </div>
-
-    <div class="floor-looper">
-      <div class="floor-looper-item">
-        <div class="floor-looper-item-firstphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/firstphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-secondphoto">
-          <a href="http://www.baidu.com">
-            <img src=".././assets/images/home/floor/secondphoto1.jpg" alt />
-          </a>
-        </div>
-        <div class="floor-looper-item-content">
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good1.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good2.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good3.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good5.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show">
-            <div class="floor-looper-item-content-show-photo">
-              <img src=".././assets/images/home/good/good6.webp" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </div>
-        <div class="floor-looper-item-floor">更多小米手机产品 ></div>
-      </div>
-    </div>
-    <div class="floor-show">
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/1.webp" alt />
-      </div>
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/2.webp" alt />
-      </div>
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/3.webp" alt />
-      </div>
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/4.webp" alt />
-      </div>
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/5.webp" alt />
-      </div>
-      <div class="floor-show-item">
-        <img src=".././assets/images/home/floorshow/6.webp" alt />
-      </div>
-    </div>
-    <div class="floor-huodong">
-      <img
-        src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/23a79f829f44d3a5383ffeca7fd868ff.jpg?thumb=1&w=720&h=280"
-        alt
-      />
-    </div>
-    <div class="floor-liaojie">
-      <img
-        src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bbb5bac8089d890338b5bf8ff742cbbc.png?thumb=1&w=720&h=106"
-        alt
-      />
-    </div>
-    <div class="floor-floor-floor"></div>
-
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import LyTab from "ly-tab";
-import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
@@ -414,7 +42,8 @@ export default {
       ],
       subRouteUrl: ["/homepage/recom", "/homepage/phone"],
       options: {
-        activeColor: "#e9232c" // 设置选中的颜色
+        activeColor: "rgb(237,91,0)", // 设置选中的颜色
+        lineWidth: 2
       },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
@@ -442,15 +71,21 @@ export default {
       }
     };
   },
+  created(){
+    this.subRouteUrl.forEach((item,index)=>{
+      if(location.href.includes(this.subRouteUrl[index])){
+        this.selectedId = index;
+      }
+    })
+    
+    console.log();
+  },
   methods: {
     handleChange(item, index) {
       // console.log(item, index);
+      this.selectedId = index;
       this.$router.replace(this.subRouteUrl[index]);
     }
-  },
-  components: {
-    swiper,
-    swiperSlide
   }
 };
 </script>
@@ -459,206 +94,55 @@ export default {
 .home {
   width: 100%;
   height: 100%;
-  .headerbar{
+  .headerbar {
     position: fixed;
-    z-index: 22;
+    z-index: 31;
     left: 0;
     top: 0px;
-    box-shadow:0 2px 4px -1px rgba(0,0,0,.2);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     background: #f2f2f2;
     .search {
-    width: 100%;
-    height: 0.8rem;
-    position: relative;
-    img {
-      margin: 0.2rem 0 0 0.2rem;
-      width: 0.5rem;
-    }
-    .app-header-middle {
-      display: inline-block;
-      font-size: 0.25rem;
-      color: rgba(0, 0, 0, 0.3);
-      margin-left: 0.2rem;
-      margin-top: 0.1rem;
-      border: 1px solid #e5e5e5;
-      width: 75%;
-      height: 0.665rem;
+      width: 100%;
+      height: 0.8rem;
       position: relative;
-      top: -0.13rem;
-      line-height: 0.45rem;
-    }
-    .app-header-right {
-      width: 0.5rem;
-      height: 0.5rem;
-      display: inline-block;
-      position: absolute;
-      right: 0.15rem;
-      top: -0.1rem;
-      margin-top: 0.2rem;
-      span {
-        font-size: 0.45rem;
+      img {
+        margin: 0.2rem 0 0 0.2rem;
+        width: 0.5rem;
+      }
+      .app-header-middle {
+        display: inline-block;
+        font-size: 0.25rem;
+        color: rgba(0, 0, 0, 0.3);
+        margin-left: 0.2rem;
+        margin-top: 0.1rem;
+        border: 1px solid #e5e5e5;
+        width: 75%;
+        height: 0.665rem;
+        position: relative;
+        top: -0.13rem;
+        line-height: 0.45rem;
+      }
+      .app-header-right {
+        width: 0.5rem;
+        height: 0.5rem;
+        display: inline-block;
+        position: absolute;
+        right: 0.15rem;
+        top: -0.1rem;
+        margin-top: 0.2rem;
+        span {
+          font-size: 0.45rem;
+        }
       }
     }
-    }
-    .fix{
-      background: #f2f2f2;
-      .ly-tabbar{
+    .fix {
+      background-color: #f2f2f2;
+      box-shadow: -15px 0 15px 0 #f2f2f2;
+      .ly-tabbar {
         background: #f2f2f2;
+        height: 0.7rem;
+        color: rgb(116, 116, 116);
       }
-    }
-  }
-  
-  .swiper-container {
-    width: 100%;
-    padding-top: 1.77rem;
-    z-index: 30;
-  }
-  swiper {
-    touch-action: none;
-  }
-  .swapper {
-    width: 100%;
-    img {
-      width: 100%;
-    }
-  }
-  .swiper-pagination-bullet-active {
-    background: #ffffff;
-  }
-  .main-cell {
-    display: flex;
-    a {
-      img {
-        // width: 1.28rem;
-        width: 1.5rem;
-        height: 1.5832rem;
-      }
-    }
-  }
-  .main-cell-shop {
-    display: flex;
-    margin-top: 0.2rem;
-    .main-cell-shop-left,
-    .main-cell-shop-right {
-      width: 3.725rem;
-      height: 5.2916rem;
-      img {
-        width: 100%;
-      }
-    }
-    .main-cell-shop-right {
-      margin-left: 0.05rem;
-    }
-    .main-cell-shop-right {
-      display: flex;
-      flex-direction: column;
-      .main-cell-shop-right-top,
-      .main-cell-shop-right-floor {
-        width: 100%;
-        height: 50%;
-        img {
-          width: 100%;
-        }
-      }
-    }
-  }
-  .floor-looper {
-    width: 100%;
-    .floor-looper-item {
-      .floor-looper-item-firstphoto {
-        margin-top: 0.2rem;
-        img {
-          width: 100%;
-        }
-      }
-      .floor-looper-item-secondphoto {
-        margin-top: 0.2rem;
-        img {
-          width: 100%;
-        }
-      }
-      .floor-looper-item-content {
-        display: flex;
-        flex-wrap: wrap;
-        .floor-looper-item-content-show {
-          width: 3.5626rem;
-          height: 5.066rem;
-          margin-left: 0.125rem;
-          margin-top: 0.1rem;
-          img {
-            width: 100%;
-          }
-          .floor-looper-item-content-show-info {
-            .show-name {
-              text-align: center;
-              font-size: 0.28rem;
-              color: rgba(0, 0, 0, 0.87);
-            }
-            .show-gongneng {
-              text-align: center;
-              margin-top: 0.06rem;
-              font-size: 0.22rem;
-              line-height: 0.3rem;
-              color: rgba(0, 0, 0, 0.54);
-            }
-            .show-price {
-              text-align: center;
-              font-size: 0.28rem;
-              color: #ea625b;
-              height: 1.5em;
-              line-height: 1.5em;
-            }
-            .show-goumai {
-              margin-left: 0.78rem;
-              text-align: center;
-              width: 2rem;
-              background: #ea625b;
-              border-radius: 0.05rem;
-              color: #fff;
-              font-size: 0.24rem;
-              padding: 0.16rem 0;
-              box-sizing: border-box;
-              font-weight: 700;
-            }
-          }
-        }
-      }
-      .floor-looper-item-floor {
-        width: 100%;
-        height: 1.04rem;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.6);
-        line-height: 1rem;
-        font-size: 0.28rem;
-        border-top: 0.02rem solid rgba(0, 0, 0, 0.6);
-      }
-    }
-  }
-  .floor-show {
-    display: flex;
-    flex-wrap: wrap;
-    .floor-show-item {
-      width: 3.729rem;
-      margin-right: 0.035rem;
-      img {
-        width: 100%;
-      }
-    }
-    .floor-show-item:nth-child(2n) {
-      margin-right: 0rem;
-    }
-  }
-  .floor-floor-floor {
-    height: 0.95rem;
-  }
-  .floor-huodong {
-    img {
-      width: 100%;
-    }
-  }
-  .floor-liaojie {
-    img {
-      width: 100%;
     }
   }
 }
