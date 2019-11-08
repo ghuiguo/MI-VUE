@@ -48,25 +48,25 @@ export default {
       showFooter:true
     };
   },
-
-mounted(){
-  let string = window.location.href;
-    if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')){
-      this.showFooter = true;
-    }else{
-      this.showFooter = false;
+  methods: {
+  routefilter(){
+      let string = window.location.href;
+        if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')){
+          this.showFooter = true;
+        }else{
+          this.showFooter = false;
+        }
     }
-},
-beforeUpdate(){
-  let string = window.location.href;
-    if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')){
-      this.showFooter = true;
-    }else{
-      this.showFooter = false;
-    }
-},
+  },
+  mounted(){
+    this.routefilter();
+  },
+  beforeUpdate(){
+    this.routefilter();
+  },
 
-//  ==下面是王哥写的优秀党务案例，记得多学学 ==
+
+//  ==下面是王哥写的优秀案例，记得多学学 ==
 
 
 // mounted(){

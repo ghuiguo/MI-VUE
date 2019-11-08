@@ -87,10 +87,11 @@
   </div>
 </template>
 
-
 <script>
 export default {
-  components: {},
+  components: {
+    
+  },
   data() {
     return {
       hasdata: 0,
@@ -181,13 +182,14 @@ export default {
       if (this.allSelect == true) {
         let sum = 0;
         for (let i = 0; i < this.shoppingList.length; i++) {
-          this.shoppingList[i].isSelect = true;
+          if(this.shoppingList[i].state === 1){
+            this.shoppingList[i].isSelect = true;
           // console.log(sum);
           sum += this.shoppingList[i].money * this.shoppingList[i].num;
+          }
         }
-
         this.sum = sum;
-        console.log(this.sum);
+        // console.log(this.sum);
       }
       if (this.allSelect == false) {
         for (let i = 0; i < this.shoppingList.length; i++) {
