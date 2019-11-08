@@ -20,17 +20,17 @@
       <div class="payList-menu-all">
         <div class="payList-menu-detail-goods">
           <div class="payList-menu-detail-goods-item">
-            <img src="../../public/assets/images/cartpay/mobile1.png" alt />
+            <img src="../../../public/assets/images/mobile2.jpg" alt />
             <span class="goods-word-title">小米CC 9e 全网通版 4GB+128GB 白色恋人 128GB</span>
             <strong class="goods-value">1199.00</strong>
           </div>
           <div class="payList-menu-detail-goods-item">
-            <img src="../../public/assets/images/cartpay/mobile1.png" alt />
+            <img src="../../../public/assets/images/mobile2.jpg" alt />
             <span class="goods-word-title">小米CC 9e 全网通版 4GB+128GB 白色恋人 128GB</span>
             <strong class="goods-value">1199.00</strong>
           </div>
           <div class="payList-menu-detail-goods-item">
-            <img src="../../public/assets/images/cartpay/mobile1.png" alt />
+            <img src="../../../public/assets/images/mobile2.jpg" alt />
             <span class="goods-word-title">小米CC 9e 全网通版 4GB+128GB 白色恋人 128GB</span>
             <strong class="goods-value">1199.00</strong>
           </div>
@@ -86,7 +86,7 @@ export default {
       window.history.go(-1);
     },
     runtopay(){
-      this.$router.push('surepay')
+      this.$router.push('surepayfa/surepay')
     }
   }
 };

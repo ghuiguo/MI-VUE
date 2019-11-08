@@ -2,8 +2,12 @@
   <div class="Shopcart">
     <div class="cart-header">
       <span class="iconfont icon-sousuo"></span>
-      <h2 class="cart-header-title">购物车</h2>
-      <span class="cart-header-edit">编辑</span>
+      <h2 class="cart-header-title" style="    line-height: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    font-size: .3rem;
+    font-weight: 500;">购物车</h2>
+      <span class="cart-header-edit" style="font-size: .26rem;">编辑</span>
     </div>
 
     <div class="cart-main">
@@ -45,7 +49,7 @@
           <img src="../assets/images/gessulike.jpg" alt />
         </div>
         <div class="cart-main-another-list">
-          <div class="cart-main-another-list-item" :key="index" v-for="(item,index) in likeList">
+          <div class="cart-main-another-list-item" :key="index" v-for="(item,index) in likeList" style="    width: 49.3%;">
             <a href>
               <div class="goods-img-box">
                 <img :src="item.images" alt />
@@ -214,7 +218,9 @@ export default {
     deletegoods(item) {
       this.state = item.state = 0;
       this.num = item.num;
-      this.sum = this.sum - this.num * item.money;
+      if(this.sum!==0){
+        this.sum = this.sum - this.num * item.money;
+      }
     },
     Settlement() {
       if(this.sum!==0){

@@ -2,13 +2,17 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Homepage from '../pages/Homepage.vue';
 import Type from '../pages/Type.vue';
-import Shopcart from '../pages/Shopcart.vue';
 import Myself from '../pages/Myself.vue';
-import Paylist from '../pages/ShopCart-payList.vue';
-import Surepay from '../pages/Surepay.vue'
 import Login from '../pages/Login.vue';
 import Recom from '../pages/Home/Recom.vue';
 import Phone from '../pages/Home/Phone.vue';
+
+import Paylist from '../pages/Cart/ShopCart-payList.vue';
+import Shopcart from '../pages/Shopcart.vue';
+import Successpay from '../pages/Cart/Successpay.vue';
+import Surepay from '../pages/Cart/Surepay.vue';
+import SurepayFa from '../pages/Cart/SurepayFa.vue';
+
 
 
 
@@ -27,7 +31,7 @@ const router = new VueRouter({
 			redirect: {
 				path: '/homepage/recom',
 			}
-		},{
+		}, {
 			path: 'recom',
 			name: 'Recom',
 			component: Recom
@@ -50,19 +54,28 @@ const router = new VueRouter({
 		path: '/paylist',
 		name: 'paylist',
 		component: Paylist,
-	},{
-		path: '/surepay',
-		name: 'surepay',
-		component: Surepay,
-	},{
+	}, {
+		path: '/surepayfa',
+		name: 'surepayfa',
+		component: SurepayFa,
+		children: [{
+			path: 'surepay',
+			name: 'surepay',
+			component: Surepay,
+		},{
+			path: 'successpay',
+			name: 'successpay',
+			component: Successpay,
+		}]
+	}, {
 		path: '/myself',
 		name: 'myself',
 		component: Myself,
-	},{
+	}, {
 		path: '/login',
 		name: 'login',
 		component: Login,
-	},{
+	}, {
 		path: '*',
 		redirect: '/homepage'
 	}]

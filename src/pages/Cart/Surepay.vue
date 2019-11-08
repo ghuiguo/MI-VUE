@@ -41,11 +41,9 @@
       </div>
     </div>
     <div class="Surepay-button">
-      <span class="Surepay-button-item">立即付款</span>
+      <span class="Surepay-button-item" @click="runToSuccess()">立即付款</span>
     </div>
-    <div class="Success-pay">
-
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -59,6 +57,9 @@ export default {
     methods:{
         backtobefore(){
             window.history.go(-1);
+        },
+        runToSuccess(){
+            this.$router.push('successpay')
         }
     }
 };
