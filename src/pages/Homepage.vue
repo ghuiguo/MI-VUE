@@ -26,7 +26,6 @@
 
 <script>
 import LyTab from "ly-tab";
-import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
@@ -87,10 +86,6 @@ export default {
       this.selectedId = index;
       this.$router.replace(this.subRouteUrl[index]);
     }
-  },
-  components: {
-    swiper,
-    swiperSlide
   }
 };
 </script>

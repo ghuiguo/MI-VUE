@@ -373,27 +373,11 @@
 </template>
 
 <script>
-import LyTab from "ly-tab";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   data() {
     return {
-      selectedId: 0,
-      items: [
-        { label: "热门" },
-        { label: "服饰" },
-        { label: "鞋包" },
-        { label: "母婴" },
-        { label: "百货" },
-        { label: "食品" },
-        { label: "内衣" },
-        { label: "男装" },
-        { label: "电器" }
-      ],
-      options: {
-        activeColor: "rgb(237, 91, 0)" // 设置选中的颜色
-      },
       lunbo: [
         "../assets/home/swiper/s1.jpg",
         "../assets/home/swiper/s2.jpg",
