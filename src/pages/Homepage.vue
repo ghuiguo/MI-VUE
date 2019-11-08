@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import LyTab from "ly-tab";
 
 export default {
   data() {
@@ -77,12 +76,9 @@ export default {
         this.selectedId = index;
       }
     })
-    
-    console.log();
   },
   methods: {
     handleChange(item, index) {
-      // console.log(item, index);
       this.selectedId = index;
       this.$router.replace(this.subRouteUrl[index]);
     }
