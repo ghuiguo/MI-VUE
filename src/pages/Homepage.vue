@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="headerbar">
     <div class="search">
       <img src="../assets/home/home.png" alt />
       <div class="app-header-middle">
@@ -17,6 +18,7 @@
       class="fix"
       @change="handleChange"
     />
+    </div>
     <!-- @change="handleChange" -->
 
     <swiper :options="swiperOption" ref="mySwiper">
@@ -457,7 +459,14 @@ export default {
 .home {
   width: 100%;
   height: 100%;
-  .search {
+  .headerbar{
+    position: fixed;
+    z-index: 22;
+    left: 0;
+    top: 0px;
+    box-shadow:0 2px 4px -1px rgba(0,0,0,.2);
+    background: #f2f2f2;
+    .search {
     width: 100%;
     height: 0.8rem;
     position: relative;
@@ -490,17 +499,19 @@ export default {
         font-size: 0.45rem;
       }
     }
-  }
-  .fenlei {
-    text-align: center;
-    display: flex;
-    li {
-      width: 0.92rem;
-      height: 0.52rem;
+    }
+    .fix{
+      background: #f2f2f2;
+      .ly-tabbar{
+        background: #f2f2f2;
+      }
     }
   }
+  
   .swiper-container {
     width: 100%;
+    padding-top: 1.77rem;
+    z-index: 30;
   }
   swiper {
     touch-action: none;
