@@ -135,10 +135,8 @@ export default {
         right: 0.15rem;
         top: -0.1rem;
         margin-top: 0.2rem;
-<<<<<<< HEAD
         span {
           font-size: 0.45rem;
-=======
         img {
           width: 100%;
         }
@@ -187,7 +185,6 @@ export default {
               font-weight: 700;
             }
           }
->>>>>>> 687eb5a2ec74a3c52c55bfaacd0e77df46a69197
         }
       }
     }

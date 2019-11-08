@@ -9,6 +9,7 @@ import Surepay from '../pages/Surepay.vue'
 import Login from '../pages/Login.vue';
 import Recom from '../pages/Home/Recom.vue';
 import Phone from '../pages/Home/Phone.vue';
+import Setting from '../pages/Setting.vue';
 
 
 
@@ -62,6 +63,10 @@ const router = new VueRouter({
 		path: '/login',
 		name: 'login',
 		component: Login,
+	},{
+		path: '/setting',
+		name: 'setting',
+		component: Setting,
 	},{
 		path: '*',
 		redirect: '/homepage'
