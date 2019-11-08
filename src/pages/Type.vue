@@ -6,101 +6,199 @@
             <router-link class="i2" :to="{path:'search'}"></router-link>
         </header>
         <!-- 侧边导航 -->
-        <nav class="navDH">
-            <ul class="navWrapper">
-                <li :key="index"  v-for="(item,index) in items" :class="{active:chooseIndex==index}" @click="handleChange(index)">
-                    <span v-html="item.label" ></span>
-                </li>
-            </ul>
-        </nav>
+        <div class="ghcontainer">
+            <nav class="navDH">
+                <ul class="navWrapper">
+                    <li :key="index" v-for="(item,index) in items" :class="{active:chooseIndex==index}"
+                        @click="handleChange(index)">
+                        <span v-html="item.label"></span>
+                    </li>
+                </ul>
+            </nav>
 
-        <div class="typeYM">
-            <div class="YMWrapper">
-                <img src="../assets/classify/香薰.png" alt="" @click="pages()">
-                <div class="phone">
-                    <span class="phoneText">-- 手机 -- </span>
-                </div>
-                <div class="typePhone">
+            <!-- 分类详情页 -->
+            <div class="typeYM">
+                <div class="YMWrapper">
+                    <img src="../assets/classify/香薰.png" alt="">
+                    <div class="phone">
+                        <span class="phoneText"> 手机  </span>
+                    </div>
+                    <div class="typePhone">
+                        <!--  -->
+                        <div class="typePhoneBox">
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/9pro.png"/>
+                                        <p>小米 CC9 Pro</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/redmi.png" alt="">
+                                        <p>Redmi 8</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="Redmi8A product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/redmi8A.png" alt="">
+                                        <p>Redmi 8A</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                    <div class="typePhoneBox">
-                        <div class="cc9Phone product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/cc9.png" alt="">
-                                    <p>小米CC9 Pro</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="redmi8 product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi.png" alt="">
-                                    <p>Redmi 8</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="Redmi8A product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi8A.png" alt="">
-                                    <p>Redmi 8A</p>
-                                </div>
-                            </a>
-                        </div>
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/9pro.png" alt="">
+                                        <p>小米9 Pro 5G</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/MIx.png" alt="">
+                                        <p>小米 MIX Alpha</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="Redmi8A product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/k20.gif" alt="">
+                                        <p>k20 Pro 尊享版</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/小米CC9e.png" alt="">
+                                        <p>小米CC9</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/小米CC9.png" alt="">
+                                        <p>小米CC9</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="Redmi8A product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/小米CC9美图版.png" alt="">
+                                        <p>小米CC9美图版</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                        <div class="cc9Phone product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/cc9.png" alt="">
-                                    <p>小米CC9 Pro</p>
-                                </div>
-                            </a>
                         </div>
-                        <div class="redmi8 product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi.png" alt="">
-                                    <p>Redmi 8</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="Redmi8A product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi8A.png" alt="">
-                                    <p>Redmi 8A</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="cc9Phone product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/cc9.png" alt="">
-                                    <p>小米CC9 Pro</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="redmi8 product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi.png" alt="">
-                                    <p>Redmi 8</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="Redmi8A product">
-                            <a href="">
-                                <div>
-                                    <img src="../assets/classify/redmi8A.png" alt="">
-                                    <p>Redmi 8A</p>
-                                </div>
-                            </a>
+                    </div>
+
+                    <div class="phone2">
+                        <span class="phoneText2"> 家电  </span>
+                    </div>
+                    <div class="typePhone">
+
+                        <div class="typePhoneBox">
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/全面屏电视E55A.jpg" alt="">
+                                        <p>全面屏电视E55A</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/壁画电视.jpg" alt="">
+                                        <p>壁画电视</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="Redmi8A product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/电视4X65英寸.jpg" alt="">
+                                        <p>电视4X65英寸</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/立式空调.png" alt="">
+                                        <p>立式空调</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/空调C1.jpg" alt="">
+                                        <p>空调C1</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="Redmi8A product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/烘干一体.jpg" alt="">
+                                        <p>洗烘一体机</p>
+                                    </div>
+
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="YMWrapper">
+                    <div class="phone">
+                        <span class="phoneText"> 家电 </span>
+                    </div>
+                    <div class="typePhone">
 
+                        <div class="typePhoneBox">
+                            <div class="cc9Phone product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/MIx.png" alt="">
+                                        <p>小米CC9 Pro</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/redmi.png" alt="">
+                                        <p>Redmi 8</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="redmi8 product">
+                                <a href="">
+                                    <div>
+                                        <img src="../assets/classify/redmi.png" alt="">
+                                        <p>Redmi 8</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
 
 </template>
@@ -111,7 +209,7 @@
         components: {},
         data() {
             return {
-                chooseIndex:0,
+                chooseIndex: 0,
                 items: [
                     {label: "新品"},
                     {label: "众筹"},
@@ -139,19 +237,18 @@
                     {label: "零售店"}
 
                 ],
-
-
                 phoneList: [
                     {
-                        images: "../assets/classify/cc9.png",
+                        src: "../assets/home/home.png",
                         name: "小米CC9 Pro"
                     }, {
-                        images: "../assets/classify/redmi.png",
+                        src: "../assets/home/9pro.png",
                         name: "Redmi 8"
                     }, {
-                        images: "../assets/classify/redmi8A.png",
+                        src: "../../assets/classify/redmi8A.png",
                         name: "Redmi 8A"
                     }],
+
                 applianceList: [
                     {
                         images: "../assets/classify/tv.png",
@@ -168,16 +265,16 @@
             }
 
         },
-        methods:{
+        methods: {
 
             /* 路由返回到上次进入的前一页 */
-            backtoOne(){
+            backtoOne() {
                 window.history.go(-1);
             },
             /* 页面导航选中样式 */
-            handleChange(index){
+            handleChange(index) {
                 window.console.log(index);
-                this.chooseIndex=index;
+                this.chooseIndex = index;
             }
         }
     };
@@ -187,7 +284,6 @@
     .type {
         position: relative;
         width: 7.5rem;
-        height: 100%;
         .header {
             display: flex;
             width: 7.5rem;
@@ -220,12 +316,10 @@
                 line-height: .62rem;
                 background: url(../assets/classify/i2.png) no-repeat;
                 background-size: cover;
-
             }
-
         }
-        .navDH {
 
+        .navDH {
             width: 1.6rem;
             height: 100%;
             border-right: 1px solid #efefef;
@@ -244,9 +338,7 @@
                 font-size: .32rem;
                 text-align: center;
                 color: #3c3c3c;
-
             }
-
         }
         .typeYM {
             position: absolute;
@@ -262,7 +354,36 @@
                     width: 5.2rem;
                     height: 2.08rem;
                 }
+
+                .phone2 {
+                    position: relative;
+                    background: #fff;
+                    font-size: .28rem;
+                    text-align: center;
+                    font-weight: 400;
+                    margin-top: .2rem;
+                    height: .5rem;
+                    line-height: .5rem;
+                    overflow: hidden;
+                    .phoneText2:before,
+                    .phoneText2:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: auto;
+                        width: 6.4px;
+                        width: .4rem;
+                        border-top: 1px solid #e0e0e0;
+                        transform: translate3d(-150%, -50%, 0);
+                    }
+                    .phoneText2:after {
+                        left: auto;
+                        right: 56px;
+                    }
+                }
+
                 .phone {
+                    position: relative;
                     background: #fff;
                     font-size: .28rem;
                     text-align: center;
@@ -271,7 +392,21 @@
                     height: 1.28rem;
                     line-height: 1.28rem;
                     overflow: hidden;
-
+                    .phoneText:before,
+                    .phoneText:after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: auto;
+                        width: 6.4px;
+                        width: .4rem;
+                        border-top: 1px solid #e0e0e0;
+                        transform: translate3d(-150%, -50%, 0);
+                    }
+                    .phoneText:after {
+                        left: auto;
+                        right: 56px;
+                    }
                 }
 
             }
@@ -288,7 +423,7 @@
                     margin: .4rem 0 .6rem 0;
                     width: 33.333%;
                     height: 1.58rem;
-                    float: right;
+                    float: left;
 
                     img {
                         display: block;
@@ -296,15 +431,15 @@
                         width: 1rem;
                         height: 1rem;
                         background: #fff;
-                        overflow: hidden;
+                        /*overflow: hidden;*/
                     }
 
-                    p{
+                    p {
                         display: block;
                         margin-top: .28rem;
                         white-space: nowrap;
                         font-size: .23rem;
-                        text-align:center;
+                        text-align: center;
                         color: rgba(0, 0, 0, .54);
                     }
 
@@ -312,13 +447,31 @@
 
             }
         }
-        .navWrapper li.active{
+        .navWrapper li.active {
             color: #fb7d34;
         }
 
     }
 
+    .type {
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .ghcontainer {
+        flex: 1;
+    }
+
+    .type .typeYM {
+        position: absolute;
+        top: 1.3rem;
+        left: 1.96rem;
+        width: 5.24rem;
+        height: 100%;
+        overflow-y: auto;
+    }
 
 
 </style>
