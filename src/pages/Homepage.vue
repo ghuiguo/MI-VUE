@@ -4,6 +4,7 @@
       <div class="search">
         <img src="../assets/home/home.png" alt />
         <div class="app-header-middle">
+          &nbsp;
           <span class="iconfont icon-jingli my"></span>
           搜索商品名称
         </div>
@@ -102,30 +103,29 @@ export default {
       height: 0.8rem;
       position: relative;
       img {
-        margin: 0.2rem 0 0 0.2rem;
+        position: absolute;
+        left: 0.05rem;
+        top: 0.05rem;
         width: 0.5rem;
       }
       .app-header-middle {
-        display: inline-block;
-        font-size: 0.25rem;
+        position: absolute;
+        font-size: 0.3rem;
         color: rgba(0, 0, 0, 0.3);
-        margin-left: 0.25rem;
         border: 1px solid #e5e5e5;
-        width: 75%;
-        height: 0.6rem;
-        position: relative;
-        top: 0.02rem;
-        line-height: 0.6rem;
+        width: 71%;
+        height: 0.62rem;
+        left: 1rem;
+        top: 0.1rem;
+        line-height: 0.62rem;
         background: #FFF;
       }
       .app-header-right {
-        width: 0.5rem;
-        height: 0.5rem;
-        display: inline-block;
         position: absolute;
-        right: 0.15rem;
-        top: -0.1rem;
-        margin-top: 0.2rem;
+        width: 0.5rem;
+        height: 0.5rem;   
+        right: 0.3rem;
+        top: 0;
         span {
           font-size: 0.45rem;
         }
