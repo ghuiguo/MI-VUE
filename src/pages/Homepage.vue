@@ -109,14 +109,14 @@ export default {
         display: inline-block;
         font-size: 0.25rem;
         color: rgba(0, 0, 0, 0.3);
-        margin-left: 0.2rem;
-        margin-top: 0.1rem;
+        margin-left: 0.25rem;
         border: 1px solid #e5e5e5;
         width: 75%;
-        height: 0.665rem;
+        height: 0.6rem;
         position: relative;
-        top: -0.13rem;
-        line-height: 0.45rem;
+        top: 0.02rem;
+        line-height: 0.6rem;
+        background: #FFF;
       }
       .app-header-right {
         width: 0.5rem;
