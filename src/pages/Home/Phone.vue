@@ -10,13 +10,71 @@
     </div>
     <div class="phone_liner"></div>
     <!-- 轮播组件 -->
-    <div class="phone-sell"></div>
+    <div class="phone-sell">
+      <swiper class="swiperphone" :options="swiperOption" ref="mySwiper">
+        <!-- slides -->
+        <swiper-slide class="swapper">
+          <div class="swapper-item">
+            <img
+              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/bbf706954e6e9fbc62e33a6ad38728ad.jpg?thumb=1&w=304&h=280"
+              alt
+            />
+            <!-- .floor-looper-item-content-show-info {
+            
+            }-->
+            <div class="swiper-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="swapper">
+          <div class="swapper-item">
+            <img
+              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/e05bc3c71baf7346073da4493e27bdf0.jpg?thumb=1&w=304&h=280"
+              alt
+            />
+            <div class="swiper-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="swapper">
+          <div class="swapper-item">
+            <img
+              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a0170edad5dfa480d8bddf93a7d17c2.jpg?thumb=1&w=304&h=280"
+              alt
+            />
+            <div class="swiper-show-info">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+        </swiper-slide>
+        <!-- Optional controls -->
+        <!-- <div class="swiper-pagination" slot="pagination"></div> -->
+        <!-- <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>-->
+      </swiper>
+    </div>
     <div class="phone_liner"></div>
     <!-- 手机组件 -->
-    
+
     <!-- 福利组件 -->
     <div class="phone-welfare">
-      <div class='phone-welfare-top'><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4680750ff3a08e7381e191f5c4c57b8.jpg?thumb=1&w=720&h=91" alt=""></div>
+      <div class="phone-welfare-top">
+        <img
+          src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4680750ff3a08e7381e191f5c4c57b8.jpg?thumb=1&w=720&h=91"
+          alt
+        />
+      </div>
       <div class="phone_liner"></div>
       <div class="phone-welfare-item" :key="index" v-for="(item,index) in phoneWelfare">
         <img :src="item" alt />
@@ -27,7 +85,79 @@
     </div>
     <div class="phone_liner"></div>
     <!-- sell组件 -->
-    <div class="phone-sell-table"></div>
+    <div class="phone-sell-table">
+      <div class="phone-sell-table-top">
+        <img
+          src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/93e024104a2cbad0f9218778e25c19d1.jpg?thumb=1&w=720&h=95"
+          alt
+        />
+        <div class="phone_liner" style="background-color: rgb(71, 23, 147);"></div>
+      </div>
+      <div class="phone-sell-table-middle">
+        <div class="phone-sell-table-middle-img">
+          <img
+            src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0fbe9af39cabf7a37d97796ca16481db.jpg?thumb=1&w=688&h=367"
+            alt
+          />
+        </div>
+        <div class="phone-sell-table-middle-img-info">
+          <div class="phone-sell-table-middle-img-info-text">
+            <div class="phone-sell-table-middle-img-info-text-first">小米CC9 Pro</div>
+            <div class="phone-sell-table-middle-img-info-text-second">一亿像素 五摄四闪</div>
+          </div>
+          <div class="phone-sell-table-middle-img-info-button">
+            <div class="phone-sell-table-middle-img-info-button-first">￥2799起</div>
+            <div class="phone-sell-table-middle-img-info-button-second">点击购买</div>
+          </div>
+        </div>
+        <div class="phone-sell-table-middle-info">
+          <div class="phone-sell-table-middle-info-item">
+            <div class="phone-sell-table-middle-info-photo">
+              <img src="../.././assets/images/home/good/good4.jpg" alt />
+            </div>
+            <div class="phone-sell-table-middle-info-text">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="phone-sell-table-middle-info-item">
+            <div class="phone-sell-table-middle-info-photo">
+              <img src="../.././assets/images/home/good/good4.jpg" alt />
+            </div>
+            <div class="phone-sell-table-middle-info-text">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="phone-sell-table-middle-info-item">
+            <div class="phone-sell-table-middle-info-photo">
+              <img src="../.././assets/images/home/good/good4.jpg" alt />
+            </div>
+            <div class="phone-sell-table-middle-info-text">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+          <div class="phone-sell-table-middle-info-item">
+            <div class="phone-sell-table-middle-info-photo">
+              <img src="../.././assets/images/home/good/good4.jpg" alt />
+            </div>
+            <div class="phone-sell-table-middle-info-text">
+              <div class="show-name">Redmi Note 8</div>
+              <div class="show-gongneng">千元4800万四摄</div>
+              <div class="show-price">￥999</div>
+              <div class="show-goumai">立即购买</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="phone_liner"></div>
     <!-- 循环展示组件 -->
     <div class="phone-floor-show">
@@ -39,16 +169,24 @@
       </div>
       <div class="phone_liner"></div>
       <div class="phone-floor-show-middle">
-        <div class="phone-floor-show-middle-item" :key="index" v-for="(item,index) in phoneFloorShowMiddle" >
-          <img :src="item" alt="">
+        <div
+          class="phone-floor-show-middle-item"
+          :key="index"
+          v-for="(item,index) in phoneFloorShowMiddle"
+        >
+          <img :src="item" alt />
         </div>
       </div>
       <div class="phone_liner"></div>
-      <div class="phone-floor-show-down"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/bb91d74f2e912568ceb834b9fbd828e0.jpg?thumb=1&w=720&h=280" alt=""></div>
+      <div class="phone-floor-show-down">
+        <img
+          src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/bb91d74f2e912568ceb834b9fbd828e0.jpg?thumb=1&w=720&h=280"
+          alt
+        />
+      </div>
     </div>
     <!-- 底部图片组件 -->
     <div class="phone-floor"></div>
-
   </div>
 </template>
 
@@ -56,6 +194,25 @@
 export default {
   data() {
     return {
+      swiperOption: {
+        slidesPerView: 2.4,
+        spaceBetween: 20,
+        centeredSlides: true,
+        //以下配置不懂的，可以去swiper官网看api，链接http://www.swiper.com.cn/api/
+        notNextTick: true, // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
+        autoplay: false,
+        loop: true,
+        direction: "horizontal",
+        grabCursor: true,
+        setWrapperSize: true,
+        autoHeight: true,
+        centeredSlides: true,
+        paginationClickable: true,
+        keyboard: true,
+        mousewheelControl: true,
+        observeParents: true, // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger
+        debugger: true
+      },
       phoneShowTop:
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7242a6f64a85451435401a9c91ab6c5c.jpg?thumb=1&w=720&h=743",
       phoneShowDown:
@@ -73,7 +230,12 @@ export default {
       ],
       phoneWelfareFloor:
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/86f6f18daed9d0fdf46eaf0e2ca7cc40.jpg?thumb=1&w=720&h=135",
-      phoneFloorShowMiddle:['//cdn.cnbj1.fds.api.mi-img.com/mi-mall/960e1b2fefe6ef6c621857ea4298b9db.jpg?thumb=1&w=360&h=323','//cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aa0431e0e2918b1bf2ca54442388dda.jpg?thumb=1&w=360&h=323','//cdn.cnbj1.fds.api.mi-img.com/mi-mall/2827d76cb767b80fde616ba97c665d1f.jpg?thumb=1&w=360&h=327','//cdn.cnbj1.fds.api.mi-img.com/mi-mall/ac429b480e6af8366df2d31dc8f0a6a9.jpg?thumb=1&w=360&h=327']
+      phoneFloorShowMiddle: [
+        "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/960e1b2fefe6ef6c621857ea4298b9db.jpg?thumb=1&w=360&h=323",
+        "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aa0431e0e2918b1bf2ca54442388dda.jpg?thumb=1&w=360&h=323",
+        "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/2827d76cb767b80fde616ba97c665d1f.jpg?thumb=1&w=360&h=327",
+        "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/ac429b480e6af8366df2d31dc8f0a6a9.jpg?thumb=1&w=360&h=327"
+      ]
     };
   }
 };
@@ -104,13 +266,59 @@ export default {
   }
   .phone-sell {
     height: 5.2rem;
-    background: red;
+    position: relative;
+    font-size: 0.1rem;
+    background: rgb(37, 1, 104);
+    .swiperphone {
+      position: absolute;
+      top: -1.5rem;
+    }
+    .swapper {
+      .swapper-item {
+        background: #ffffff;
+        margin-left: 0.1rem;
+        width: 3.166rem;
+        height: 5.2rem;
+        .swiper-show-info {
+          .show-name {
+            text-align: center;
+            font-size: 0.28rem;
+            color: rgba(0, 0, 0, 0.87);
+          }
+          .show-gongneng {
+            text-align: center;
+            margin-top: 0.06rem;
+            font-size: 0.22rem;
+            line-height: 0.3rem;
+            color: rgba(0, 0, 0, 0.54);
+          }
+          .show-price {
+            text-align: center;
+            font-size: 0.28rem;
+            color: #ea625b;
+            height: 1.5em;
+            line-height: 1.5em;
+          }
+          .show-goumai {
+            margin: 0 auto;
+            text-align: center;
+            width: 2rem;
+            background: #ea625b;
+            border-radius: 0.05rem;
+            color: #fff;
+            font-size: 0.24rem;
+            padding: 0.16rem 0;
+            font-weight: 700;
+          }
+        }
+      }
+    }
   }
   .phone-welfare {
     display: flex;
     flex-wrap: wrap;
-    .phone-welfare-top{
-      img{
+    .phone-welfare-top {
+      img {
         width: 100%;
       }
     }
@@ -127,9 +335,139 @@ export default {
       }
     }
   }
-  .phone-sell-table{
-    height: 5rem;
-    background: #ffffff
+  .phone-sell-table {
+    background-color: rgb(71, 23, 147);
+    .phone-sell-table-top {
+      img {
+        width: 100%;
+      }
+    }
+    .phone-sell-table-middle {
+      width: 100%;
+      .phone-sell-table-middle-img {
+        border-radius: 3px;
+        width: 7.1666rem;
+        img {
+          margin-left: 0.2rem;
+          margin-top: 0.1rem;
+          width: 100%;
+        }
+      }
+      .phone-sell-table-middle-img-info {
+        margin-left: 0.2rem;
+        width: 7.1666rem;
+        height: 1.49rem;
+        background: #ffffff;
+        position: relative;
+        .phone-sell-table-middle-img-info-text {
+          position: absolute;
+          width: 4.2916rem;
+          height: 0.9rem;
+          left: 0.2rem;
+          top: 0.2rem;
+          .phone-sell-table-middle-img-info-text-first {
+            font-size: 0.32rem;
+            font-weight: bolder;
+            color: #3c3c3c;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          .phone-sell-table-middle-img-info-text-second {
+            font-size: 0.2rem;
+            color: #3c3c3c;
+            height: 1.5em;
+            line-height: 1.5em;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+        .phone-sell-table-middle-img-info-button {
+          position: absolute;
+          width: 2.29rem;
+          height: 0.9104rem;
+          right: 0.2rem;
+          top: 0.2rem;
+          .phone-sell-table-middle-img-info-button-first {
+            position:absolute;
+            font-size: 0.32rem;
+            color: #ff4a48;
+            font-weight: 700;
+            text-align: right;
+            line-height: 1em;
+            height: 1.2em;
+            white-space: nowrap;
+            text-align: center;
+          }
+          .phone-sell-table-middle-img-info-button-second {
+            position:absolute;
+            top: 0.4rem;
+            right: 0.3rem;
+            text-align: center;
+            width: 2.5rem;
+            background: #ea625b;
+            border-radius: 0.05rem;
+            color: #fff;
+            font-size: 0.24rem;
+            padding: 0.16rem 0;
+            font-weight: 700;
+          }
+        }
+      }
+      .phone-sell-table-middle-info {
+        width: 100%;
+        background-color: rgb(71, 23, 147);
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        .phone-sell-table-middle-info-item {
+          border: 1px solid #ffffff;
+          border-radius: 3px;
+          background-color: #ffffff;
+          margin-left: 0.13rem;
+          margin-top: 0.2rem;
+          width: 3.52rem;
+          height: 5.8316rem;
+          .phone-sell-table-middle-info-photo {
+            img {
+              width: 100%;
+            }
+          }
+          .phone-sell-table-middle-info-text {
+            .show-name {
+              text-align: center;
+              font-size: 0.28rem;
+              color: rgba(0, 0, 0, 0.87);
+            }
+            .show-gongneng {
+              text-align: center;
+              margin-top: 0.06rem;
+              font-size: 0.22rem;
+              line-height: 0.3rem;
+              color: rgba(0, 0, 0, 0.54);
+            }
+            .show-price {
+              text-align: center;
+              font-size: 0.28rem;
+              color: #ea625b;
+              height: 1.5em;
+              line-height: 1.5em;
+            }
+            .show-goumai {
+              margin-left: 0.78rem;
+              text-align: center;
+              width: 2rem;
+              background: #ea625b;
+              border-radius: 0.05rem;
+              color: #fff;
+              font-size: 0.24rem;
+              padding: 0.16rem 0;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
   }
   .phone-floor-show {
     .phone-floor-show-top {
@@ -147,9 +485,9 @@ export default {
         }
       }
     }
-    .phone-floor-show-down{
-      img{
-        width: 100%
+    .phone-floor-show-down {
+      img {
+        width: 100%;
       }
     }
   }
