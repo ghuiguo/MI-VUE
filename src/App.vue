@@ -54,7 +54,8 @@ export default {
       string.includes("myself") ||
       string.includes("type") ||
       string.includes("homepage") ||
-      string.includes("shopcart")
+      string.includes("shopcart")||
+      string.includes("orderList")
     ) {
       this.showFooter = true;
     } else {
@@ -67,7 +68,8 @@ export default {
       string.includes("myself") ||
       string.includes("type") ||
       string.includes("homepage") ||
-      string.includes("shopcart")
+      string.includes("shopcart")||
+      string.includes("orderList")
     ) {
       this.showFooter = true;
     } else {

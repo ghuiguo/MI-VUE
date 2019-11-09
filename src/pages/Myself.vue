@@ -9,7 +9,7 @@
       </div>
     </header>
 
-    <div class="b1 ui-flex align-center justify-space-between">
+    <div class="b1 ui-flex align-center justify-space-between" @click="toMyOrderList()">
       <div class="cite">我的订单</div>
       <div class="span ui-flex align-center">
         <a class>全部订单</a>
@@ -164,6 +164,10 @@ export default {
       if(type){
         this.$router.push('login');
       }
+    },
+    //
+    toMyOrderList(){
+      this.$router.push('orderList');
     },
     //列表页跳转路由
     toRouters(router){
