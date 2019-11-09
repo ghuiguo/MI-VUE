@@ -9,7 +9,7 @@
       </div>
     </header>
 
-    <div class="b1 ui-flex align-center justify-space-between" @click="toMyOrderList()">
+    <div class="b1 ui-flex align-center justify-space-between" @click="toMyOrderList(0)">
       <div class="cite">我的订单</div>
       <div class="span ui-flex align-center">
         <a class>全部订单</a>
@@ -17,8 +17,8 @@
     </div>
     <!-- 三个tab -->
     <ul class="b2 ui-flex align-center justify-space-between">
-      <li :key="item.id" v-for="item in tabList" :class="item.className">
-        <a>
+      <li :key="item.id" v-for="(item,index) in tabList" :class="item.className">
+        <a @click="toMyOrderList(index+1)">
           <div class="icon"></div>
           <span v-html="item.name"></span>
         </a>
@@ -28,7 +28,8 @@
     <div v-for="item in homeList" :key="item.id">
       <div class="ui-line"></div>
       <ul class="items">
-        <li @click="toRouters(itemChild.router)"
+        <li
+          @click="toRouters(itemChild.router)"
           v-for="itemChild in item.children"
           :key="itemChild.id"
           :class="itemChild.childClassName"
@@ -154,24 +155,24 @@ export default {
       dialogShow: false
     };
   },
-  methods:{
-    showDialog(){
+  methods: {
+    showDialog() {
       this.dialogShow = true;
     },
-    hideDialog(type){
-      console.log(type);
+    hideDialog(type) {
       this.dialogShow = false;
-      if(type){
-        this.$router.push('login');
+      if (type) {
+        this.$router.push("login");
       }
     },
     //
-    toMyOrderList(){
-      this.$router.push('orderList');
+    toMyOrderList(index) {
+      if (index <= 2) {
+        this.$router.push("orderList/"+index);
+      }
     },
     //列表页跳转路由
-    toRouters(router){
-      console.log(router,'++++++-++++++');
+    toRouters(router) {
       this.$router.push(router);
     }
   }
@@ -343,7 +344,7 @@ export default {
         right: 0;
         height: 200%;
         transform-origin: right 0;
-        transform: scale(.5) translateZ(0);
+        transform: scale(0.5) translateZ(0);
       }
       button:before {
         content: "";
@@ -351,10 +352,10 @@ export default {
         position: absolute;
         border-top: 1px solid #d9d9d9;
         top: 0;
-        left:0;
+        left: 0;
         width: 200%;
         transform-origin: left 0;
-        transform: scale(.5) translateZ(0);
+        transform: scale(0.5) translateZ(0);
       }
       .agree {
         color: #ff6700;

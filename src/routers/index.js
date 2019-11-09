@@ -92,7 +92,7 @@ const router = new VueRouter({
 		name: 'details',
 		component: Details,
 	},{
-		path: '/orderList',
+		path: '/orderList/:type',
 		name: 'orderList',
 		component: OrderList,
 	},{
