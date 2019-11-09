@@ -46,10 +46,12 @@ const router = new VueRouter({
 			name: 'Phone',
 			component: Phone
 		}]
-	}, {
+	},
+		{
 		path: '/type',
 		name: 'type',
 		component: Type,
+
 
 	}, {
 		path: '/shopcart',
