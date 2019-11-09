@@ -53,19 +53,19 @@ export default {
         },
         {
           id: 2,
-          src: "../assets/home/swiper/productDetailPic2.jpg"
+          src: "../assets/home/swiper/s2.jpg"
         },
         {
           id: 3,
-          src: "../assets/home/swiper/productDetailPic3.jpg"
+          src: "../assets/home/swiper/s3.jpg"
         },
         {
           id: 4,
-          src: "../assets/home/swiper/productDetailPic2.jpg"
+          src: "../assets/home/swiper/s5.jpg"
         },
         {
           id: 5,
-          src: "../assets/home/swiper/productDetailPic3.jpg"
+          src: "../assets/home/swiper/s4.jpg"
         }
       ],
       swiperOption: {

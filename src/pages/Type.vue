@@ -392,6 +392,7 @@
                     height: 1.28rem;
                     line-height: 1.28rem;
                     overflow: hidden;
+                    width: 100%;
                     .phoneText:before,
                     .phoneText:after {
                         content: "";
@@ -405,7 +406,7 @@
                     }
                     .phoneText:after {
                         left: auto;
-                        right: 56px;
+                        right: 1.12rem;
                     }
                 }
 
