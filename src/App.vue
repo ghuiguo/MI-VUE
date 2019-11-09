@@ -18,7 +18,9 @@
         <span>我的</span>
       </router-link>
     </div>
-
+    <a v-show="xiangshang&&Xiangshang" class="xs" href=":;" @click="xsfun">
+      <img src="https://m.mi.com/static/img/top.451d650ecd.png" alt="">
+    </a>
     <router-view></router-view>
   </div>
 </template>
@@ -44,38 +46,45 @@ export default {
   components: {},
   data() {
     return {
-      showFooter: true
+      showFooter: true,
+      xiangshang:false,
+      Xiangshang:false,
     };
   },
 
-  mounted() {
-    let string = window.location.href;
-    if (
-      string.includes("myself") ||
-      string.includes("type") ||
-      string.includes("homepage") ||
-      string.includes("shopcart")||
-      string.includes("orderList")
-    ) {
-      this.showFooter = true;
-    } else {
-      this.showFooter = false;
+  methods: {
+  routefilter(){
+      let string = window.location.href;
+        if(string.includes('myself')||string.includes('type')||string.includes('homepage')||string.includes('shopcart')||string.includes("orderList")){
+          this.showFooter = true;
+        }else{
+          this.showFooter = false;
+        }
+        if(string.includes('homepage')){
+          this.xiangshang = true;
+        }else{
+          this.xiangshang = false;
+        }
+    },
+    handleScroll(){
+      if(document.documentElement.scrollTop>300){
+        this.Xiangshang=true;
+      }else{
+        this.Xiangshang=false;
+      }
+    },
+    xsfun(ev){
+      document.documentElement.scrollTop=0;
+      ev.preventDefault();
     }
   },
-  beforeUpdate() {
-    let string = window.location.href;
-    if (
-      string.includes("myself") ||
-      string.includes("type") ||
-      string.includes("homepage") ||
-      string.includes("shopcart")||
-      string.includes("orderList")
-    ) {
-      this.showFooter = true;
-    } else {
-      this.showFooter = false;
-    }
-  }
+  mounted(){
+    this.routefilter();
+    window.addEventListener('scroll', this.handleScroll, true);
+  },
+  beforeUpdate(){
+    this.routefilter();
+  },
 };
 </script>
 
@@ -102,6 +111,15 @@ export default {
   }
   a.router-link-active {
     color: #ff6700;
+  }
+}
+.xs{
+  position: fixed;
+  z-index: 22;
+  left:6.3rem;
+  bottom: 1.5rem;
+  img{
+    width: 0.7rem;
   }
 }
 </style>
