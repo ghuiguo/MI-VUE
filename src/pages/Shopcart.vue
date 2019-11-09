@@ -2,11 +2,14 @@
   <div class="Shopcart">
     <div class="cart-header">
       <span class="iconfont icon-sousuo" @click="toSearch()"></span>
-      <h2 class="cart-header-title" style="    line-height: 1rem;
+      <h2
+        class="cart-header-title"
+        style="    line-height: 1rem;
     text-align: center;
     margin: 0 auto;
     font-size: .3rem;
-    font-weight: 500;">购物车</h2>
+    font-weight: 500;"
+      >购物车</h2>
       <span class="cart-header-edit" style="font-size: .26rem;">编辑</span>
     </div>
 
@@ -25,13 +28,16 @@
               <span class="cart-main-list-item-handle-price">￥{{item.money}}</span>
               <span class="cart-main-list-item-handle-number">
                 <span class="cart-main-list-item-handle-number-operate">
-                  <span class="iconfont icon-jian" @click="oppNum(item)"></span>
+                  <span class="iconfont icon-jian" @click="numChange(item,-1)"></span>
                   <span class="amount" v-text="item.num"></span>
-                  <span class="supnum iconfont icon-jia" @click="supNum(item)"></span>
+                  <span class="supnum iconfont icon-jia" @click="numChange(item,1)"></span>
                 </span>
-                <span class="delete iconfont icon-shanchu-copy-copy" @click="deletegoods(item)"
-                style="font-size: .38rem;
-                color: darkgrey;"></span>
+                <span
+                  class="delete iconfont icon-shanchu-copy-copy"
+                  @click="deletegoods(index)"
+                  style="font-size: .38rem;
+                color: darkgrey;"
+                ></span>
               </span>
             </span>
           </li>
@@ -51,7 +57,12 @@
           <img src="../assets/images/gessulike.jpg" alt />
         </div>
         <div class="cart-main-another-list">
-          <div class="cart-main-another-list-item" :key="index" v-for="(item,index) in likeList" style="    width: 49.3%;">
+          <div
+            class="cart-main-another-list-item"
+            :key="index"
+            v-for="(item,index) in likeList"
+            style="    width: 49.3%;"
+          >
             <a href>
               <div class="goods-img-box">
                 <img :src="item.images" alt />
@@ -89,9 +100,7 @@
 
 <script>
 export default {
-  components: {
-    
-  },
+  components: {},
   data() {
     return {
       hasdata: 0,
@@ -177,64 +186,54 @@ export default {
         this.sum = this.sum - item.money * item.num;
       }
     },
+    getSum(shoppingList) {
+      let sum = 0;
+      for (let i = 0; i < shoppingList.length; i++) {
+        sum += shoppingList[i].money * shoppingList[i].num;
+      }
+      return sum;
+    },
     selectall(shoppingList) {
-      this.allSelect = !this.allSelect;
-      if (this.allSelect == true) {
-        let sum = 0;
+      if (this.shoppingList.length > 0) {
+        this.allSelect = !this.allSelect;
         for (let i = 0; i < this.shoppingList.length; i++) {
-          if(this.shoppingList[i].state === 1){
-            this.shoppingList[i].isSelect = true;
-          // console.log(sum);
-          sum += this.shoppingList[i].money * this.shoppingList[i].num;
-          }
+          this.shoppingList[i].isSelect = this.allSelect;
         }
-        this.sum = sum;
-        // console.log(this.sum);
-      }
-      if (this.allSelect == false) {
-        for (let i = 0; i < this.shoppingList.length; i++) {
-          this.sum = 0;
-          this.shoppingList[i].isSelect = false;
-        }
+        this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
       }
     },
-    oppNum(item) {
-      item.num--;
-      if (item.num <= 1) {
-        item.num = 1;
-        return;
-      }
-      if (item.isSelect == true) {
-        this.sum = this.sum - item.money;
+    numChange(item, i) {
+      const num = item.num + i;
+      if (num > 0) {
+        console.log(num, item.num, i);
+        item.num = num;
+        this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
       }
     },
-    supNum(item) {
-      item.num++;
-      if (item.num >= 10) {
-        item.num = 10;
-        return;
-      }
-      if (item.isSelect == true) {
-        let sum = this.sum + item.money;
-        this.sum = sum;
-      }
-    },
-    deletegoods(item) {
-      this.state = item.state = 0;
-      this.num = item.num;
-      if(this.sum!==0){
-        this.sum = this.sum - this.num * item.money;
+    deletegoods(index) {
+      this.shoppingList.splice(index, 1);
+      this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
+      if (this.shoppingList.length === 0) {
+        this.allSelect = false;
       }
     },
     Settlement() {
-      if(this.sum!==0){
+      if (this.sum !== 0) {
         this.$router.push("paylist");
-      } 
+      }
     },
-    toSearch(){
-      this.$router.push('/search');
+    toSearch() {
+      this.$router.push("/search");
     }
   }
+  // 加减计算
+
+  // oppNum(item) {
+
+  // },
+  // supNum(item) {
+
+  // },
 };
 </script>
 
