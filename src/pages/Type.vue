@@ -21,12 +21,20 @@
                 <div class="YMWrapper">
                     <img src="../assets/classify/香薰.png" alt="">
                     <div class="phone">
-                        <span class="phoneText"> 手机  </span>
+                        <span class="phoneText "> 手机  </span>
                     </div>
                     <div class="typePhone">
                         <!--  -->
                         <div class="typePhoneBox">
-                            <div class="cc9Phone product">
+                            <div class="cc9Phone product" v-for="(i,index) in  phoneList" :key="index">
+                                <a href="">
+                                    <div>
+                                        <img :src="i.src"/>
+                                        <p v-html="i.name"></p>
+                                    </div>
+                                </a>
+                            </div>
+                           <!-- <div class="cc9Phone product">
                                 <a href="">
                                     <div>
                                         <img src="../assets/classify/9pro.png"/>
@@ -98,7 +106,7 @@
                                         <p>小米CC9美图版</p>
                                     </div>
                                 </a>
-                            </div>
+                            </div>-->
 
                         </div>
                     </div>
@@ -239,13 +247,13 @@
                 ],
                 phoneList: [
                     {
-                        src: "../assets/home/home.png",
+                        src: "../assets/classify/9pro.png",
                         name: "小米CC9 Pro"
                     }, {
-                        src: "../assets/home/9pro.png",
+                        src: "../assets/classify/9pro.png",
                         name: "Redmi 8"
                     }, {
-                        src: "../../assets/classify/redmi8A.png",
+                        src: "../assets/classify/redmi8A.png",
                         name: "Redmi 8A"
                     }],
 
@@ -381,7 +389,6 @@
                         right: 56px;
                     }
                 }
-
                 .phone {
                     position: relative;
                     background: #fff;
@@ -407,8 +414,11 @@
                     .phoneText:after {
                         left: auto;
                         right: 1.12rem;
+
                     }
                 }
+
+
 
             }
             .typePhone {
@@ -432,7 +442,7 @@
                         width: 1rem;
                         height: 1rem;
                         background: #fff;
-                        /*overflow: hidden;*/
+                        overflow: hidden;
                     }
 
                     p {
