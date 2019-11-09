@@ -16,7 +16,8 @@ import Surepay from '../pages/Cart/Surepay.vue';
 import SurepayFa from '../pages/Cart/SurepayFa.vue';
 import Details from '../pages/Details.vue';
 
-import OrderList from '../pages/orderList.vue';
+import OrderList from '../pages/OrderList.vue';
+import ProductDetail from '../pages/ProductDetail.vue';
 
 
 
@@ -95,6 +96,10 @@ const router = new VueRouter({
 		path: '/orderList/:type',
 		name: 'orderList',
 		component: OrderList,
+	},{
+		path: '/productDetail',
+		name: 'productDetail',
+		component: ProductDetail,
 	},{
 		path: '*',
 		redirect: '/homepage'

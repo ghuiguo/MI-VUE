@@ -170,6 +170,9 @@ export default {
       if (index <= 2) {
         this.$router.push("orderList/"+index);
       }
+      else {
+        this.$router.push("productDetail");
+      }
     },
     //列表页跳转路由
     toRouters(router) {
