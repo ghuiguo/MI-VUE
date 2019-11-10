@@ -73,7 +73,9 @@ export default {
   },
   created(){
     axios.get('/fenlei/list').then(result => {
-      if (parseInt(result.code) === 0) {this.items = result.data;}
+      if (parseInt(result.code) === 0) {
+        // this.items = result.data;
+        }
     })
     this.subRouteUrl.forEach((item,index)=>{
       if(location.href.includes(this.subRouteUrl[index])){
