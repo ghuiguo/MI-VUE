@@ -98,69 +98,14 @@
           </a>
         </div>
         <div class="floor-looper-item-content">
-          <div class="floor-looper-item-content-show" @click="toProductDetail(11)">
+          <div class="floor-looper-item-content-show" :key="item.id" @click="toProductDetail(item.id)"  v-for="item in shangpinliebiao">
             <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good1.jpg" alt />
+              <img :src="item.src" alt />
             </div>
             <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show" @click="toProductDetail(12)" >
-            <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good2.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show"  @click="toProductDetail(13)">
-            <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good3.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show"  @click="toProductDetail(14)">
-            <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show"  @click="toProductDetail(15)">
-            <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good5.jpg" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="floor-looper-item-content-show" @click="toProductDetail(16)">
-            <div class="floor-looper-item-content-show-photo">
-              <img src="../.././assets/images/home/good/good6.webp" alt />
-            </div>
-            <div class="floor-looper-item-content-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
+              <div class="show-name" v-html="item.name"></div>
+              <div class="show-gongneng" v-html="item.gongneng"></div>
+              <div class="show-price" v-html="'￥'+item.price"></div>
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
@@ -374,10 +319,11 @@
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
-
+import axios from '../../api/index';
 export default {
   data() {
     return {
+      shangpinliebiao:[],
       lunbo: [
         "../assets/home/swiper/s1.jpg",
         "../assets/home/swiper/s2.jpg",
@@ -407,6 +353,14 @@ export default {
   components: {
     swiper,
     swiperSlide
+  },
+  created(){
+    axios.get('/shangpinliebiao/list').then(result => {
+      if (parseInt(result.code) === 0) {
+        this.shangpinliebiao = result.data;
+        console.log(result,'luowencun');
+        }
+    })
   },
   methods:{
     toProductDetail(projectId){
