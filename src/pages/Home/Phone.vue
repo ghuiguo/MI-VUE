@@ -1,9 +1,7 @@
 <template>
   <div class="phone">
-    <!-- 展示组件 -->
-    <div class="phone-show-top">
-      <img :src="phoneShowTop" alt />
-    </div>
+    <!-- 第一组件 大图片联合 -->
+    <single-photo :datasrc="phoneShowTop"></single-photo>
     <div class="phone_liner"></div>
     <div class="phone-show-down">
       <img :src="phoneShowDown" alt />
@@ -191,6 +189,7 @@
 </template>
 
 <script>
+import SinglePhoto from "../components/CenComponents/SinglePhoto";
 export default {
   data() {
     return {
@@ -238,6 +237,9 @@ export default {
       ]
     };
   }
+  ,components:{
+    SinglePhoto
+  }
 };
 </script>
 
@@ -250,13 +252,7 @@ export default {
     height: 0.111rem;
     background-color: rgb(37, 1, 104);
   }
-  .phone-show-top {
-    padding-top: 1.475rem;
-    width: 100%;
-    img {
-      width: 100%;
-    }
-  }
+  
   .phone-show-down {
     margin-top: 0;
     width: 100%;

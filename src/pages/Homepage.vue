@@ -3,7 +3,7 @@
     <div class="headerbar">
       <div class="search">
         <img src="../assets/home/home.png" alt />
-        <div class="app-header-middle">
+        <div class="app-header-middle" @click="toSearch">
           &nbsp;
           <span class="iconfont icon-jingli my"></span>
           搜索商品名称
@@ -88,6 +88,9 @@ export default {
     handleChange(item, index) {
       this.selectedId = index;
       this.$router.replace(this.subRouteUrl[index]);
+    },
+    toSearch(){
+      this.$router.replace('/Search');
     }
   }
 };

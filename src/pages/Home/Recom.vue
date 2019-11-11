@@ -98,7 +98,7 @@
           </a>
         </div>
         <div class="floor-looper-item-content">
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show" @click="toProductDetail(11)">
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good1.jpg" alt />
             </div>
@@ -109,7 +109,7 @@
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show" @click="toProductDetail(12)" >
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good2.jpg" alt />
             </div>
@@ -120,7 +120,7 @@
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show"  @click="toProductDetail(13)">
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good3.jpg" alt />
             </div>
@@ -131,7 +131,7 @@
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show"  @click="toProductDetail(14)">
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good4.jpg" alt />
             </div>
@@ -142,7 +142,7 @@
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show"  @click="toProductDetail(15)">
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good5.jpg" alt />
             </div>
@@ -153,7 +153,7 @@
               <div class="show-goumai">立即购买</div>
             </div>
           </div>
-          <div class="floor-looper-item-content-show">
+          <div class="floor-looper-item-content-show" @click="toProductDetail(16)">
             <div class="floor-looper-item-content-show-photo">
               <img src="../.././assets/images/home/good/good6.webp" alt />
             </div>
@@ -407,6 +407,12 @@ export default {
   components: {
     swiper,
     swiperSlide
+  },
+  methods:{
+    toProductDetail(projectId){
+      console.log(this.$router);
+      this.$router.push("/productDetail/");
+    }
   }
 };
 </script>
