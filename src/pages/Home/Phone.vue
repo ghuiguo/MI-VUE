@@ -189,7 +189,7 @@
 </template>
 
 <script>
-import SinglePhoto from "../components/SinglePhoto";
+import SinglePhoto from "../components/CenComponents/SinglePhoto";
 export default {
   data() {
     return {
