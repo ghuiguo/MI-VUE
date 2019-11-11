@@ -18,41 +18,28 @@
 
             <!-- 分类详情页 -->
             <div class="typeYM">
-                <div class="YMWrapper">
-                    <img src="../assets/classify/香薰.png" alt="">
+                <div class="YMWrapper" v-for=" (i,index) in phonetvList" :key="index">
+
+                    <img :src="i.src" >
                     <div class="phone">
-                        <span class="phoneText "> 手机 </span>
+                        <span class="phoneText" v-text="i.titel"></span>
                     </div>
                     <div class="typePhone">
                         <!--  -->
                         <div class="typePhoneBox">
-                            <div class="cc9Phone product" v-for=" i in phoneList" :key="i.id" @click="toProductDetail(id)">
-                                <a href="">
-                                    <div >
-                                        <img :src="i.src"/>
-                                        <p v-html="i.name"></p>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="phone2">
-                        <span class="phoneText2"> 家电  </span>
-                    </div>
-                    <div class="typePhone">
-                        <div class="typePhoneBox">
-                            <div class="product" v-for="(i,index) in applianceList" :key="index">
-                                <a href="">
+                            <div class="product" v-for="item in i.children"
+                                 @click="toProductDetail(item.id)">
+                                <!--<a href="javascript:;">-->
                                     <div>
-                                        <img :src="i.src">
-                                        <p v-text="i.name"></p>
+                                        <img :src="item.src"/>
+                                        <p v-text="item.name"></p>
                                     </div>
-                                </a>
+                                <!--</a>-->
                             </div>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -95,66 +82,109 @@
                     {label: "零售店"}
 
                 ],
-                /* 手机的数据 */
-                phoneList: [
+                /* 手机和家电总数据 */
+                phonetvList: [
                     {
-                        id:0,
-                        src: "../assets/classify/小米CC9 Pro.png",
-                        name: "小米CC9 Pro"
+                        titel: "手机",
+                        src:'../assets/classify/香薰.png',
+                        children: [{
+                            id: 0,
+                            src: "../assets/classify/小米CC9 Pro.png",
+                            name: "小米CC9 Pro",
+                            description: "1亿像素超清主摄 / 后置全场景五摄像头 / 双闪光双柔光四闪光灯 / 3200万像素超清前置相机 / 10倍混合光学变焦，50倍数字变焦 / 5260mAh大电量 / 标配30W疾速快充 / 小米首款超薄屏下指纹 / 德国莱茵低蓝光认证 / 多功能NFC / 红外万能遥控 / 1216 超线性扬声器",
+                            price: "3099"
+                        }, {
+                            id: 1,
+                            src: "../assets/classify/Redmi 8.png",
+                            name: "Redmi 8",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 2,
+                            src: "../assets/classify/redmi8A.png",
+                            name: "Redmi 8A",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+
+                        }, {
+                            id: 3,
+                            src: "../assets/classify/小米9 Pro 5G.png",
+                            name: "小米9 Pro 5G",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 4,
+                            src: "../assets/classify/小米MIX Alpha.png",
+                            name: "小米MIX Alpha",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 5,
+                            src: "../assets/classify/K20 Pro 尊享版.gif",
+                            name: "K20 Pro 尊享版",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 6,
+                            src: "../assets/classify/Redmi Note 8 Pro.gif",
+                            name: "Redmi Note 8 Pro",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 7,
+                            src: "../assets/classify/Redmi Note 8.gif",
+                            name: "Redmi Note 8",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id: 8,
+                            src: "../assets/classify/小米CC9美图版.png",
+                            name: "小米CC9美图版",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }]
+
                     }, {
-                        id:1,
-                        src: "../assets/classify/Redmi 8.png",
-                        name: "Redmi 8"
-                    }, {
-                        id:2,
-                        src: "../assets/classify/redmi8A.png",
-                        name: "Redmi 8A"
-                    },{
-                        id:3,
-                        src: "../assets/classify/小米9 Pro 5G.png",
-                        name: "小米9 Pro 5G"
-                    }, {
-                        id:4,
-                        src: "../assets/classify/小米MIX Alpha.png",
-                        name: "小米MIX Alpha"
-                    }, {
-                        id:5,
-                        src: "../assets/classify/K20 Pro 尊享版.gif",
-                        name: "K20 Pro 尊享版"
-                    },{
-                        id:6,
-                        src: "../assets/classify/Redmi Note 8 Pro.gif",
-                        name: "Redmi Note 8 Pro"
-                    }, {
-                        id:7,
-                        src: "../assets/classify/Redmi Note 8.gif",
-                        name: "Redmi Note 8"
-                    }, {
-                        id:8,
-                        src: "../assets/classify/小米CC9美图版.png",
-                        name: "小米CC9美图版"
+                        titel: "家电",
+                        children: [{
+                            id:0,
+                            src: "../assets/classify/全面屏电视E55A.jpg",
+                            name: "全面屏电视E55A",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id:1,
+                            src: "../assets/classify/壁画电视.jpg",
+                            name: "壁画电视65英寸",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id:2,
+                            src: "../assets/classify/电视4X65英寸.jpg",
+                            name: "电视4X65英寸",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id:3,
+                            src: "../assets/classify/立式空调.png",
+                            name: "立式空调",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id:4,
+                            src: "../assets/classify/空调C1.jpg",
+                            name: "空调C1",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }, {
+                            id:5,
+                            src: "../assets/classify/烘干一体.jpg",
+                            name: "洗烘一体机",
+                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            price: "799"
+                        }]
                     }],
-                /* 家电的数据 */
-                applianceList: [
-                    {
-                        src: "../assets/classify/全面屏电视E55A.jpg",
-                        name: "全面屏电视E55A"
-                    }, {
-                        src: "../assets/classify/壁画电视.jpg",
-                        name: "壁画电视65英寸"
-                    }, {
-                        src: "../assets/classify/电视4X65英寸.jpg",
-                        name: "电视4X65英寸"
-                    },{
-                        src: "../assets/classify/立式空调.png",
-                        name: "立式空调"
-                    }, {
-                        src: "../assets/classify/空调C1.jpg",
-                        name: "空调C1"
-                    }, {
-                        src: "../assets/classify/烘干一体.jpg",
-                        name: "洗烘一体机"
-                    }]
+
             }
 
         },
@@ -168,14 +198,15 @@
                 window.console.log(index);
                 this.chooseIndex = index;
             },
-            toProductDetail(i){
-                this.$router.push("productDetail");
+            toProductDetail(id) {
+                window.console.log(id);
+               this.$router.push("productDetail/");
 
             },
 
 
-
-        }};
+        }
+    };
 </script>
 
 <style lang='less'>
@@ -247,7 +278,6 @@
 
             .YMWrapper {
                 width: 5.24rem;
-                height: 100%;
                 img {
                     width: 5.2rem;
                     height: 2.08rem;
@@ -310,12 +340,10 @@
                     }
                 }
 
-
-
             }
             .typePhone {
                 width: 5.24rem;
-                height: 7.6rem;
+                height: auto;
                 background: #ffffff;
 
                 .typePhoneBox {
@@ -357,7 +385,6 @@
 
     .type {
         height: 100vh;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
     }
