@@ -26,6 +26,12 @@ function getDepartInfo(departmentId, req) {
 	}) || {};
 }
 
+function getProductInfo(productId,req){
+	return req.$productDATA.find(item => {
+		return parseFloat(item.id) === parseFloat(productId);
+	}) || {};
+}
+
 function getJobInfo(jobId, req) {
 	return req.$jobDATA.find(item => {
 		return parseFloat(item.id) === parseFloat(jobId);
@@ -55,6 +61,7 @@ function getFenleiInfo(fenleiId,req){
 	}) || {};
 }
 
+
 module.exports = {
 	handleMD5,
 	filterInvalid,
@@ -64,5 +71,6 @@ module.exports = {
 	getUserInfo,
 	getCustomerInfo,
 	getVisitInfo,
-	getFenleiInfo
+	getFenleiInfo,
+	getProductInfo
 }

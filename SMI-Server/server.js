@@ -44,8 +44,7 @@ app.use(async (req, res, next) => {
 	req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
 	req.$visitDATA = filterInvalid(JSON.parse(await readFile('./json/visit.json')));
 	req.$fenleiDATA = filterInvalid(JSON.parse(await readFile('./json/fenlei.json')));
-	console.log(req.$fenleiDATA);
-	console.log(req.$userDATA);
+	req.$productDATA = filterInvalid(JSON.parse(await readFile('./json/productList.json')));
 	next();
 });
 
@@ -53,6 +52,7 @@ app.use(async (req, res, next) => {
 app.use('/user', require('./routes/user'));
 app.use('/customer', require('./routes/customer'));
 app.use('/department', require('./routes/department'));
+app.use('/product', require('./routes/product'));
 app.use('/visit', require('./routes/visit'));
 app.use('/job', require('./routes/job'));
 app.use('/fenlei', require('./routes/fenlei'));
