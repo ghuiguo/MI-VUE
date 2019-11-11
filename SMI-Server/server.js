@@ -45,6 +45,7 @@ app.use(async (req, res, next) => {
 	req.$visitDATA = filterInvalid(JSON.parse(await readFile('./json/visit.json')));
 	req.$fenleiDATA = filterInvalid(JSON.parse(await readFile('./json/fenlei.json')));
 	req.$productDATA = filterInvalid(JSON.parse(await readFile('./json/productList.json')));
+	req.$shangpinliebiaoDATA = filterInvalid(JSON.parse(await readFile('./json/shangpinliebiao.json')));
 	next();
 });
 
