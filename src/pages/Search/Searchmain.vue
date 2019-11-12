@@ -5,7 +5,7 @@
         <span class="Search-main-top-title">热门搜索</span>
         <div class="Search-main-top-img">
           <img
-            src="../../../public/assets/images/SearchBanner.jpg";
+            src="../../../public/assets/images/SearchBanner.jpg"
             alt
             style="width: 100%;
                     display: block;"

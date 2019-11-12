@@ -16,25 +16,25 @@
     <div class="cart-main">
       <div v-if="hasdata==1" class="cart-main-list">
         <ul class="cart-main-list-item" :key="index" v-for="(item,index) in shoppingList">
-          <li class="cart-main-list-item-section" v-if="item.state===1">
+          <li class="cart-main-list-item-section">
             <span
               class="cart-main-list-item-check"
               :class="{active:item.isSelect}"
               @click="selectgoods(item)"
             ></span>
-            <img class="cart-main-list-item-image" :src="item.images" alt />
+            <img class="cart-main-list-item-image" :src="item.src" alt />
             <span class="cart-main-list-item-handle">
-              <span class="cart-main-list-item-handle-name" v-html="item.title"></span>
-              <span class="cart-main-list-item-handle-price">￥{{item.money}}</span>
+              <span class="cart-main-list-item-handle-name" v-html="item.name"></span>
+              <span class="cart-main-list-item-handle-price">￥{{item.price}}</span>
               <span class="cart-main-list-item-handle-number">
                 <span class="cart-main-list-item-handle-number-operate">
                   <span class="iconfont icon-jian" @click="numChange(item,-1)"></span>
-                  <span class="amount" v-text="item.num"></span>
+                  <span class="amount" v-text="item.collectState"></span>
                   <span class="supnum iconfont icon-jia" @click="numChange(item,1)"></span>
                 </span>
                 <span
                   class="delete iconfont icon-shanchu-copy-copy"
-                  @click="deletegoods(index)"
+                  @click="deletegoods(item,index)"
                   style="font-size: .38rem;
                 color: darkgrey;"
                 ></span>
@@ -57,10 +57,13 @@
           <img src="../assets/images/gessulike.jpg" alt />
         </div>
         <div class="cart-main-another-list">
-          <div class="cart-main-another-list-item"
-            :key="index" v-for="(item,index) in likeList"
-            style="width: 49.3%;">
-            <a href='javascript:;'>
+          <div
+            class="cart-main-another-list-item"
+            :key="index"
+            v-for="(item,index) in likeList"
+            style="width: 49.3%;"
+          >
+            <a href="javascript:;">
               <div class="goods-img-box">
                 <img :src="item.images" alt />
               </div>
@@ -96,36 +99,23 @@
 </template>
 
 <script>
+import axios from "../api/index";
 export default {
   components: {},
   data() {
     return {
-      hasdata: 0,
+      hasdata: 2,
       shoppingList: [
-        {
-          images: "assets/images/mobile2.jpg",
-          title: "小米9 Pro 5G 8GB+256GB",
-          money: 2699,
-          num: 1,
-          isSelect: false,
-          state: 1
-        },
-        {
-          images: "assets/images/phone4.jpg",
-          title: "Redmi K20 Pro 尊享版 12GB+512GB",
-          money: 2999,
-          num: 1,
-          isSelect: false,
-          state: 1
-        },
-        {
-          images: "../assets/images/phone3.jpg",
-          title: "小米CC9e 4GB+128GB",
-          money: 1199,
-          num: 1,
-          isSelect: false,
-          state: 1
-        }
+        // {
+        //     "id":1,
+        //     "name":"Redmi Note 8",
+        //     "desc":"800万全场景四摄 / 前置1300万美颜相机 / 骁龙665处理器 / 4000mAh超长续航 / 标配18W快充 / 超线性扬声器 / 90%高屏占比 / 康宁大猩猩保护玻璃 / 6.3英寸水滴全面屏",
+        //     "price":"9999",
+        //     "collectState":"5",
+        //     "src":'../.././assets/images/home/good/good1.jpg',
+        //     "state":0,
+        //     "isSelect": false
+        // }
       ],
       likeList: [
         {
@@ -163,30 +153,37 @@ export default {
       sum: 0
     };
   },
-  beforeMount() {
+  // beforeMount() {
+  //   this.getData();
+  // },
+  mounted() {
     this.getData();
   },
   methods: {
     getData() {
-      if (1 > 0) {
-        this.hasdata = 1;
-      } else this.hasdata = 2;
+      axios.get("/product/selectList").then(result => {
+        if (parseInt(result.code) === 0) {
+          console.log(result, "++++");
+          this.hasdata = result.data.length > 0 ? 1 : 2;
+          this.shoppingList = result.data;
+        }
+      });
     },
     selectgoods(item) {
       item.isSelect = !item.isSelect;
       this.allSelect = false;
-      let sum = (item.sum = item.num * item.money);
+      let sum = item.price * item.collectState;
       if (item.isSelect == true) {
-        this.sum = this.sum + item.money * item.num;
+        this.sum = this.sum + item.price * item.collectState;
       }
       if (item.isSelect == false) {
-        this.sum = this.sum - item.money * item.num;
+        this.sum = this.sum - item.price * item.collectState;
       }
     },
     getSum(shoppingList) {
       let sum = 0;
       for (let i = 0; i < shoppingList.length; i++) {
-        sum += shoppingList[i].money * shoppingList[i].num;
+        sum += shoppingList[i].price * shoppingList[i].collectState;
       }
       return sum;
     },
@@ -200,19 +197,31 @@ export default {
       }
     },
     numChange(item, i) {
-      const num = item.num + i;
+      const num = parseFloat(item.collectState) + parseFloat(i);
       if (num > 0) {
-        // console.log(num, item.num, i);
-        item.num = num;
+        item.collectState = num;
         this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
       }
     },
-    deletegoods(index) {
+    deletegoods(item, index) {
       this.shoppingList.splice(index, 1);
       this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
       if (this.shoppingList.length === 0) {
         this.allSelect = false;
       }
+      axios
+        .post("/product/update", {
+          id: item.id,
+          name: item.name,
+          desc: item.desc,
+          price: item.price,
+          collectState: 0
+        })
+        .then(result => {
+          if (parseInt(result.code) === 0) {
+            console.log(result, "+++++++");
+          }
+        });
     },
     Settlement() {
       if (this.sum !== 0) {
@@ -223,16 +232,29 @@ export default {
       this.$router.push("/search");
     }
   }
-  // 加减计算
-
-  // oppNum(item) {
-
-  // },
-  // supNum(item) {
-
-  // },
 };
 </script>
 
 <style>
+.empty-cart {
+  display: inline-block;
+  line-height: 0.8rem;
+  background: url(../assets/images/cartnull.daaf7926f8.png) no-repeat 0;
+  background-size: auto 100%;
+  padding: 0 0.16rem 0 0.96rem;
+  color: rgba(0, 0, 0, 0.27);
+}
+.gotomain {
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  padding: 0 0.24rem;
+  color: rgba(0, 0, 0, 0.87);
+  font-style: normal;
+}
+.cart-main-list-appendix {
+  text-align: center;
+}
 </style>

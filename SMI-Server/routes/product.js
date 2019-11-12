@@ -19,7 +19,7 @@ route.get('/list', (req, res) => {
 			id: item.id,
 			name: item.name,
 			desc: item.desc,
-			state:item.state
+			state: item.state
 		}
 	});
 	if (data.length > 0) {
@@ -61,6 +61,35 @@ route.post('/update', (req, res) => {
 	});
 });
 
+
+//=>获取购物车列表
+route.get('/selectList', (req, res) => {
+	let data = req.$productDATA;
+	data = data.filter(item => {
+		console.log(item.collectState,'啦啦啦');
+		if (parseFloat(item.collectState) > 0) {
+			return {
+				id: item.id,
+				name: item.name,
+				desc: item.desc,
+				price: item.price,
+				collectState: item.collectState,
+				state: item.state
+			}
+		}
+	});
+	console.log(data,'+哈哈哈');
+	if (data.length > 0) {
+		res.send(success(true, {
+			data: data
+		}));
+		return;
+	}
+	res.send(success(false, {
+		codeText: 'no matching data was found!'
+	}));
+});
+
 //=>获取产品信息
 route.get('/info', (req, res) => {
 	let {
@@ -68,17 +97,17 @@ route.get('/info', (req, res) => {
 	} = req.query;
 	let data = getProductInfo(productId, req);
 	// if ('name' in data.data) {
-		res.send(success(true, {
-			data: {
-				id: data.id,
-				name: data.name,
-				desc: data.desc,
-				price:data.price,
-				collectState:data.collectState,
-				state:data.state
-			}
-		}));
-		return;
+	res.send(success(true, {
+		data: {
+			id: data.id,
+			name: data.name,
+			desc: data.desc,
+			price: data.price,
+			collectState: data.collectState,
+			state: data.state
+		}
+	}));
+	return;
 	// }
 	res.send(success(false, {
 		codeText: 'no matching data was found!'
