@@ -43,7 +43,7 @@ export default {
         },
         searchData(){
             console.log(this.$router);
-            this.$router.replace('/search/searchmain')
+            this.$router.replace('/search/searchreault/'+this.search);
 //         },
 //         searchData(){
 //             axios.post('/sousuo',{

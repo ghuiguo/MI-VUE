@@ -17,12 +17,12 @@
 </template>
 
 <script>
-// import searchlist from "../Search/Searchlist";
-// import goodlist from "../Search/goodlist";
+import searchlist from "../Search/Searchlist";
+import goodlist from "../Search/goodlist";
 export default {
   components: {
-    // searchlist,
-    // goodlist
+    searchlist,
+    goodlist
   }
 };
 </script>
