@@ -1,19 +1,39 @@
 <template>
   <div class="Search">
-    <searchlist/>
-    <!-- <searchBefore/> -->
+    <searchlist  v-on:showComponent="showComponent" />
+    <searchmain v-if="showComponentdata"/>
     <router-view></router-view>
   </div>
 </template>
 
 
 <script>
-import searchlist from './Search/Searchlist';
-// import searchBefore from './Search/SearchBefore';
+import searchlist from "./Search/Searchlist";
+import searchmain from "./Search/Searchmain";
 export default {
-  components:{
+  data() {
+    return {
+      showComponentdata: true
+    };
+  },
+  components: {
     searchlist,
-    // searchBefore
+    searchmain
+  },
+  methods: {
+    showComponent(type) {
+      console.log(type);
+      this.showComponentdata = false;
+    }
+  },
+  mounted(){
+    let string = window.location.href;
+    console.log(string);
+        if(string.includes('searchreault')){
+          this.showComponentdata = false;
+        }else{
+          this.showComponentdata = true;
+        }
   }
 };
 </script>
