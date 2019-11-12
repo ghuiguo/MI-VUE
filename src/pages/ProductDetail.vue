@@ -12,13 +12,11 @@
       <img class="headerActionPic share" src="../assets/images/detailShare.png" alt />
     </div>
     <div class="section section-detail">
-      <div class="product_info_product_name">Redmi Note 8</div>
-      <div
-        class="product_info_product_desc"
-      >4800万全场景四摄 / 前置1300万美颜相机 / 骁龙665处理器 / 4000mAh超长续航 / 标配18W快充 / 超线性扬声器 / 90%高屏占比 / 康宁大猩猩保护玻璃 / 6.3英寸水滴全面屏</div>
+      <div class="product_info_product_name" v-text="productInfo.name"></div>
+      <div class="product_info_product_desc" v-text="productInfo.desc"></div>
       <div class="product_info_product_price">
         ￥
-        <div class="price cur-price">999</div>
+        <div class="price cur-price" v-text="productInfo.price"></div>
       </div>
     </div>
     <div class="productIntrpduceList">
@@ -43,6 +41,7 @@
 </template>
 
 <script>
+import axios from '../api/index';
 export default {
   data() {
     return {
@@ -92,13 +91,36 @@ export default {
         { id: 3, url: "../assets/images/productDetail/productIntroduce3.jpg" },
         { id: 4, url: "../assets/images/productDetail/productIntroduce4.jpg" },
         { id: 5, url: "../assets/images/productDetail/productIntroduce5.jpg" }
-      ]
+      ],
+      productInfo:{
+        name:'',
+        desc:'',
+        price:''
+      }
+
     };
   },
   methods: {
     toBack(){
       window.history.go(-1);
     }
+  },
+  mounted() {
+    let id = this.$route.params.productId;
+    axios.get('/product/info',{
+      params :{
+        productId:id
+      }
+    }).then(result => {
+      if (parseInt(result.code) === 0) {
+        this.items = result.data;
+        this.productInfo = result.data;
+        }
+    })
+
+  },
+  created(){
+
   }
 };
 </script>

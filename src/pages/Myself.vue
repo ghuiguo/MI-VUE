@@ -169,9 +169,12 @@ export default {
     toMyOrderList(index) {
       if (index <= 2) {
         this.$router.push("orderList/"+index);
+        // this.$router.push({name:"orderList",params:{
+        //   index
+        // }});
       }
       else {
-        this.$router.push("productDetail");
+        this.$router.push("productDetail/"+1);
       }
     },
     //列表页跳转路由

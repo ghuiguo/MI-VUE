@@ -1,60 +1,26 @@
 <template>
   <div class="phone">
-    <!-- 展示组件 -->
-    <div class="phone-show-top">
-      <img :src="phoneShowTop" alt />
-    </div>
+    <!-- 第一组件 大图片联合 -->
+    <single-photo :datasrc="phoneShowTop" class="phone-show-top"></single-photo>
     <div class="phone_liner"></div>
-    <div class="phone-show-down">
-      <img :src="phoneShowDown" alt />
-    </div>
+
+    <single-photo :datasrc="phoneShowDown" class="phone-show-down"></single-photo>
     <div class="phone_liner"></div>
     <!-- 轮播组件 -->
     <div class="phone-sell">
       <swiper class="swiperphone" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
-        <swiper-slide class="swapper">
+        <swiper-slide class="swapper" :key="item.id" v-for="item in phoneSwiper">
           <div class="swapper-item">
             <img
-              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/bbf706954e6e9fbc62e33a6ad38728ad.jpg?thumb=1&w=304&h=280"
-              alt
-            />
-            <!-- .floor-looper-item-content-show-info {
-            
-            }-->
-            <div class="swiper-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide class="swapper">
-          <div class="swapper-item">
-            <img
-              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/e05bc3c71baf7346073da4493e27bdf0.jpg?thumb=1&w=304&h=280"
+              :src="item.src"
               alt
             />
             <div class="swiper-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </swiper-slide>
-        <swiper-slide class="swapper">
-          <div class="swapper-item">
-            <img
-              src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a0170edad5dfa480d8bddf93a7d17c2.jpg?thumb=1&w=304&h=280"
-              alt
-            />
-            <div class="swiper-show-info">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
+              <div class="show-name" v-html="item.name"></div>
+              <div class="show-gongneng" v-html="item.gongneng">item.gongneng</div>
+              <div class="show-price" v-html="'￥'+item.price">￥</div>
+              <div class="show-goumai" v-html="item.goumai"></div>
             </div>
           </div>
         </swiper-slide>
@@ -191,6 +157,7 @@
 </template>
 
 <script>
+import SinglePhoto from "../components/CenComponents/SinglePhoto";
 export default {
   data() {
     return {
@@ -235,8 +202,40 @@ export default {
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aa0431e0e2918b1bf2ca54442388dda.jpg?thumb=1&w=360&h=323",
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/2827d76cb767b80fde616ba97c665d1f.jpg?thumb=1&w=360&h=327",
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/ac429b480e6af8366df2d31dc8f0a6a9.jpg?thumb=1&w=360&h=327"
+      ],
+      phoneSwiper: [
+        {
+          id: 5,
+          src:
+            "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/bbf706954e6e9fbc62e33a6ad38728ad.jpg?thumb=1&w=304&h=280",
+          name: "Redmi Note 8",
+          gongneng: "千元4800万四摄",
+          price: "999",
+          goumai: "立即购买"
+        },
+        {
+          id: 6,
+          src:
+            "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/e05bc3c71baf7346073da4493e27bdf0.jpg?thumb=1&w=304&h=280",
+          name: "Redmi Note 20",
+          gongneng: "千元9800万四摄",
+          price: "12789",
+          goumai: "立即购买"
+        },
+        {
+          id: 7,
+          src:
+            "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/e05bc3c71baf7346073da4493e27bdf0.jpg?thumb=1&w=304&h=280",
+          name: "Redmi Note 尊享版",
+          gongneng: "超级发烧机Plus",
+          price: "22399",
+          goumai: "立即购买"
+        }
       ]
     };
+  },
+  components: {
+    SinglePhoto
   }
 };
 </script>
@@ -245,11 +244,6 @@ export default {
 .phone {
   font-size: 0;
   width: 7.5rem;
-  .phone_liner {
-    width: 100%;
-    height: 0.111rem;
-    background-color: rgb(37, 1, 104);
-  }
   .phone-show-top {
     padding-top: 1.475rem;
     width: 100%;
@@ -257,6 +251,12 @@ export default {
       width: 100%;
     }
   }
+  .phone_liner {
+    width: 100%;
+    height: 0.111rem;
+    background-color: rgb(37, 1, 104);
+  }
+
   .phone-show-down {
     margin-top: 0;
     width: 100%;
@@ -388,7 +388,7 @@ export default {
           right: 0.2rem;
           top: 0.2rem;
           .phone-sell-table-middle-img-info-button-first {
-            position:absolute;
+            position: absolute;
             font-size: 0.32rem;
             color: #ff4a48;
             font-weight: 700;
@@ -399,7 +399,7 @@ export default {
             text-align: center;
           }
           .phone-sell-table-middle-img-info-button-second {
-            position:absolute;
+            position: absolute;
             top: 0.4rem;
             right: 0.3rem;
             text-align: center;
