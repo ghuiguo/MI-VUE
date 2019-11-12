@@ -11,7 +11,7 @@
       </a>
     </div>
     <div class="search-body">
-      <goodlist />
+      <goodlist v-if="List.length" :List="List"/>
     </div>
   </div>
 </template>
@@ -19,29 +19,27 @@
 <script>
 import searchlist from "../Search/Searchlist";
 import goodlist from "../Search/goodlist";
-import axios from '../../api/index';
+import axios from '../../api';
 export default {
+  data(){
+    return{
+      List:[]
+    }
+  },
+  created(){
+    let query = {params:this.$route.params}
+    console.log(query);
+    axios.get('/sousuoshangpin/sousuo',query).then(result => {
+		if (parseInt(result.code) === 0) {
+			this.List = result.data;
+		}
+	});
+  },
   components: {
     searchlist,
     goodlist
-  },
-  beforemounte(){
-      axios.post('/sousuo',{
-            params:{
-            lx: 'all',
-            type: '',
-            search: '',
-            name:''
-            }
-    }).then(result => {
-      if (parseInt(result.code) === 0) {
-        return result;
-      }
-  })
-     return Promise.reject(result.codeText);
-}
-}
-
+  }
+};
 </script>
 
 <style>
@@ -89,4 +87,5 @@ export default {
   z-index: 3;
   border: 1px solid #eee;
 }
+
 </style>
