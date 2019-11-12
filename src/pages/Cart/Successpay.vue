@@ -33,7 +33,7 @@
       </li>
     </ul>
     <div class="Successpay-info">
-      <a class="Successpay-info-item">去我的订单看看</a>
+      <a class="Successpay-info-item" @click="toOrderList()">去我的订单看看</a>
     </div>
   </div>
 </template>
@@ -42,6 +42,11 @@ export default {
     methods:{
         backHome(){
             this.$router.push('/homepage');
+        },
+        toOrderList(){
+           setTimeout(()=>{
+              this.$router.push('/orderList/0');
+           },1000)
         }
     }
 };

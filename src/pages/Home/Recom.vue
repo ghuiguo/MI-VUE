@@ -365,7 +365,7 @@ export default {
   methods:{
     toProductDetail(projectId){
       console.log(this.$router);
-      this.$router.push("/productDetail/");
+      this.$router.push("/productDetail/"+projectId);
     }
   }
 };

@@ -1,10 +1,11 @@
 <template>
   <div class="phone">
     <!-- 第一组件 大图片联合 -->
-    <single-photo :datasrc="phoneShowTop" class="phone-show-top"></single-photo>
+    <single-photo :datasrc="phoneShowTop" class="phone-show-top">
+    </single-photo>
     <div class="phone_liner"></div>
-
-    <single-photo :datasrc="phoneShowDown" class="phone-show-down"></single-photo>
+    <single-photo :datasrc="phoneShowDown" class="phone-show-down">
+    </single-photo>
     <div class="phone_liner"></div>
     <!-- 轮播组件 -->
     <div class="phone-sell">
@@ -33,97 +34,22 @@
     <div class="phone_liner"></div>
     <!-- 手机组件 -->
 
+    <single-photo :datasrc="phoneFuli"  class="phone-fuli-top">
+    </single-photo>
     <!-- 福利组件 -->
-    <div class="phone-welfare">
-      <div class="phone-welfare-top">
-        <img
-          src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4680750ff3a08e7381e191f5c4c57b8.jpg?thumb=1&w=720&h=91"
-          alt
-        />
-      </div>
-      <div class="phone_liner"></div>
+    <photo-nine :phoneWelfare="phoneWelfare" :phoneWelfareFloor="phoneWelfareFloor"></photo-nine>
+    <div class="phone_liner"></div>
+    <!-- <div class="phone-welfare">
       <div class="phone-welfare-item" :key="index" v-for="(item,index) in phoneWelfare">
         <img :src="item" alt />
       </div>
       <div class="phone-welfare-item-floor">
         <img :src="phoneWelfareFloor" alt />
       </div>
-    </div>
-    <div class="phone_liner"></div>
+    </div> -->
+    
     <!-- sell组件 -->
-    <div class="phone-sell-table">
-      <div class="phone-sell-table-top">
-        <img
-          src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/93e024104a2cbad0f9218778e25c19d1.jpg?thumb=1&w=720&h=95"
-          alt
-        />
-        <div class="phone_liner" style="background-color: rgb(71, 23, 147);"></div>
-      </div>
-      <div class="phone-sell-table-middle">
-        <div class="phone-sell-table-middle-img">
-          <img
-            src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0fbe9af39cabf7a37d97796ca16481db.jpg?thumb=1&w=688&h=367"
-            alt
-          />
-        </div>
-        <div class="phone-sell-table-middle-img-info">
-          <div class="phone-sell-table-middle-img-info-text">
-            <div class="phone-sell-table-middle-img-info-text-first">小米CC9 Pro</div>
-            <div class="phone-sell-table-middle-img-info-text-second">一亿像素 五摄四闪</div>
-          </div>
-          <div class="phone-sell-table-middle-img-info-button">
-            <div class="phone-sell-table-middle-img-info-button-first">￥2799起</div>
-            <div class="phone-sell-table-middle-img-info-button-second">点击购买</div>
-          </div>
-        </div>
-        <div class="phone-sell-table-middle-info">
-          <div class="phone-sell-table-middle-info-item">
-            <div class="phone-sell-table-middle-info-photo">
-              <img src="../.././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="phone-sell-table-middle-info-text">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="phone-sell-table-middle-info-item">
-            <div class="phone-sell-table-middle-info-photo">
-              <img src="../.././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="phone-sell-table-middle-info-text">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="phone-sell-table-middle-info-item">
-            <div class="phone-sell-table-middle-info-photo">
-              <img src="../.././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="phone-sell-table-middle-info-text">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-          <div class="phone-sell-table-middle-info-item">
-            <div class="phone-sell-table-middle-info-photo">
-              <img src="../.././assets/images/home/good/good4.jpg" alt />
-            </div>
-            <div class="phone-sell-table-middle-info-text">
-              <div class="show-name">Redmi Note 8</div>
-              <div class="show-gongneng">千元4800万四摄</div>
-              <div class="show-price">￥999</div>
-              <div class="show-goumai">立即购买</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <good-componenttwo></good-componenttwo>
     <div class="phone_liner"></div>
     <!-- 循环展示组件 -->
     <div class="phone-floor-show">
@@ -158,6 +84,8 @@
 
 <script>
 import SinglePhoto from "../components/CenComponents/SinglePhoto";
+import PhotoNine from "../components/CenComponents/PhotoNine";
+import GoodComponenttwo from "../components/CenComponents/GoodComponenttwo";
 export default {
   data() {
     return {
@@ -184,6 +112,7 @@ export default {
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7242a6f64a85451435401a9c91ab6c5c.jpg?thumb=1&w=720&h=743",
       phoneShowDown:
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/d14ef6575c3f5f1ed66753ffe13ee702.jpg?thumb=1&w=720&h=91",
+      phoneFuli:"//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f4680750ff3a08e7381e191f5c4c57b8.jpg?thumb=1&w=720&h=91",
       phoneWelfare: [
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/c302fb8cdf79e5be0cff62854f5b4d56.jpg?thumb=1&w=240&h=270",
         "//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0847b87c19528c03fda1a2f3360506b3.jpg?thumb=1&w=240&h=270",
@@ -235,7 +164,9 @@ export default {
     };
   },
   components: {
-    SinglePhoto
+    SinglePhoto,
+    PhotoNine,
+    GoodComponenttwo
   }
 };
 </script>
@@ -260,6 +191,11 @@ export default {
   .phone-show-down {
     margin-top: 0;
     width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .phone-fuli-top{
     img {
       width: 100%;
     }
@@ -314,27 +250,7 @@ export default {
       }
     }
   }
-  .phone-welfare {
-    display: flex;
-    flex-wrap: wrap;
-    .phone-welfare-top {
-      img {
-        width: 100%;
-      }
-    }
-    .phone-welfare-item {
-      width: 33.3333%;
-
-      img {
-        width: 100%;
-      }
-    }
-    .phone-welfare-item-floor {
-      img {
-        width: 100%;
-      }
-    }
-  }
+  
   .phone-sell-table {
     background-color: rgb(71, 23, 147);
     .phone-sell-table-top {
@@ -492,7 +408,7 @@ export default {
     }
   }
   .phone-floor {
-    height: 5.2rem;
+    height: 1.3rem;
   }
 }
 </style>

@@ -10,7 +10,7 @@
     font-size: .3rem;
     font-weight: 500;"
       >购物车</h2>
-      <span class="cart-header-edit" style="font-size: .26rem;">编辑</span>
+      <!-- <span class="cart-header-edit" style="font-size: .26rem;">编辑</span> -->
     </div>
 
     <div class="cart-main">
@@ -205,7 +205,7 @@ export default {
     numChange(item, i) {
       const num = item.num + i;
       if (num > 0) {
-        console.log(num, item.num, i);
+        // console.log(num, item.num, i);
         item.num = num;
         this.sum = this.getSum(this.shoppingList.filter(v => v.isSelect));
       }

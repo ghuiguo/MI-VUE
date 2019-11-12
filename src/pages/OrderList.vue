@@ -45,7 +45,8 @@ export default {
   },
   methods: {
     toBack() {
-      window.history.go(-1);
+      // window.history.go(-1);
+      this.$router.push('/myself');
     },
     changeType(typeIndex) {
       console.log(typeIndex);
