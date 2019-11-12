@@ -90,7 +90,7 @@ export default {
       this.$router.replace(this.subRouteUrl[index]);
     },
     toSearch(){
-      this.$router.replace('/Search');
+      this.$router.replace('/search');
     }
   }
 };
