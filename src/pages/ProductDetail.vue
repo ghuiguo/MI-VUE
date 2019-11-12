@@ -121,7 +121,6 @@ export default {
           collectState: parseFloat(this.productInfo.collectState + 1)
         })
         .then(result => {
-          console.log(result, "+_+_+_+_+");
           if (parseInt(result.code) === 0) {
             this.productInfo.collectState = parseFloat(
               this.productInfo.collectState + 1
@@ -141,8 +140,6 @@ export default {
       .then(result => {
         if (parseInt(result.code) === 0) {
           this.productInfo = result.data;
-          this.productInfo.price = "9999";
-          console.log(result, "+++++++++++++");
         }
       });
   },
