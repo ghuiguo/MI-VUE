@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import searchlist from "../Search/Searchlist";
+// import searchlist from "../Search/Searchlist";
 import goodlist from "../Search/goodlist";
 import axios from '../../api';
 export default {
@@ -36,7 +36,7 @@ export default {
 	});
   },
   components: {
-    searchlist,
+    // searchlist,
     goodlist
   }
 };
