@@ -57,13 +57,10 @@
           <img src="../assets/images/gessulike.jpg" alt />
         </div>
         <div class="cart-main-another-list">
-          <div
-            class="cart-main-another-list-item"
-            :key="index"
-            v-for="(item,index) in likeList"
-            style="    width: 49.3%;"
-          >
-            <a href>
+          <div class="cart-main-another-list-item"
+            :key="index" v-for="(item,index) in likeList"
+            style="width: 49.3%;">
+            <a href='javascript:;'>
               <div class="goods-img-box">
                 <img :src="item.images" alt />
               </div>
