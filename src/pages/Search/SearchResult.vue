@@ -19,12 +19,29 @@
 <script>
 import searchlist from "../Search/Searchlist";
 import goodlist from "../Search/goodlist";
+import axios from '../../api/index';
 export default {
   components: {
     searchlist,
     goodlist
-  }
-};
+  },
+  beforemounte(){
+      axios.post('/sousuo',{
+            params:{
+            lx: 'all',
+            type: '',
+            search: '',
+            name:''
+            }
+    }).then(result => {
+      if (parseInt(result.code) === 0) {
+        return result;
+      }
+  })
+     return Promise.reject(result.codeText);
+}
+}
+
 </script>
 
 <style>
@@ -72,5 +89,4 @@ export default {
   z-index: 3;
   border: 1px solid #eee;
 }
-
 </style>

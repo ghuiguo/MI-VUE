@@ -43,6 +43,8 @@ export default {
         },
         searchData(){
             console.log(this.$router);
+            let flag = false;
+            this.$emit('showComponent',flag);
             this.$router.replace('/search/searchreault/'+this.search);
 //         },
 //         searchData(){
