@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './routers/index';
+import store from './store/index';
 
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import LyTab  from "ly-tab";
@@ -22,6 +23,7 @@ Vue.use(LyTab);
 Vue.config.productionTip = false;
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')

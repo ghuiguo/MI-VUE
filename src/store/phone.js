@@ -1,12 +1,12 @@
 import * as types from './store-types';
 import {
 	queryPhoneList
-} from '../api/Home';
+} from '../api/home';
 
 export default {
 	namespaced: true,
 	state: {
-        PhoneList:[]
+        PhoneList:null
 	},
 	mutations: {
 		[types.PHONE](state, payload) {
@@ -15,9 +15,9 @@ export default {
 	},
 	actions: {
 		[types.PHONE](context) {
-			queryCustomList().then(result => {
+			queryPhoneList().then(result => {
 				context.commit(types.PHONE, {
-					result
+					list:result
 				});
 			}).catch(() => {});
 		}

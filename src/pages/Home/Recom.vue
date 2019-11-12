@@ -319,6 +319,7 @@
 
 <script>
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import * as types from '../../store/store-types';
 import axios from '../../api/index';
 export default {
   data() {
@@ -355,6 +356,9 @@ export default {
     swiperSlide
   },
   created(){
+    
+    this.$store.dispatch("phone/" + types.PHONE);
+    console.log(this.$store.state);
     axios.get('/shangpinliebiao/list').then(result => {
       if (parseInt(result.code) === 0) {
         this.shangpinliebiao = result.data;
