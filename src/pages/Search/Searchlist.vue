@@ -1,6 +1,6 @@
 // 这个是大家可以用的公共组件头
 <template>
-  <div class="Search-head">
+  <div class="Search-head" >
     <span
       class="iconfont icon-you"
       style="
@@ -15,6 +15,7 @@
       type="text"
       placeholder="搜索商品名称"
       v-model="search"
+      v-if="flag"
     />
     <span
       class="iconfont icon-sousuo"
@@ -24,6 +25,7 @@
             width: .6rem;
             height: .6rem;"
       @click="searchData()"
+      v-if="flag"
     ></span>
   </div>
   
@@ -33,17 +35,29 @@
 export default {
     data(){
         return{
-            search:''
+            search:'',
+            flag:true
         }
     },
 
     methods:{
         backtoOne(){
-            window.history.go(-1);
+            this.$router.back(-1);
+            this.flag=true;
+        },
+        created(){
+
         },
         searchData(){
             console.log(this.$router);
-            this.$router.replace('/search/searchreault/'+this.search);
+            let search = this.search,
+            params = {type:search};
+            
+            if(!location.href.includes("searchreault")){
+              this.$router.push({name:'searchreault',params});
+              this.flag=false;
+            }
+            
 //         },
 //         searchData(){
 //             axios.post('/sousuo',{
