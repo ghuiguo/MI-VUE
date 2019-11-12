@@ -5,8 +5,8 @@
         <img src="../assets/home/home.png" alt />
         <div class="app-header-middle" @click="toSearch">
           &nbsp;
-          <span class="iconfont icon-jingli my"></span>
-          搜索商品名称
+          <span class="iconfont icon-sousuo sousuo"></span>
+          &nbsp;&nbsp;&nbsp;&nbsp;搜索商品名称
         </div>
         <div class="app-header-right">
           <span class="iconfont icon-jingli my"></span>
@@ -128,6 +128,11 @@ export default {
         top: 0.1rem;
         line-height: 0.62rem;
         background: #FFF;
+        .sousuo{
+          position: absolute;
+          left: 0.1rem;
+          top: 0;
+        }
       }
       .app-header-right {
         position: absolute;
