@@ -42,8 +42,12 @@ export default {
 
     methods:{
         backtoOne(){
+          if(location.href.includes('searchreault')){
+            this.$router.replace('/homepage');
+          }else{
             this.$router.back(-1);
             this.flag=true;
+          }
         },
         created(){
 
