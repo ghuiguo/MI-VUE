@@ -96,7 +96,7 @@ const router = new VueRouter({
 			name:'searchmain',
 			component:Searchmain
 		},{
-			path:'searchreault',
+			path:'searchreault/:productId',
 			name:'searchreault',
 			component:SearchReault
 		}]
