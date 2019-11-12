@@ -80,7 +80,8 @@
 
                 ],
                 /* 手机和家电总数据 */
-                phonetvList: [
+                phonetvList:[],
+                /*phonetvList: [
                     {
                         titel: "手机",
                         src:'../assets/classify/香薰.png',
@@ -209,10 +210,8 @@
                                 price: "3799",
                                 state:"0"
                             }]
-                    }],
-
+                    }],*/
             }
-
         },
         created(){
             axios.get('/type/list').then(result => {
@@ -222,7 +221,6 @@
                     this.phonetvList = result.data;
                 }
             })
-
         },
         methods: {
             /* 路由返回到上次进入的前一页 */
@@ -240,8 +238,6 @@
                this.$router.push("productDetail/"+id);
 
             },
-
-
         }
     };
 </script>
@@ -286,13 +282,14 @@
                 background-size: cover;
             }
         }
-
         .navDH {
             width: 1.6rem;
             height: 100%;
             border-right: 1px solid #efefef;
 
             .navWrapper {
+                position: absolute;
+                top: 1rem;
                 width: 1.8rem;
                 height: 100%;
 

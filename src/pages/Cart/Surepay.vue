@@ -59,9 +59,10 @@ export default {
             window.history.go(-1);
         },
         runToSuccess(){
-            setTimeout(()=>{
-              this.$router.push('successpay')
-            },700)
+          
+            // setTimeout(()=>{
+            //   this.$router.push('successpay')
+            // },700)
         }
     }
 };
