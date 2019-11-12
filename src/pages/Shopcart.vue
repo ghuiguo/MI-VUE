@@ -10,7 +10,6 @@
     font-size: .3rem;
     font-weight: 500;"
       >购物车</h2>
-      <!-- <span class="cart-header-edit" style="font-size: .26rem;">编辑</span> -->
     </div>
 
     <div class="cart-main">

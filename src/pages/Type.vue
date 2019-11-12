@@ -27,7 +27,7 @@
                     <div class="typePhone">
                         <!--  -->
                         <div class="typePhoneBox">
-                            <div class="product" v-for="item in i.item.children"
+                            <div class="product" :key="item.id" v-for="item in i.item.children"
                                  @click="toProductDetail(item.id)">
                                         <img :src="item.src"/>
                                         <p v-text="item.name"></p>
