@@ -20,14 +20,14 @@
             <div class="typeYM">
                 <div class="YMWrapper" v-for=" (i,index) in phonetvList" :key="index">
 
-                    <img :src="i.src" >
+                    <img v-show="i.item.src" :src="i.item.src" >
                     <div class="phone">
-                        <span class="phoneText" v-text="i.titel"></span>
+                        <span class="phoneText" v-text="i.item.titel"></span>
                     </div>
                     <div class="typePhone">
                         <!--  -->
                         <div class="typePhoneBox">
-                            <div class="product" v-for="item in i.children"
+                            <div class="product" v-for="item in i.item.children"
                                  @click="toProductDetail(item.id)">
                                         <img :src="item.src"/>
                                         <p v-text="item.name"></p>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-
+    import axios from '../api/index';
     export default {
         components: {},
         data() {
@@ -88,56 +88,56 @@
                             id: 41,
                             src: "../assets/classify/小米CC9 Pro.png",
                             name: "小米CC9 Pro",
-                            description: "1亿像素超清主摄 / 后置全场景五摄像头 / 双闪光双柔光四闪光灯 / 3200万像素超清前置相机 / 10倍混合光学变焦，50倍数字变焦 / 5260mAh大电量 / 标配30W疾速快充 / 小米首款超薄屏下指纹 / 德国莱茵低蓝光认证 / 多功能NFC / 红外万能遥控 / 1216 超线性扬声器",
+                            desc: "1亿像素超清主摄 / 后置全场景五摄像头 / 双闪光双柔光四闪光灯 / 3200万像素超清前置相机 / 10倍混合光学变焦，50倍数字变焦 / 5260mAh大电量 / 标配30W疾速快充 / 小米首款超薄屏下指纹 / 德国莱茵低蓝光认证 / 多功能NFC / 红外万能遥控 / 1216 超线性扬声器",
                             price: "3099"
                         }, {
                             id: 42,
                             src: "../assets/classify/Redmi 8.png",
                             name: "Redmi 8",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 43,
                             src: "../assets/classify/redmi8A.png",
                             name: "Redmi 8A",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
 
                         }, {
                             id: 44,
                             src: "../assets/classify/小米9 Pro 5G.png",
                             name: "小米9 Pro 5G",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 45,
                             src: "../assets/classify/小米MIX Alpha.png",
                             name: "小米MIX Alpha",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 46,
                             src: "../assets/classify/K20 Pro 尊享版.gif",
                             name: "K20 Pro 尊享版",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 47,
                             src: "../assets/classify/Redmi Note 8 Pro.gif",
                             name: "Redmi Note 8 Pro",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 48,
                             src: "../assets/classify/Redmi Note 8.gif",
                             name: "Redmi Note 8",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }, {
                             id: 49,
                             src: "../assets/classify/小米CC9美图版.png",
                             name: "小米CC9美图版",
-                            description: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
+                            desc: "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
                             price: "799"
                         }]
 
@@ -147,38 +147,41 @@
                             id:51,
                             src: "../assets/classify/全面屏电视E55A.jpg",
                             name: "全面屏电视E55A",
-                            description: "全面屏设计 / 4K超高清+HDR / 纤薄机身 / 2GB+8GB大内存 / 64位四核处理器 / 内置小爱同学",
+                            desc: "全面屏设计 / 4K超高清+HDR / 纤薄机身 / 2GB+8GB大内存 / 64位四核处理器 / 内置小爱同学",
                             price: "1688"
                         }, {
                             id:52,
                             src: "../assets/classify/壁画电视.jpg",
                             name: "壁画电视65英寸",
-                            description: "壁画外观 / 全面屏设计 / 4K HDR精良画质 / 2GB+32GB大内存 / 四核处理器 / 13.9mm纤薄机身 / 支持远场语音 / 内置小爱同学 / 首次安装免费",
+                            desc: "壁画外观 / 全面屏设计 / 4K HDR精良画质 / 2GB+32GB大内存 / 四核处理器 / 13.9mm纤薄机身 / 支持远场语音 / 内置小爱同学 / 首次安装免费",
                             price: "6999"
                         }, {
                             id:53,
                             src: "../assets/classify/电视4X65英寸.jpg",
                             name: "电视4X65英寸",
-                            description: "人工智能语音 / 4K HDR超高清画质 / 超窄边 / 2GB+8GB大内存 / 64位四核处理器 / 内置小爱同学",
+                            desc: "人工智能语音 / 4K HDR超高清画质 / 超窄边 / 2GB+8GB大内存 / 64位四核处理器 / 内置小爱同学",
                             price: "2499"
                         }, {
                             id:54,
                             src: "../assets/classify/立式空调.png",
                             name: "立式空调",
-                            description: "2匹 / 高效制冷热 / 静音设计 / 立体送风 / 全屋互联 / 智能操控 / 官网购买，免预约安装，签收后服务人员主动联系",
-                            price: "2499"
+                            desc: "2匹 / 高效制冷热 / 静音设计 / 立体送风 / 全屋互联 / 智能操控 / 官网购买，免预约安装，签收后服务人员主动联系",
+                            price: "2499",
+                            state:"0"
                         }, {
                             id:55,
                             src: "../assets/classify/空调C1.jpg",
                             name: "空调C1",
-                            description: "1.5匹 / 自清洁 / 全直流变频节能省电 / 高效制冷热 / 静音设计 / 全屋互联 / 售后无忧 / 官网购买，免预约安装，签收后服务人员主动联系",
-                            price: "2199"
+                            desc: "1.5匹 / 自清洁 / 全直流变频节能省电 / 高效制冷热 / 静音设计 / 全屋互联 / 售后无忧 / 官网购买，免预约安装，签收后服务人员主动联系",
+                            price: "2199",
+                            state:"0"
                         }, {
                             id:56,
                             src: "../assets/classify/烘干一体.jpg",
                             name: "洗烘一体机",
-                            description: "12种洗烘模式 / 除螨洗，羊毛洗，空气洗 / 智能烘干，衣干即停 / 旋钮+按键双控制，操作更便捷 / 一级能效，省水省电",
-                            price: "1699"
+                            desc: "12种洗烘模式 / 除螨洗，羊毛洗，空气洗 / 智能烘干，衣干即停 / 旋钮+按键双控制，操作更便捷 / 一级能效，省水省电",
+                            price: "1699",
+                            state:"0"
                         }]
                     },{
                         titel: "电脑",
@@ -186,26 +189,39 @@
                             id:61,
                             src: "../assets/classify/游戏本512GB.jpg",
                             name: "游戏本512GB",
-                            description: "第八代酷睿i7六核标压处理器 ／ 72%NTSC高色域窄边框全高清屏 ／ 512G高速固态 ／ 双烤不限频不降频／ 冷酷到底的散热系统",
-                            price: "7499"
+                            desc: "第八代酷睿i7六核标压处理器 ／ 72%NTSC高色域窄边框全高清屏 ／ 512G高速固态 ／ 双烤不限频不降频／ 冷酷到底的散热系统",
+                            price: "7499",
+                            state:"0"
                         },
                             {
                                 id:62,
                                 src: "../assets/classify/Air2019款.jpg",
                                 name: "Air2019款",
-                                description: "全高清屏幕 / 长续航全金属 / 超窄边框  / 像杂志一样随身携带 / 哈曼高品质扬声器",
-                                price: "3399"
+                                desc: "全高清屏幕 / 长续航全金属 / 超窄边框  / 像杂志一样随身携带 / 哈曼高品质扬声器",
+                                price: "3399",
+                                state:"0"
                             },
                             {
                                 id:63,
                                 src: "../assets/classify/笔记本15.6独显.png",
                                 name: "笔记本15.6独显",
-                                description: "四核i5处理器 / 全新升级512G高速固态硬盘 / 独立数字键盘 / 全面均衡的国民轻薄本",
-                                price: "3799"
+                                desc: "四核i5处理器 / 全新升级512G高速固态硬盘 / 独立数字键盘 / 全面均衡的国民轻薄本",
+                                price: "3799",
+                                state:"0"
                             }]
                     }],
 
             }
+
+        },
+        created(){
+            axios.get('/type/list').then(result => {
+                if (parseInt(result.code) === 0) {
+                    // this.items = result.data;
+                    window.console.log(result,'+++++1111+++++');
+                    this.phonetvList = result.data;
+                }
+            })
 
         },
         methods: {
@@ -218,9 +234,10 @@
                 window.console.log(index);
                 this.chooseIndex = index;
             },
+            /* 点击跳转进详情页*/
             toProductDetail(id) {
                 window.console.log(id);
-               this.$router.push("productDetail/");
+               this.$router.push("productDetail/"+id);
 
             },
 

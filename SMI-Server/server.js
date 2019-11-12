@@ -44,6 +44,7 @@ app.use(async (req, res, next) => {
 	req.$userDATA = filterInvalid(JSON.parse(await readFile('./json/user.json')));
 	req.$visitDATA = filterInvalid(JSON.parse(await readFile('./json/visit.json')));
 	req.$fenleiDATA = filterInvalid(JSON.parse(await readFile('./json/fenlei.json')));
+    req.$typeDATA = filterInvalid(JSON.parse(await readFile('./json/typexiangqing.json')));
 	req.$productDATA = filterInvalid(JSON.parse(await readFile('./json/productList.json')));
 	req.$shangpinliebiaoDATA = filterInvalid(JSON.parse(await readFile('./json/shangpinliebiao.json')));
 	next();
@@ -57,6 +58,7 @@ app.use('/product', require('./routes/product'));
 app.use('/visit', require('./routes/visit'));
 app.use('/job', require('./routes/job'));
 app.use('/fenlei', require('./routes/fenlei'));
+app.use('/type', require('./routes/typexiangqing'));
 app.use((req, res) => {
 	res.status(404);
 	res.send('NOT FOUND!');
