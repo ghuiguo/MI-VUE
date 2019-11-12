@@ -1,7 +1,7 @@
 <template>
   <div class="Search">
     <searchlist  v-on:showComponent="showComponent" />
-    <searchmain v-if="showComponentdata"/>
+    <!-- <searchmain v-if="showComponentdata"/> -->
     <router-view></router-view>
   </div>
 </template>
