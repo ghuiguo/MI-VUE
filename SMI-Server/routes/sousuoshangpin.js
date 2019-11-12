@@ -3,24 +3,22 @@ const express = require('express'),
 
 const {
 	success,
-    getFenleiInfo
 } = require('../utils/tools');
 
-const {
-	writeFile
-} = require('../utils/promiseFS');
+// const {
+// 	writeFile
+// } = require('../utils/promiseFS');
 
 
 //=>获取json信息
-route.get('/list', (req, res) => {
-    let data = req.$fenleiDATA;
-    console.log(data);
-	data = data.map(item => {
-		return {
-			id: item.id,
-			label:item.label
-		}
-	});
+route.get('/sousuo', (req, res) => {
+    let data = req.$sousuoshangpinDATA;
+    let {type} = req.query;
+    // console.log(type);
+    data = data.filter(item => {
+        return type.includes(item.type);
+    });
+    // console.log(data.length);
 	if (data.length > 0) {
 		res.send(success(true, {
 			data: data

@@ -35,12 +35,10 @@ route.get('/list', (req, res) => {
 
 //=>修改产品信息
 route.post('/update', (req, res) => {
-	console.log(req,'哈哈哈哈哈哈哈');
 	req.body = req.body || {};
 	let $productDATA = req.$productDATA,
 		id = parseFloat(req.body.id),
 		flag = false;
-		console.log(req.body,'啦啦啦啦啦啦');
 	delete req.body.id;
 	$productDATA = $productDATA.map(item => {
 		if (parseFloat(item.id) === parseFloat(id)) {

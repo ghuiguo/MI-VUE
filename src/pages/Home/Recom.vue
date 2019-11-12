@@ -358,13 +358,11 @@ export default {
     axios.get('/shangpinliebiao/list').then(result => {
       if (parseInt(result.code) === 0) {
         this.shangpinliebiao = result.data;
-        console.log(result,'luowencun');
         }
     })
   },
   methods:{
     toProductDetail(projectId){
-      console.log(this.$router);
       this.$router.push("/productDetail/"+projectId);
     }
   }

@@ -18,5 +18,5 @@ axios.interceptors.response.use(function onFulfilled(response) {
 });
 axios.defaults.validateStatus = function (status) {
 	return /^(2|3)\d{2}$/.test(status);
-}
+};
 export default axios;

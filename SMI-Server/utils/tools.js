@@ -61,6 +61,11 @@ function getFenleiInfo(fenleiId,req){
 	}) || {};
 }
 
+function getTypeInfo(typeId,req){
+    return req.$typeDATA.find(item => {
+        return parseFloat(item.id) === parseFloat(typeId);
+    }) || {};
+}
 
 module.exports = {
 	handleMD5,
@@ -72,5 +77,6 @@ module.exports = {
 	getCustomerInfo,
 	getVisitInfo,
 	getFenleiInfo,
-	getProductInfo
+	getProductInfo,
+    getTypeInfo
 }
