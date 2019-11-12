@@ -92,11 +92,11 @@ const router = new VueRouter({
 		name: 'search',
 		component: Search,
 		children:[{
-			path:'/searchmain',
+			path:'searchmain',
 			name:'searchmain',
 			component:Searchmain
 		},{
-			path:'/searchreault',
+			path:'searchreault',
 			name:'searchreault',
 			component:SearchReault
 		}]
