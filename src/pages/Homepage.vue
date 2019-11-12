@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="homer">
     <div class="headerbar">
       <div class="search">
         <img src="../assets/home/home.png" alt />
@@ -97,25 +97,30 @@ export default {
 </script>
 
 <style lang='less'>
-.home {
+.homer {
   width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   .headerbar {
-    position: fixed;
-    z-index: 31;
-    left: 0;
-    top: 0px;
+    // position: fixed;
+    // z-index: 31;
+    // left: 0;
+    // top: 0px;
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     background: #f2f2f2;
     .search {
       width: 100%;
       height: 0.8rem;
+      line-height: .8rem;
       position: relative;
       img {
-        position: absolute;
-        left: 0.05rem;
-        top: 0.05rem;
-        width: 0.5rem;
+    position: absolute;
+    left: 0.05rem;
+    top: 0.05rem;
+    width: 0.5rem;
+    padding-top: .2rem;
+    padding-left: .2rem;
       }
       .app-header-middle {
         position: absolute;
