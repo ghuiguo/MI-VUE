@@ -18,7 +18,8 @@ route.get('/list', (req, res) => {
 		return {
 			id: item.id,
 			name: item.name,
-			desc: item.desc
+			desc: item.desc,
+			state:item.state
 		}
 	});
 	if (data.length > 0) {
@@ -30,6 +31,34 @@ route.get('/list', (req, res) => {
 	res.send(success(false, {
 		codeText: 'no matching data was found!'
 	}));
+});
+
+//=>修改产品信息
+route.post('/update', (req, res) => {
+	req.body = req.body || {};
+	let $productDATA = req.$productDATA,
+		id = parseFloat(req.body.id),
+		flag = false;
+	delete req.body.id;
+	$productDATA = $productDATA.map(item => {
+		if (parseFloat(item.id) === parseFloat(id)) {
+			flag = true;
+			return {
+				...item,
+				...req.body
+			};
+		}
+		return item;
+	});
+	if (!flag) {
+		res.send(success(false));
+		return;
+	}
+	writeFile('./json/productList.json', $productDATA).then(() => {
+		res.send(success(true));
+	}).catch(() => {
+		res.send(success(false));
+	});
 });
 
 //=>获取产品信息
@@ -44,7 +73,9 @@ route.get('/info', (req, res) => {
 				id: data.id,
 				name: data.name,
 				desc: data.desc,
-				price:data.price
+				price:data.price,
+				collectState:data.collectState,
+				state:data.state
 			}
 		}));
 		return;

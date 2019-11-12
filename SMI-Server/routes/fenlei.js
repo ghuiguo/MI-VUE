@@ -3,7 +3,7 @@ const express = require('express'),
 
 const {
 	success,
-	getFenleiInfo
+    getFenleiInfo
 } = require('../utils/tools');
 
 const {
