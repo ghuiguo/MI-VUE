@@ -59,6 +59,7 @@ app.use('/visit', require('./routes/visit'));
 app.use('/job', require('./routes/job'));
 app.use('/fenlei', require('./routes/fenlei'));
 app.use('/type', require('./routes/typexiangqing'));
+app.use('/shangpinliebiao', require('./routes/shangpinliebiao'));
 app.use((req, res) => {
 	res.status(404);
 	res.send('NOT FOUND!');
