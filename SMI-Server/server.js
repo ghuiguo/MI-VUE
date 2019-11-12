@@ -46,6 +46,7 @@ app.use(async (req, res, next) => {
 	req.$fenleiDATA = filterInvalid(JSON.parse(await readFile('./json/fenlei.json')));
 	req.$productDATA = filterInvalid(JSON.parse(await readFile('./json/productList.json')));
 	req.$shangpinliebiaoDATA = filterInvalid(JSON.parse(await readFile('./json/shangpinliebiao.json')));
+	req.$sousuoshangpinDATA = filterInvalid(JSON.parse(await readFile('./json/sousuoshangpin.json')));
 	next();
 });
 
@@ -58,6 +59,7 @@ app.use('/visit', require('./routes/visit'));
 app.use('/job', require('./routes/job'));
 app.use('/fenlei', require('./routes/fenlei'));
 app.use('/shangpinliebiao', require('./routes/shangpinliebiao'));
+app.use('/sousuoshangpin', require('./routes/sousuoshangpin'));
 app.use((req, res) => {
 	res.status(404);
 	res.send('NOT FOUND!');
