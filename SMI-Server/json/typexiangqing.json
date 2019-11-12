@@ -2,7 +2,7 @@
   {
     "id":4,
     "titel": "手机",
-    "src": "../.././assets/classify/香薰.png",
+    "src": "../.././assets/classify/手机.png",
     "state":0,
     "children": [
       {
@@ -15,7 +15,7 @@
       },
       {
         "id": 42,
-        "src": "",
+        "src": "../.././assets/classify/Redmi 8.png",
         "name": "Redmi 8",
         "desc": "5000mAh大电量 / 最高可选4GB+64GB版本 / 支持18W快充 / Type-C充电接口 / 6.22\"水滴全面屏 / 指纹识别+AI人脸解锁 / 骁龙八核处理器 / 超大音量 / 1200万AI双摄 / 支持红外遥控 / 支持无线FM收音机",
         "price": "799",
@@ -81,7 +81,7 @@
   },
   {
     "id":5,
-    "src": "../.././assets/classify/香薰.png",
+    "src": "../.././assets/classify/无线充电器.jpg",
     "titel": "家电",
     "state":0,
     "children": [
