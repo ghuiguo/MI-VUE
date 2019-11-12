@@ -9,7 +9,7 @@
           &nbsp;&nbsp;&nbsp;&nbsp;搜索商品名称
         </div>
         <div class="app-header-right">
-          <span class="iconfont icon-jingli my"></span>
+          <img src="../assets/home/用户.png" alt="" @click="wode">
         </div>
       </div>
       <ly-tab
@@ -91,6 +91,9 @@ export default {
     },
     toSearch(){
       this.$router.replace('/search');
+    },
+    wode(){
+      this.$router.replace('/myself');
     }
   }
 };
@@ -127,7 +130,7 @@ export default {
         font-size: 0.3rem;
         color: rgba(0, 0, 0, 0.3);
         border: 1px solid #e5e5e5;
-        width: 71%;
+        width: 74%;
         height: 0.62rem;
         left: 1rem;
         top: 0.1rem;
@@ -142,11 +145,11 @@ export default {
       .app-header-right {
         position: absolute;
         width: 0.5rem;
-        height: 0.5rem;   
-        right: 0.3rem;
-        top: 0;
-        span {
-          font-size: 0.45rem;
+        height: 0.5rem;
+        right: 0.5rem;
+        top: -0.3rem;   
+        img{
+          width: 100%;
         }
       }
     }
