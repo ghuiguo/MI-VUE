@@ -8,7 +8,12 @@
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
-      <img class="headerActionPic toBack" @click="toBack()" src="../assets/images/detailBack.png" alt />
+      <img
+        class="headerActionPic toBack"
+        @click="toBack()"
+        src="../assets/images/detailBack.png"
+        alt
+      />
       <img class="headerActionPic share" src="../assets/images/detailShare.png" alt />
     </div>
     <div class="section section-detail">
@@ -31,9 +36,10 @@
         <a href="/" class="footer-btn router-link-active">
           <img class="footer-icon" src="../assets/images/shopIcon.png" alt />
           <span>购物车</span>
+          <em v-if="productInfo.collectState>=1" class="bubble" v-text="productInfo.collectState"></em>
         </a>
-        <div class="action-box flex">
-          <a class="btn buy-btn">加入购物车</a>
+        <div class="action-box flex" @click="changeType()">
+          <a href="javascript:;" class="btn buy-btn">加入购物车</a>
         </div>
       </div>
     </footer>
@@ -41,7 +47,7 @@
 </template>
 
 <script>
-import axios from '../api/index';
+import axios from "../api/index";
 export default {
   data() {
     return {
@@ -92,36 +98,55 @@ export default {
         { id: 4, url: "../assets/images/productDetail/productIntroduce4.jpg" },
         { id: 5, url: "../assets/images/productDetail/productIntroduce5.jpg" }
       ],
-      productInfo:{
-        name:'',
-        desc:'',
-        price:''
+      productInfo: {
+        id: 0,
+        name: "",
+        desc: "",
+        price: "8888",
+        collectState: 0
       }
-
     };
   },
   methods: {
-    toBack(){
+    toBack() {
       window.history.go(-1);
+    },
+    changeType() {
+      axios
+        .post("/product/update", {
+          id: this.productInfo.id,
+          name: this.productInfo.name,
+          desc: this.productInfo.desc,
+          price: this.productInfo.price,
+          collectState: parseFloat(this.productInfo.collectState + 1)
+        })
+        .then(result => {
+          console.log(result, "+_+_+_+_+");
+          if (parseInt(result.code) === 0) {
+            this.productInfo.collectState = parseFloat(
+              this.productInfo.collectState + 1
+            );
+          }
+        });
     }
   },
   mounted() {
     let id = this.$route.params.productId;
-    axios.get('/product/info',{
-      params :{
-        productId:id
-      }
-    }).then(result => {
-      if (parseInt(result.code) === 0) {
-        this.items = result.data;
-        this.productInfo = result.data;
+    axios
+      .get("/product/info", {
+        params: {
+          productId: id
         }
-    })
-
+      })
+      .then(result => {
+        if (parseInt(result.code) === 0) {
+          this.productInfo = result.data;
+          this.productInfo.price = "9999";
+          console.log(result, "+++++++++++++");
+        }
+      });
   },
-  created(){
-
-  }
+  created() {}
 };
 </script>
 
@@ -212,6 +237,24 @@ export default {
       flex-direction: column;
       span {
         color: rgba(0, 0, 0, 0.54);
+      }
+      .bubble {
+        position: absolute;
+        min-width: 0.28rem;
+        line-height: 0.28rem;
+        height: 0.28rem;
+        box-sizing: border-box;
+        padding: 0 0.05rem;
+        font-size: 0.18rem;
+        overflow: hidden;
+        text-align: center;
+        border-radius: 0.28rem;
+        background: #ed4d41;
+        color: #fff;
+        top: 0;
+        left: 50%;
+        transform: translate3d(0.1rem, -20%, 0);
+        font-style: normal;
       }
     }
     .action-box {
