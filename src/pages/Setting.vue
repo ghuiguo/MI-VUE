@@ -11,7 +11,7 @@
       <li v-for="(item,index) in settingList" :key="index">{{item.name}}</li>
     </ol>
 
-    <div class="signout">退出登录</div>
+    <div v-show="showSignout" class="signout" @click="signout()">退出登录</div>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
   components: {},
   data() {
     return {
+      showSignout:false,
       settingList: [
         {
           name: "地址管理",
@@ -52,8 +53,18 @@ export default {
       ]
     };
   },
+  mounted(){
+    let isLogin = window.localStorage.getItem('isLogin');
+    if(isLogin&&isLogin=='yes'){
+      this.showSignout = true;
+    }
+  },
   methods: {
     toBack(){
+      window.history.go(-1);
+    },
+    signout(){
+      localStorage.removeItem("isLogin");
       window.history.go(-1);
     }
   }
@@ -90,7 +101,7 @@ export default {
     }
   }
   ol {
-    padding-top: 1rem;
+    // padding-top: 1rem;
     font-size: 0.3rem;
     margin-bottom: 0.3rem;
     li {

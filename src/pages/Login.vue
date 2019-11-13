@@ -5,7 +5,7 @@
         <img src="../assets/images/loginLogo.jpg" />
         <h4 class="header_tit_txt">小米帐号登录</h4>
       </div>
-      <label class="labelBox label_user">
+      <label class="labelBox label_user" :class="{error:userNameCheck}">
         <div v-show="loginType" class="cityList">
           +86
           <i></i>
@@ -24,7 +24,7 @@
         </div>
       </label>
 
-      <label class="labelBox label_cmsCode">
+      <label class="labelBox label_cmsCode" :class="{error:passwordCheck}">
         <input
           v-model="password"
           class="item_account"
@@ -32,6 +32,7 @@
           :type="passwordType"
           name="user"
           :placeholder="passwordPlaceHolder"
+          @input="validetaPasd()"
         />
         <div v-if="loginType" class="code_panel" :class="{active:!show}">
           <a
@@ -52,7 +53,12 @@
         </div>
       </label>
 
-      <div class="actionButton loginRegisBtn">立即登录/注册</div>
+      <div class="err_tip" v-if="errorTip">
+        <em class="icon_error"></em>
+        <span class="error-con" v-text="errorText"></span>
+      </div>
+
+      <div class="actionButton loginRegisBtn" @click="login()">立即登录/注册</div>
       <div
         @click="changeLoginType()"
         class="actionButton loginTypeChange"
@@ -105,6 +111,7 @@
 </template>
 
 <script>
+import axios from "../api/index";
 export default {
   components: {},
   data() {
@@ -114,13 +121,16 @@ export default {
       snsCode: "", // 验证码
       password: "", //密码
 
+      userNameCheck: false,
+      passwordCheck: false,
+      errorTip: false,
+      errorText: "手机号格式不正确",
+
       loginType: true, //登录方式 true:验证码登录，false:账号密码登录
       loginTypeChangeTxt: "用户名密码登录",
-      userNamePlaceHolder:'手机号码',
-      passwordPlaceHolder:'短信验证码',
-      passwordType:'number',
-
-      
+      userNamePlaceHolder: "手机号码",
+      passwordPlaceHolder: "短信验证码",
+      passwordType: "number",
 
       snsCodeBtn: "获取验证码", //获取验证码按钮文案
       //验证码事件
@@ -130,6 +140,47 @@ export default {
     };
   },
   methods: {
+    //验证表单信息
+    validateForm() {
+      if (this.loginType) {
+        if (!/^1[3456789]\d{9}$/.test(this.userName)) {
+          this.userNameCheck = true;
+          this.errorTip = true;
+          this.errorText = "手机号格式不正确";
+          return false;
+        }
+        if (!/^\d{4}$/.test(this.password)) {
+          this.passwordCheck = true;
+          this.errorTip = true;
+          this.errorText = "验证码格式不正确";
+          return false;
+        }
+        return true;
+      }
+    },
+    //点击登录按钮
+    login() {
+      if (this.validateForm()) {
+        console.log("通过验证之后");
+        axios.post("/user/login", {
+          account: this.userName,
+          password: 'e807f1fcf82d132f9bb018ca6738a19f',
+        }).then(result => {
+          if (parseInt(result.code) === 0) {
+            console.log(result,'+++++++++');
+            localStorage.setItem("isLogin", "yes");
+            localStorage.setItem("userId", result.id);
+            localStorage.setItem("userName", result.name);
+            this.$router.replace('/myself');
+          }else{
+            this.userNameCheck = true;
+            this.passwordCheck = true;
+            this.errorTip = true;
+            this.errorText = "用户名密码不匹配";
+          }
+        });
+      }
+    },
     //点击按钮清除用户名输入框
     clearLink() {
       this.isClearLink = false;
@@ -139,37 +190,43 @@ export default {
     changeLoginType() {
       this.loginType = !this.loginType;
       console.log(this.loginType);
-      this.password = '';
+      this.password = "";
       if (this.loginType) {
         this.loginTypeChangeTxt = "用户名密码登录";
-        this.userNamePlaceHolder = '手机号码';
-        this.passwordPlaceHolder = '短信验证码';
-        this.passwordType = 'number';
+        this.userNamePlaceHolder = "手机号码";
+        this.passwordPlaceHolder = "短信验证码";
+        this.passwordType = "number";
       } else {
         this.loginTypeChangeTxt = "手机短信登录/注册";
-        this.userNamePlaceHolder = '邮箱/手机号码/小米ID';
-        this.passwordPlaceHolder = '密码';
-        this.passwordType = 'password';
+        this.userNamePlaceHolder = "邮箱/手机号码/小米ID";
+        this.passwordPlaceHolder = "密码";
+        this.passwordType = "password";
       }
     },
     //修改密码输入框type类型
-    changePasswordInputType(){
+    changePasswordInputType() {
       let type = this.passwordType;
-      if(type==='number'){
-        this.passwordType = 'password';
-      }
-      else{
-        this.passwordType = 'number';
+      if (type === "number") {
+        this.passwordType = "password";
+      } else {
+        this.passwordType = "number";
       }
     },
     //用户名改变时触发验证等事件
     validetaUserName() {
       let userName = this.userName;
+      this.userNameCheck = false;
+      this.errorTip = false;
       if (userName && userName.length > 0) {
         this.isClearLink = true;
       } else {
         this.isClearLink = false;
       }
+    },
+    //验证码，密码输入框change事件
+    validetaPasd() {
+      this.passwordCheck = false;
+      this.errorTip = false;
     },
     //验证码倒计时
     getCode() {
@@ -240,6 +297,9 @@ export default {
     border-style: solid;
     border-color: transparent transparent #9b9b9b #9b9b9b;
     transform: rotate(-135deg);
+  }
+  .labelBox.error {
+    border-bottom: 1px solid #f66 !important;
   }
   .cityList {
     display: flex;
@@ -403,5 +463,41 @@ export default {
     width: 0.4rem;
     height: 0.3rem;
   }
+}
+.err_tip {
+  margin-bottom: 0.1rem;
+  line-height: 0.28rem;
+  padding-top: 0.28rem;
+}
+.icon_error {
+  width: 0.28rem;
+  height: 0.28rem;
+  margin: 0 0.1rem 0 0;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ff6700;
+  border-radius: 50%;
+}
+.error-con {
+  line-height: 0.4rem;
+  font-size: 0.28rem;
+  color: #f66;
+}
+.icon_error:before,
+.icon_error:after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 0.04rem;
+  background-color: #fff;
+}
+.icon_error:before {
+  height: 0.1rem;
+  margin-top: 0.06rem;
+}
+.icon_error:after {
+  height: 0.04rem;
+  margin-top: 0.02rem;
 }
 </style>

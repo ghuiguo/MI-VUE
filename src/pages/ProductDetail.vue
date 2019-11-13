@@ -29,11 +29,19 @@
     </div>
     <footer>
       <div class="fill-height layout align-center bgw">
-        <a href="/" class="footer-btn router-link-active">
+        <a
+          href="javascript:;"
+          @click="this.$router.replace('/shopcart')"
+          class="footer-btn router-link-active"
+        >
           <img class="footer-icon" src="../assets/images/homeIcon.png" alt />
           <span>首页</span>
         </a>
-        <a href="/" class="footer-btn router-link-active">
+        <a
+          href="javascript:;"
+          @click="this.$router.replace('/homepage')"
+          class="footer-btn router-link-active"
+        >
           <img class="footer-icon" src="../assets/images/shopIcon.png" alt />
           <span>购物车</span>
           <em v-if="productInfo.collectState>=1" class="bubble" v-text="productInfo.collectState"></em>
@@ -112,8 +120,9 @@ export default {
       window.history.go(-1);
     },
     changeType() {
-      axios
-        .post("/product/update", {
+      let isLogin = window.localStorage.getItem("isLogin");
+      if (isLogin && isLogin == "yes") {
+        axios.post("/product/update", {
           id: this.productInfo.id,
           name: this.productInfo.name,
           desc: this.productInfo.desc,
@@ -127,6 +136,9 @@ export default {
             );
           }
         });
+      }else{
+        this.$router.replace('/login')
+      }
     }
   },
   mounted() {

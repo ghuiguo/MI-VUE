@@ -22,14 +22,14 @@ route.post('/login', (req, res) => {
 	password = handleMD5(password);
 
 	const item = req.$userDATA.find(item => {
-		return (item.name === account || item.email === account || item.phone === account) && item.password === password;
+		return (item.name === account || item.phone === account) && item.password === password;
 	});
 
 	if (item) {
 		req.session.userID = parseFloat(item.id);
-		req.session.power = getJobInfo(item.jobId, req).power || '';
 		res.send(success(true, {
-			power: req.session.power
+			id: item.id,
+			name: item.name
 		}));
 		return;
 	}

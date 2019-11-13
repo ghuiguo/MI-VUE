@@ -5,7 +5,7 @@
         <div class="img">
           <img src="../assets/images/mine/myselfAvatar.png" />
         </div>
-        <div class="name" @click="showDialog()">登录/注册</div>
+        <div class="name" @click="showDialog()" v-text="userName"></div>
       </div>
     </header>
 
@@ -68,6 +68,8 @@ export default {
   components: {},
   data() {
     return {
+      isLogin: false,
+      userName: "登录/注册",
       tabList: [
         {
           id: 1,
@@ -155,9 +157,18 @@ export default {
       dialogShow: false
     };
   },
+  mounted() {
+    let isLogin = window.localStorage.getItem("isLogin");
+    if (isLogin && isLogin == "yes") {
+      this.isLogin = true;
+      this.userName = window.localStorage.getItem("userName");
+    }
+  },
   methods: {
     showDialog() {
-      this.dialogShow = true;
+      if (!this.isLogin) {
+        this.dialogShow = true;
+      }
     },
     hideDialog(type) {
       this.dialogShow = false;
@@ -168,13 +179,17 @@ export default {
     //
     toMyOrderList(index) {
       if (index <= 2) {
-        this.$router.push("orderList/"+index);
+        if (this.isLogin) {
+          this.$router.push("orderList/" + index);
+        } else {
+          this.$router.push("login");
+        }
+
         // this.$router.push({name:"orderList",params:{
         //   index
         // }});
-      }
-      else {
-        this.$router.push("productDetail/"+1);
+      } else {
+        this.$router.push("productDetail/" + 1);
       }
     },
     //列表页跳转路由

@@ -2,7 +2,7 @@
   <div>
     <div class="footer" v-show="showFooter">
       <router-link to="/homepage">
-        <span class="iconfont icon-laoban"></span>
+        <span class="iconfont icon-jingli"></span>
         <span>首页</span>
       </router-link>
       <router-link to="/type">
@@ -10,7 +10,7 @@
         <span>分类</span>
       </router-link>
       <router-link to="/shopcart">
-        <span class="iconfont icon-yonghuming"></span>
+        <span class="iconfont icon-zhiwu"></span>
         <span>购物车</span>
       </router-link>
       <router-link to="/myself">
