@@ -375,8 +375,11 @@ export default {
 
 <style lang='less'>
 .home {
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
+  flex: 1;
+  overflow-y:auto;
+  overflow-x: hidden;
   .search {
     width: 100%;
     height: 0.8rem;
@@ -419,7 +422,7 @@ export default {
   }
   .swiper-container {
     width: 100%;
-    padding-top:1.5rem; 
+    // padding-top:1.5rem; 
     
   }
   swiper {
@@ -546,7 +549,8 @@ export default {
     display: flex;
     flex-wrap: wrap;
     .floor-show-item {
-      width: 3.729rem;
+      // width: 3.729rem;
+      width: 49.5%;
       margin-right: 0.035rem;
       img {
         width: 100%;

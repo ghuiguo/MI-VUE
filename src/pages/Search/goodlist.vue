@@ -1,19 +1,19 @@
 // 这个是搜索结果的列表的商品
 <template>
     <div class="good-list">
-      <div class="item-box">
+      <div class="item-box" :key="item.id" v-for="item in List" @click="toProductDetail(item.id)">
         <a href="">
-          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/07270cc09689eb9b13b29aa9f6bc41eb.jpg" alt="" style="width: 2.53rem;
+          <img :src="item.src" alt="" style="width: 2.53rem;
                   height: 2.53rem;
                   position: relative;">
         </a>
         <div class="item-detail">
-          <h3>小米CC9 Pro</h3>
-          <p>1亿像素超清主摄 / 后置全场景五摄像头 / 双闪光双柔光四闪光灯 / 3200万像素超清前置相机 / 10倍混合光学变焦，50倍数字变焦 / 5260mAh大电量 / 标配30W疾速快充 / 小米首款超薄屏下指纹 / 德国莱茵低蓝光认证 / 多功能NFC / 红外万能遥控 / 1216 超线性扬声器</p>
+          <h3 v-html="item.name"></h3>
+          <p v-html="item.desc"></p>
           <div class="item-detail-list" style="flex: 1;">
-            <span>骁龙730G</span>
-            <span>10800万+2000万+1200万+500万+200万像素</span>
-            <span>6.47英寸</span>
+            <span >我没这个字段</span>
+            <span v-html="item.gongneng"></span>
+            <span v-html="item.type"></span>
           </div>
           <div style="    color: #ff6700;
     font-size: .36rem;
@@ -22,7 +22,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
-    display: flex;">2799￥</div>
+    display: flex;" v-html="item.price+'￥'"></div>
         </div>
     </div>
       
@@ -31,7 +31,15 @@
 
 <script>
 export default {
-    
+    props:["List"],
+    created(){
+      console.log(this.List);
+    },
+    methods:{
+      toProductDetail(projectId){
+      this.$router.push("/productDetail/"+projectId);
+    }
+    }
 }
 </script>
 

@@ -93,7 +93,7 @@ export default {
   position: fixed;
   z-index: 22;
   left: 0;
-  bottom: -1px;
+  bottom: -0.09rem;
   background: #fff;
   width: 100%;
   height: 1.04rem;
