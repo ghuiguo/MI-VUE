@@ -220,6 +220,9 @@ export default {
         .then(result => {
           if (parseInt(result.code) === 0) {
             console.log(result, "+++++++");
+            if(this.shoppingList.length<=0){
+              this.hasdata = 2;
+            }
           }
         });
     },

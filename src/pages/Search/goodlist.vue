@@ -36,9 +36,9 @@ export default {
 </script>
 
 <style>
-body{
+/* body{
   background: #eee;
-}
+} */
 .item-box{
   display: flex;
     padding: .28rem 0;

@@ -2,19 +2,19 @@
   <div>
     <div class="footer" v-show="showFooter">
       <router-link to="/homepage">
-        <span class="iconfont icon-guanliyuan"></span>
+        <span class="iconfont icon-laoban"></span>
         <span>首页</span>
       </router-link>
       <router-link to="/type">
-        <span class="iconfont icon-guanliyuan"></span>
+        <span class="iconfont icon-zhiwuguanli"></span>
         <span>分类</span>
       </router-link>
       <router-link to="/shopcart">
-        <span class="iconfont icon-guanliyuan"></span>
+        <span class="iconfont icon-yonghuming"></span>
         <span>购物车</span>
       </router-link>
       <router-link to="/myself">
-        <span class="iconfont icon-guanliyuan"></span>
+        <span class="iconfont icon-yonghuming"></span>
         <span>我的</span>
       </router-link>
     </div>
