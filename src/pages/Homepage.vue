@@ -147,7 +147,7 @@ export default {
         width: 0.5rem;
         height: 0.5rem;
         right: 0.5rem;
-        top: -0.3rem;   
+        top: -0.1rem;   
         img{
           width: 100%;
         }
